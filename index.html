@@ -3,25 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your Name | Portfolio</title>
-  <meta name="description" content="Portfolio of Your Name - projects, skills and contact details.">
+  <title>Ajay Bhatia | Bioinformatics Researcher</title>
+  <meta name="description" content="Ajay Bhatia - Ph.D. scholar in Bioinformatics at CSIR-IGIB, working on comparative genomics, horizontal gene transfer and bioinformatics tool development.">
   <style>
     :root {
-      --bg: #fafaf7;
+      --bg: #f8f9f6;
       --surface: #ffffff;
-      --text: #1d1d1b;
-      --muted: #6b6b66;
-      --accent: #2f6fed;
-      --border: #e4e4de;
+      --text: #1b1f1d;
+      --muted: #5f6762;
+      --accent: #0f7b6c;
+      --accent-soft: #e2f3ef;
+      --border: #e1e5e0;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #121214;
-        --surface: #1b1b1f;
-        --text: #f0f0ec;
-        --muted: #9a9a94;
-        --accent: #6c9bff;
-        --border: #2a2a30;
+        --bg: #0f1312;
+        --surface: #181d1b;
+        --text: #eef2ef;
+        --muted: #9aa5a0;
+        --accent: #4fcfb8;
+        --accent-soft: #14302b;
+        --border: #262d2a;
       }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,71 +32,83 @@
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 0 20px; }
 
-    /* Nav */
     header {
       position: sticky; top: 0; z-index: 10;
-      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
     }
-    nav { display: flex; justify-content: space-between; align-items: center; height: 60px; }
+    nav { display: flex; justify-content: space-between; align-items: center; min-height: 58px; flex-wrap: wrap; gap: 6px; }
     nav .logo { font-weight: 700; color: var(--text); }
-    nav ul { display: flex; gap: 20px; list-style: none; }
-    nav ul a { color: var(--muted); font-size: 0.95rem; }
+    nav ul { display: flex; gap: 18px; list-style: none; flex-wrap: wrap; }
+    nav ul a { color: var(--muted); font-size: 0.92rem; }
     nav ul a:hover { color: var(--text); text-decoration: none; }
 
-    /* Sections */
-    section { padding: 72px 0; }
-    h2 { font-size: 1.6rem; margin-bottom: 24px; }
-    .hero { padding: 100px 0 72px; }
-    .hero p.hi { color: var(--accent); font-weight: 600; margin-bottom: 8px; }
-    .hero h1 { font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.1; margin-bottom: 16px; }
-    .hero p.sub { color: var(--muted); font-size: 1.15rem; max-width: 560px; margin-bottom: 28px; }
+    section { padding: 64px 0; border-top: 1px solid var(--border); }
+    section.hero { border-top: none; padding: 90px 0 64px; }
+    h2 { font-size: 1.5rem; margin-bottom: 22px; }
+    h3 { font-size: 1.05rem; margin-bottom: 6px; }
+
+    .hero .eyebrow { color: var(--accent); font-weight: 600; margin-bottom: 8px; }
+    .hero h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); line-height: 1.1; margin-bottom: 14px; }
+    .hero .sub { color: var(--muted); font-size: 1.12rem; max-width: 620px; margin-bottom: 26px; }
     .btn {
-      display: inline-block; padding: 11px 22px; border-radius: 8px;
-      background: var(--accent); color: #fff; font-weight: 600; margin-right: 10px;
+      display: inline-block; padding: 10px 20px; border-radius: 8px; margin: 0 8px 8px 0;
+      background: var(--accent); color: #fff; font-weight: 600; font-size: 0.95rem;
     }
+    html[data-x] .btn {}
     .btn:hover { text-decoration: none; opacity: 0.9; }
     .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    @media (prefers-color-scheme: dark) { .btn:not(.ghost) { color: #07201b; } }
 
-    /* About */
-    .about p { color: var(--muted); max-width: 640px; margin-bottom: 14px; }
+    .stats { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+    .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 18px; }
+    .stat b { display: block; font-size: 1.3rem; color: var(--accent); }
+    .stat span { font-size: 0.82rem; color: var(--muted); }
 
-    /* Skills */
-    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
-    .skills span {
-      padding: 6px 14px; border-radius: 999px; font-size: 0.9rem;
-      background: var(--surface); border: 1px solid var(--border);
-    }
+    p.lead { color: var(--muted); max-width: 680px; margin-bottom: 14px; }
 
-    /* Projects */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
     .card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: 12px; padding: 22px;
       transition: transform 0.15s ease, border-color 0.15s ease;
     }
     .card:hover { transform: translateY(-3px); border-color: var(--accent); }
-    .card h3 { margin-bottom: 8px; font-size: 1.1rem; }
-    .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 14px; }
-    .card .tags { font-size: 0.8rem; color: var(--muted); margin-bottom: 14px; }
+    .card .role { font-size: 0.8rem; color: var(--accent); font-weight: 600; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .card p { color: var(--muted); font-size: 0.94rem; margin-bottom: 14px; }
     .card .links a { font-size: 0.9rem; margin-right: 14px; font-weight: 600; }
 
-    /* Contact */
-    .contact p { color: var(--muted); margin-bottom: 20px; max-width: 520px; }
+    ul.plain { list-style: none; }
+    ul.plain li { padding: 10px 0 10px 18px; position: relative; color: var(--muted); }
+    ul.plain li::before { content: ""; position: absolute; left: 0; top: 19px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    ul.plain li b { color: var(--text); font-weight: 600; }
 
-    footer { border-top: 1px solid var(--border); padding: 28px 0; color: var(--muted); font-size: 0.9rem; text-align: center; }
+    .pub { padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .pub:last-child { border-bottom: none; }
+    .pub .year { font-size: 0.8rem; color: var(--accent); font-weight: 700; }
+    .pub .title { font-weight: 600; margin: 2px 0; }
+    .pub .meta { color: var(--muted); font-size: 0.9rem; }
+    .badge { display: inline-block; font-size: 0.72rem; padding: 2px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 600; margin-left: 6px; vertical-align: middle; }
+    .subhead { margin: 28px 0 4px; color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
 
-    @media (max-width: 560px) {
-      nav ul { gap: 14px; }
-      section { padding: 52px 0; }
-    }
+    .skillgroup { margin-bottom: 18px; }
+    .skillgroup h3 { margin-bottom: 8px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chips span { padding: 5px 13px; border-radius: 999px; font-size: 0.86rem; background: var(--surface); border: 1px solid var(--border); }
+
+    .timeline-item { margin-bottom: 18px; }
+    .timeline-item .when { font-size: 0.82rem; color: var(--accent); font-weight: 700; }
+
+    footer { border-top: 1px solid var(--border); padding: 28px 0; color: var(--muted); font-size: 0.88rem; text-align: center; }
+
+    @media (max-width: 560px) { section { padding: 48px 0; } section.hero { padding: 60px 0 44px; } }
   </style>
 </head>
 <body>
@@ -102,10 +116,13 @@
   <header>
     <div class="wrap">
       <nav>
-        <a class="logo" href="#top">YN</a>
+        <a class="logo" href="#top">Ajay Bhatia</a>
         <ul>
           <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
+          <li><a href="#tools">Tools</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#teaching">Teaching</a></li>
+          <li><a href="#skills">Skills</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -113,88 +130,231 @@
   </header>
 
   <main id="top">
-    <!-- HERO: change the name and tagline -->
+
     <section class="hero">
       <div class="wrap">
-        <p class="hi">Hi, I'm</p>
-        <h1>Your Name</h1>
-        <p class="sub">I'm a [web developer / designer / student] who builds [clean, useful things] for the web.</p>
-        <a class="btn" href="#projects">See my work</a>
-        <a class="btn ghost" href="#contact">Get in touch</a>
-      </div>
-    </section>
+        <p class="eyebrow">Bioinformatics &middot; Comparative Genomics</p>
+        <h1>Ajay Bhatia</h1>
+        <p class="sub">Ph.D. scholar at CSIR-IGIB, New Delhi. I study horizontal gene transfer and genome evolution, and build web-based and command-line tools that make genomic analysis easier for other researchers.</p>
+        <a class="btn" href="#tools">See my tools</a>
+        <a class="btn ghost" href="#publications">Publications</a>
+        <a class="btn ghost" href="#contact">Contact</a>
 
-    <!-- ABOUT -->
-    <section id="about" class="about">
-      <div class="wrap">
-        <h2>About me</h2>
-        <p>Write 2-3 short sentences about yourself: who you are, what you study or do, and what you enjoy working on.</p>
-        <p>Mention what you're learning right now or what kind of opportunities you're looking for.</p>
-
-        <h2 style="margin-top: 40px;">Skills</h2>
-        <div class="skills">
-          <!-- Replace with your own skills -->
-          <span>HTML</span>
-          <span>CSS</span>
-          <span>JavaScript</span>
-          <span>Git &amp; GitHub</span>
-          <span>Python</span>
+        <div class="stats">
+          <div class="stat"><b>24</b><span>Citations</span></div>
+          <div class="stat"><b>3</b><span>h-index</span></div>
+          <div class="stat"><b>3</b><span>Web tools built</span></div>
+          <div class="stat"><b>2</b><span>First-author papers</span></div>
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS: copy a <article class="card"> block for each project -->
-    <section id="projects">
+    <section id="about">
       <div class="wrap">
-        <h2>Projects</h2>
+        <h2>About</h2>
+        <p class="lead">I'm a doctoral researcher in Bioinformatics at the Academy of Scientific and Innovative Research (AcSIR), working in Dr. Jitendra Narayan's lab at CSIR-Institute of Genomics and Integrative Biology (CSIR-IGIB), New Delhi.</p>
+        <p class="lead">My thesis, <em>Computational Discovery, Analysis and Mapping of Horizontal Gene Transfer Events in Multicellular Organisms</em>, is at the submission stage, with the defence expected in January 2027.</p>
+
+        <h3 style="margin-top: 30px;">Research focus</h3>
+        <ul class="plain">
+          <li><b>Comparative genomics:</b> multi-species genome analysis, synteny reconstruction and detection of evolutionary breakpoints.</li>
+          <li><b>Horizontal gene transfer:</b> detection using homology-based and composition-based approaches.</li>
+          <li><b>Genome annotation:</b> ancestral genome reconstruction, repeat and transposable element annotation, functional enrichment.</li>
+          <li><b>Data processing:</b> quality control of short-read, long-read and optical-mapping data.</li>
+          <li><b>Reproducible tools:</b> Snakemake workflows, plus web and command-line software.</li>
+        </ul>
+
+        <h3 style="margin-top: 30px;">Education</h3>
+        <div class="timeline-item" style="margin-top: 10px;">
+          <div class="when">2021 &ndash; Present</div>
+          <b>Ph.D. in Bioinformatics</b>, AcSIR / CSIR-IGIB, New Delhi
+        </div>
+        <div class="timeline-item">
+          <div class="when">2019</div>
+          <b>M.Sc. Zoology</b>, Arni University, Himachal Pradesh &mdash; First Division
+        </div>
+        <div class="timeline-item">
+          <div class="when">2017</div>
+          <b>B.Sc. Zoology</b>, Sidharth Government College, Nadaun (Himachal Pradesh University) &mdash; First Division
+        </div>
+
+        <h3 style="margin-top: 30px;">Honours</h3>
+        <ul class="plain">
+          <li><b>CSIR-UGC NET Junior Research Fellowship (Life Sciences), 2021&ndash;2026:</b> national fellowship funding five years of doctoral research. Also qualified for Assistant Professor eligibility.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="tools">
+      <div class="wrap">
+        <h2>Software &amp; web tools</h2>
         <div class="grid">
           <article class="card">
-            <h3>Project One</h3>
-            <p>One or two lines on what it does and the problem it solves.</p>
-            <div class="tags">HTML · CSS · JavaScript</div>
+            <div class="role">Lead developer</div>
+            <h3>getENRICH</h3>
+            <p>Gene and pathway enrichment analysis (GO, KEGG) for non-model organisms. Available as a web server and a command-line tool. Published in Bioinformatics Advances, 2025.</p>
             <div class="links">
-              <a href="#">Live demo</a>
-              <a href="#">Code</a>
+              <a href="https://getenrich.igib.res.in" target="_blank" rel="noopener">Web server</a>
+              <a href="https://github.com/BioinformaticsOnLine/getENRICH" target="_blank" rel="noopener">Code</a>
             </div>
           </article>
 
           <article class="card">
-            <h3>Project Two</h3>
-            <p>One or two lines on what it does and the problem it solves.</p>
-            <div class="tags">Python · Flask</div>
+            <div class="role">Lead developer</div>
+            <h3>SyBR</h3>
+            <p>Scalable Snakemake workflow for synteny inference, evolutionary breakpoint detection and functional analysis. Web server and command-line tool. Under review at BMC Bioinformatics.</p>
             <div class="links">
-              <a href="#">Live demo</a>
-              <a href="#">Code</a>
+              <a href="https://sybr.igib.res.in" target="_blank" rel="noopener">Web server</a>
+              <a href="https://github.com/BioinformaticsOnLine/Sybr" target="_blank" rel="noopener">Code</a>
             </div>
           </article>
 
           <article class="card">
-            <h3>Project Three</h3>
-            <p>One or two lines on what it does and the problem it solves.</p>
-            <div class="tags">React</div>
+            <div class="role">Co-developer</div>
+            <h3>CHITRA</h3>
+            <p>Interactive visualisation tool for comparative genomic rearrangement analysis. Published in Bioinformatics Advances, 2026.</p>
             <div class="links">
-              <a href="#">Live demo</a>
-              <a href="#">Code</a>
+              <a href="https://chitra.bioinformaticsonline.com" target="_blank" rel="noopener">Web server</a>
+              <a href="https://github.com/BioinformaticsOnLine/CHITRA" target="_blank" rel="noopener">Code</a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="contact">
+    <section id="publications">
       <div class="wrap">
-        <h2>Contact</h2>
-        <p>I'm open to internships, freelance work and interesting collaborations. The easiest way to reach me is email.</p>
-        <a class="btn" href="mailto:you@example.com">you@example.com</a>
-        <a class="btn ghost" href="https://github.com/ajigib">GitHub</a>
-        <a class="btn ghost" href="#">LinkedIn</a>
+        <h2>Publications</h2>
+
+        <div class="subhead">Main publications</div>
+        <div class="pub">
+          <div class="year">2026</div>
+          <div class="title">CHITRA: an interactive visualization tool for comparative genomic rearrangement analysis</div>
+          <div class="meta">Pruthi P, <b>Bhatia A</b>, Agarwal P, Shukla N, Rani L, Narayan J. <i>Bioinformatics Advances</i>, 6(1), vbag200. <a href="https://doi.org/10.1093/bioadv/vbag200" target="_blank" rel="noopener">doi:10.1093/bioadv/vbag200</a></div>
+        </div>
+        <div class="pub">
+          <div class="year">2025</div>
+          <div class="title">getENRICH: a tool for the gene and pathway enrichment analysis of non-model organisms</div>
+          <div class="meta"><b>Bhatia A</b>, Pruthi P, Chakraborty I, Shukla N, Narayan J. <i>Bioinformatics Advances</i>, 5(1), vbaf023. <a href="https://doi.org/10.1093/bioadv/vbaf023" target="_blank" rel="noopener">doi:10.1093/bioadv/vbaf023</a></div>
+        </div>
+        <div class="pub">
+          <div class="year">2020</div>
+          <div class="title">Altitudinal variation of goat blood biochemical and antioxidant parameters in a sub-tropical region of India</div>
+          <div class="meta"><b>Bhatia A</b>, Kumar S, Kumari M, Kumari N, Badhan K, Giri A. <i>Journal of EcoScience and Technology</i>, 1, 1&ndash;6.</div>
+        </div>
+
+        <div class="subhead">Under review</div>
+        <div class="pub">
+          <div class="year">2026 <span class="badge">Submitted</span></div>
+          <div class="title">SyBR: a scalable Snakemake workflow for synteny inference, evolutionary breakpoint detection, and functional analysis</div>
+          <div class="meta"><b>Bhatia A</b>, Pruthi P, De A, Narayan J. Submitted to <i>BMC Bioinformatics</i>, 30 July 2026. <a href="https://github.com/BioinformaticsOnLine/Sybr" target="_blank" rel="noopener">Code</a></div>
+        </div>
+
+        <div class="subhead">Contributing author</div>
+        <div class="pub">
+          <div class="year">2025</div>
+          <div class="title">Structural insights reveal long-SSRs may affect 4Fe&ndash;4S protein flexibility and function in methanogenesis</div>
+          <div class="meta">Mahfooz S, Anand P, <b>Bhatia A</b>, et al. <i>Journal of Basic Microbiology</i>, 65, e70111. <a href="https://doi.org/10.1002/jobm.70111" target="_blank" rel="noopener">doi:10.1002/jobm.70111</a></div>
+        </div>
+        <div class="pub">
+          <div class="year">2024</div>
+          <div class="title">Comparative genome analysis reveals driving forces behind Monkeypox virus evolution and sheds light on the role of ATC trinucleotide motif</div>
+          <div class="meta">Agarwal P, Shukla N, <b>Bhatia A</b>, Mahfooz S, Narayan J. <i>Virus Evolution</i>, 10(1), veae043. <a href="https://doi.org/10.1093/ve/veae043" target="_blank" rel="noopener">doi:10.1093/ve/veae043</a></div>
+        </div>
+        <div class="pub">
+          <div class="year">2024 <span class="badge">Book chapter</span></div>
+          <div class="title">Computational insights into the microbial universe</div>
+          <div class="meta">Patel M, <b>Bhatia A</b>, Shukla N, Shukla SK, Narayan J. In <i>Unraveling New Frontiers and Advances in Bioinformatics</i>, Springer, Singapore. <a href="https://doi.org/10.1007/978-981-97-7123-3_2" target="_blank" rel="noopener">doi:10.1007/978-981-97-7123-3_2</a></div>
+        </div>
+        <div class="pub">
+          <div class="year">2020</div>
+          <div class="title">Compost from the food waste for organic production of cabbage, cauliflower, and radish under sub-tropical conditions</div>
+          <div class="meta">Kumari N, Sharma A, Devi M, Zargar A, Kumar S, Thakur U, <b>Bhatia A</b>, et al. <i>International Journal of Recycling of Organic Waste in Agriculture</i>, 9(4), 367&ndash;383. <a href="https://doi.org/10.30486/ijrowa.2020.1895397.1049" target="_blank" rel="noopener">doi:10.30486/ijrowa.2020.1895397.1049</a></div>
+        </div>
+
+        <p style="margin-top: 22px;">
+          <a href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener">Google Scholar profile</a>
+          &nbsp;&middot;&nbsp;
+          <a href="https://orcid.org/0009-0005-2908-5882" target="_blank" rel="noopener">ORCID: 0009-0005-2908-5882</a>
+        </p>
       </div>
     </section>
+
+    <section id="teaching">
+      <div class="wrap">
+        <h2>Teaching, workshops &amp; conferences</h2>
+
+        <div class="timeline-item">
+          <div class="when">Nov 2025 &amp; Mar 2026</div>
+          <b>Organiser and Instructor</b> &mdash; five-day hands-on workshop &ldquo;Bioinformatics for One Health and Pathogen-Specific Research&rdquo;, CSIR-IGIB with ICMR, New Delhi. Training in One Health, genomics, AMR and bioinformatics.
+          <div style="color: var(--muted); font-size: 0.9rem;">1st edition: 3&ndash;7 Nov 2025 &middot; 2nd edition: 16&ndash;20 Mar 2026</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="when">Sep 2025 &ndash; Mar 2026</div>
+          <b>Instructor</b> &mdash; Skill India training &ldquo;Genomics and Molecular Technologies for Industrial Applications&rdquo;, CSIR-IGIB, New Delhi.
+          <div style="color: var(--muted); font-size: 0.9rem;">1&ndash;30 Sep 2025 &middot; 1&ndash;7 Feb 2026 (online) &middot; 16&ndash;27 Mar 2026</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="when">25&ndash;27 Feb 2026</div>
+          <b>Poster presentation</b> &mdash; National Conference on Emerging Trends in Bioinformatics and Computational Biology (ETBCB 2026), Savitribai Phule Pune University, Pune. &ldquo;getENRICH: A Comprehensive Tool for Gene and Pathway Enrichment Analysis in Non-Model Organisms&rdquo;.
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <h2>Skills</h2>
+
+        <div class="skillgroup">
+          <h3>Programming &amp; systems</h3>
+          <div class="chips"><span>Python</span><span>R</span><span>Bash</span><span>Snakemake</span><span>Linux (primary)</span><span>Windows</span></div>
+        </div>
+        <div class="skillgroup">
+          <h3>Sequence quality control</h3>
+          <div class="chips"><span>FastQC</span><span>MultiQC</span><span>fastp</span><span>cutadapt</span><span>Trimmomatic</span><span>NanoPlot</span><span>NanoFilt</span><span>Bionano Solve</span><span>SeqKit</span></div>
+        </div>
+        <div class="skillgroup">
+          <h3>Comparative genomics</h3>
+          <div class="chips"><span>BLAST</span><span>LASTZ</span><span>MUMmer</span><span>Satsuma</span><span>OrthoFinder</span><span>Synteny &amp; rearrangements</span><span>Viral genome evolution</span></div>
+        </div>
+        <div class="skillgroup">
+          <h3>Horizontal gene transfer detection</h3>
+          <div class="chips"><span>Alienness</span><span>Alien_Hunter</span><span>HGTector2</span><span>DarkHorse</span><span>NCBI nr homology search</span></div>
+        </div>
+        <div class="skillgroup">
+          <h3>Repeats, structure &amp; enrichment</h3>
+          <div class="chips"><span>RepeatModeler</span><span>Transposable elements</span><span>SSR analysis</span><span>Protein structure analysis</span><span>GO / KEGG enrichment</span></div>
+        </div>
+        <div class="skillgroup">
+          <h3>Tool building</h3>
+          <div class="chips"><span>Web-based GUI tools</span><span>CLI tools</span><span>Interactive visualisation</span></div>
+        </div>
+        <div class="skillgroup">
+          <h3>Languages</h3>
+          <div class="chips"><span>English</span><span>Hindi</span><span>Himachali</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <h2>Contact</h2>
+        <p class="lead">I'm interested in meaningful research, tool development and collaborations in genomics and bioinformatics. Email is the best way to reach me.</p>
+        <a class="btn" href="mailto:ajaybhatia.igib@gmail.com">ajaybhatia.igib@gmail.com</a>
+        <a class="btn ghost" href="https://github.com/ajigib" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="https://linkedin.com/in/aj-bhatia02" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://orcid.org/0009-0005-2908-5882" target="_blank" rel="noopener">ORCID</a>
+        <a class="btn ghost" href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+        <p style="color: var(--muted); margin-top: 14px; font-size: 0.9rem;">CSIR-Institute of Genomics and Integrative Biology, New Delhi, India</p>
+      </div>
+    </section>
+
   </main>
 
   <footer>
-    <div class="wrap">&copy; 2026 Your Name</div>
+    <div class="wrap">&copy; 2026 Ajay Bhatia</div>
   </footer>
 
 </body>
