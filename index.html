@@ -84,20 +84,14 @@
     .side-foot { flex: none; padding: 12px 22px 16px; font-size: .74rem; color: #6A9955; white-space: nowrap; letter-spacing: .04em; opacity: 0; transition: opacity .15s; }
     .side-foot .na { color: var(--nuc-a); } .side-foot .nt { color: var(--nuc-t); }
     .side-foot .ng { color: var(--nuc-g); } .side-foot .nc { color: var(--nuc-c); }
-    /* expanded: pinned with the toggle, on hover (mouse), or on keyboard focus */
+    /* expanded with the » button: the page content slides over to make room */
+    body { transition: padding-left .22s ease; }
     @media (min-width: 901px) {
-      header.top.open { width: var(--side-open); box-shadow: 14px 0 44px rgba(0,0,0,.4); }
+      body.side-open { padding-left: var(--side-open); }
+      header.top.open { width: var(--side-open); }
       header.top.open .lbl, header.top.open .term-title, header.top.open .side-foot { opacity: 1; }
     }
-    @media (min-width: 901px) and (hover: hover) {
-      header.top:hover { width: var(--side-open); box-shadow: 14px 0 44px rgba(0,0,0,.4); }
-      header.top:hover .lbl, header.top:hover .term-title, header.top:hover .side-foot { opacity: 1; }
-    }
-    @media (min-width: 901px) {
-      header.top:has(:focus-visible) { width: var(--side-open); box-shadow: 14px 0 44px rgba(0,0,0,.4); }
-      header.top:has(:focus-visible) .lbl, header.top:has(:focus-visible) .term-title, header.top:has(:focus-visible) .side-foot { opacity: 1; }
-    }
-    @media (prefers-reduced-motion: reduce) { header.top, .lbl, .side-foot, .term-title, .side-toggle svg { transition: none; } }
+    @media (prefers-reduced-motion: reduce) { body, header.top, .lbl, .side-foot, .term-title, .side-toggle svg { transition: none; } }
 
     /* ---------- HERO ---------- */
     .hero { position: relative; overflow: hidden; isolation: isolate; }
@@ -868,14 +862,13 @@
       var setOpen = function (o) {
         if (!o && side.contains(document.activeElement)) document.activeElement.blur();
         side.classList.toggle('open', o);
+        document.body.classList.toggle('side-open', o);
         tg.setAttribute('aria-expanded', o ? 'true' : 'false');
         var t = o ? 'Collapse menu' : 'Expand menu';
         tg.setAttribute('aria-label', t); tg.setAttribute('title', t);
       };
       tg.addEventListener('click', function () { setOpen(!side.classList.contains('open')); });
-      side.querySelectorAll('nav a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
-      document.addEventListener('click', function (e) { if (!side.contains(e.target)) setOpen(false); });
     }
   })();
   </script>
