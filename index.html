@@ -179,28 +179,39 @@
     .portrait { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 
     /* ---------- METRICS ---------- */
-    .metrics { margin-top: 6px; position: relative; z-index: 5; }
-    .info-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    @media (max-width: 1180px) { .info-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .info-grid { grid-template-columns: 1fr; } }
-    .info-card { position: relative; display: flex; align-items: center; gap: 14px; min-width: 0; padding: 14px 16px; color: var(--text);
-      background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow);
-      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
-    a.info-card:hover { transform: translateY(-3px); border-color: var(--accent); text-decoration: none; box-shadow: 0 10px 26px rgba(16,32,50,.14); }
-    .ci { flex: none; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; color: #fff;
-      background: linear-gradient(140deg, var(--g1), var(--g2)); box-shadow: 0 6px 14px color-mix(in srgb, var(--g2) 40%, transparent), inset 0 1px 0 rgba(255,255,255,.35);
-      transition: transform .22s ease; }
-    a.info-card:hover .ci { transform: rotate(-6deg) scale(1.08); }
-    .ci svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .ct { min-width: 0; display: flex; flex-direction: column; line-height: 1.25; }
-    .ct small { font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-    .ct b { font-size: .9rem; font-weight: 600; overflow-wrap: anywhere; margin-top: 2px; }
-    .ct b.mono-v { font-family: var(--mono); font-size: .8rem; letter-spacing: -.01em; white-space: nowrap; }
-    .ct em { font-style: normal; font-size: .74rem; color: var(--muted); margin-top: 1px; }
-    .info-card.stat .ct b { font-family: var(--serif); font-size: 1.75rem; line-height: 1.05; color: var(--accent); margin-top: 0; }
-    .info-card .go { margin-left: auto; flex: none; font-size: .95rem; color: var(--muted); opacity: .55; transition: transform .18s, opacity .18s, color .18s; }
-    a.info-card:hover .go { transform: translate(2px, -2px); opacity: 1; color: var(--accent); }
-    @media (prefers-reduced-motion: reduce) { .info-card, .ci, .info-card .go { transition: none; } }
+    .metrics { margin-top: 30px; position: relative; z-index: 5; }
+    .connect { position: relative; }
+    .dotbox { position: relative; margin-top: 34px; padding: 44px 28px 18px; border-radius: 22px;
+      border: 1.5px solid color-mix(in srgb, var(--accent) 34%, var(--border));
+      background: color-mix(in srgb, var(--surface) 55%, transparent); }
+    .dots { position: absolute; top: -23px; left: 26px; display: flex; align-items: center; gap: 38px; z-index: 2; }
+    .dots::before { content: ""; position: absolute; left: 23px; right: 23px; top: 50%; height: 3px; transform: translateY(-50%); border-radius: 3px; z-index: -1;
+      background: linear-gradient(90deg, #EA4335, #A6CE39, #8b949e, #0A66C2, #4285F4); }
+    .box-label { position: absolute; top: -.72em; right: 30px; padding: 0 10px; background: var(--bg); font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; color: var(--muted); }
+    .dot-item { --c: #64748b; position: relative; flex: none; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; color: #fff; background: var(--c); text-decoration: none; cursor: pointer; -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 0 0 6px var(--bg), 0 6px 16px color-mix(in srgb, var(--c) 38%, transparent);
+      transition: transform .22s cubic-bezier(.3,.9,.3,1.3), box-shadow .22s ease; }
+    .dot-item svg { width: 22px; height: 22px; fill: currentColor; }
+    .dot-item:hover, .dot-item:focus-visible, .dot-item.open { transform: translateY(-3px) scale(1.1); box-shadow: 0 0 0 6px var(--bg), 0 12px 24px color-mix(in srgb, var(--c) 52%, transparent); z-index: 3; }
+    .dot-item:focus-visible { outline: 2px solid var(--text); outline-offset: 8px; }
+    .dot-item.gh { --c: #24292f; }
+    @media (prefers-color-scheme: dark) { .dot-item.gh { --c: #6e7681; } }
+    .tip { position: absolute; left: -4px; top: calc(100% + 16px); display: flex; flex-direction: column; gap: 1px; padding: 8px 13px; border-radius: 10px; white-space: nowrap; text-align: left;
+      background: #0b1320; color: #fff; box-shadow: 0 12px 28px rgba(0,0,0,.35); opacity: 0; transform: translateY(-4px) scale(1); pointer-events: none; transition: opacity .16s ease, transform .16s ease; }
+    .dot-item:hover .tip, .dot-item:focus-visible .tip, .dot-item.open .tip { opacity: 1; transform: translateY(0) scale(.909); transform-origin: left top; }
+    .tip::before { content: ""; position: absolute; left: 20px; top: -5px; width: 10px; height: 10px; background: #0b1320; transform: rotate(45deg); border-radius: 2px; }
+    .dot-item:last-child .tip { left: auto; right: -4px; }
+    .dot-item:last-child .tip::before { left: auto; right: 20px; }
+    .dot-item:last-child:hover .tip, .dot-item:last-child:focus-visible .tip, .dot-item:last-child.open .tip { transform-origin: right top; }
+    .tip b { font-size: .84rem; font-weight: 700; line-height: 1.2; }
+    .tip i { font-style: normal; font-family: var(--mono); font-size: .74rem; color: #7fe3ea; line-height: 1.3; }
+    .quiet { display: flex; flex-wrap: wrap; gap: 8px 26px; font-size: .84rem; color: var(--muted); }
+    .quiet > * { display: inline-flex; align-items: center; gap: 7px; color: inherit; }
+    .quiet a:hover { color: var(--accent); text-decoration: none; }
+    .quiet svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; color: var(--accent); }
+    .quiet b { color: var(--text); font-weight: 600; }
+    @media (max-width: 560px) { .dotbox { padding: 42px 16px 16px; } .dots { left: 14px; gap: 20px; } .dot-item { width: 42px; height: 42px; } .box-label { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .dot-item, .tip { transition: none; } }
 
     /* ---------- SECTIONS ---------- */
     section { padding: 76px 0 8px; }
@@ -463,20 +474,27 @@
 
   <main>
 
-    <!-- ================= CONTACT & METRICS ================= -->
+    <!-- ================= CONNECT ================= -->
     <div class="metrics">
       <div class="wrap">
-        <div class="info-grid">
-          <div class="info-card" style="--g1:#fb7185;--g2:#f97316"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5s-7-6-7-11.3A7 7 0 0 1 19 10.2c0 5.3-7 11.3-7 11.3z"/><circle cx="12" cy="10" r="2.6"/></svg></span><span class="ct"><small>Location</small><b>New Delhi, India</b><em>CSIR-IGIB &middot; AcSIR</em></span></div>
-          <a class="info-card" href="mailto:ajaybhatia.igib@gmail.com" style="--g1:#0e9aa7;--g2:#22d3ee"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3.5"/><path d="M3.8 7.8 12 13.2l8.2-5.4"/></svg></span><span class="ct"><small>Email</small><b>ajaybhatia.igib<wbr>@gmail.com</b></span><span class="go" aria-hidden="true">&#8599;</span></a>
-          <a class="info-card" href="https://orcid.org/0009-0005-2908-5882" target="_blank" rel="noopener" style="--g1:#65a30d;--g2:#22c55e"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.8 8.4v7.6"/><circle cx="8.8" cy="6.2" r=".6" fill="currentColor"/><path d="M12.3 8.4h1.5a3.8 3.8 0 0 1 0 7.6h-1.5z"/></svg></span><span class="ct"><small>ORCID iD</small><b class="mono-v">0009-0005-2908-5882</b></span><span class="go" aria-hidden="true">&#8599;</span></a>
-          <a class="info-card" href="https://github.com/ajigib" target="_blank" rel="noopener" style="--g1:#475569;--g2:#1e293b"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="5.5" r="2.2"/><circle cx="6" cy="18.5" r="2.2"/><circle cx="18" cy="9" r="2.2"/><path d="M6 7.7v8.6M18 11.2c0 3.8-5.2 2.8-11.2 5.6"/></svg></span><span class="ct"><small>GitHub</small><b>@ajigib</b><em>github.com/ajigib</em></span><span class="go" aria-hidden="true">&#8599;</span></a>
-          <a class="info-card" href="https://linkedin.com/in/aj-bhatia02" target="_blank" rel="noopener" style="--g1:#2563eb;--g2:#38bdf8"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4.5"/><path d="M8 10.6V16"/><circle cx="8" cy="7.7" r=".6" fill="currentColor"/><path d="M12 16v-5.4M12 12.8c0-1.5 1.1-2.3 2.4-2.3 1.4 0 2.1.9 2.1 2.5V16"/></svg></span><span class="ct"><small>LinkedIn</small><b>aj-bhatia02</b><em>linkedin.com/in</em></span><span class="go" aria-hidden="true">&#8599;</span></a>
-          <a class="info-card" href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener" style="--g1:#7c3aed;--g2:#a78bfa"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9 12 4.5 21.5 9 12 13.5z"/><path d="M6.5 11.4V16c0 1.5 2.5 3 5.5 3s5.5-1.5 5.5-3v-4.6"/><path d="M21.5 9v5.2"/></svg></span><span class="ct"><small>Google Scholar</small><b>View profile</b><em>Publications &amp; metrics</em></span><span class="go" aria-hidden="true">&#8599;</span></a>
-          <a class="info-card stat" href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener" style="--g1:#f59e0b;--g2:#fbbf24"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="9.5" r="3.1"/><path d="M11.1 9.5c0 4-2 6.4-5.1 7.6"/><circle cx="17.5" cy="9.5" r="3.1"/><path d="M20.6 9.5c0 4-2 6.4-5.1 7.6"/></svg></span><span class="ct"><small>Citations</small><b>24</b><em>Google Scholar</em></span><span class="go" aria-hidden="true">&#8599;</span></a>
-          <a class="info-card stat" href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener" style="--g1:#ec4899;--g2:#a855f7"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 20V4M4.5 12.4c0-2.6 2-4.2 4.3-4.2s4.2 1.6 4.2 4.2V20"/><path d="M17 20v-4.2M21 20v-8.2"/></svg></span><span class="ct"><small>h-index</small><b>3</b><em>Google Scholar</em></span><span class="go" aria-hidden="true">&#8599;</span></a>
+        <div class="connect">
+          <div class="dotbox" role="group" aria-label="Contact and profile links">
+            <div class="dots">
+              <a class="dot-item" href="mailto:ajaybhatia.igib@gmail.com" style="--c:#EA4335" aria-label="Email: ajaybhatia.igib@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg><span class="tip"><b>Email</b><i>ajaybhatia.igib@gmail.com</i></span></a>
+              <a class="dot-item" href="https://orcid.org/0009-0005-2908-5882" target="_blank" rel="noopener" style="--c:#A6CE39" aria-label="ORCID iD: 0009-0005-2908-5882"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg><span class="tip"><b>ORCID iD</b><i>0009-0005-2908-5882</i></span></a>
+              <a class="dot-item gh" href="https://github.com/ajigib" target="_blank" rel="noopener" style="--c:#24292f" aria-label="GitHub: @ajigib"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg><span class="tip"><b>GitHub</b><i>@ajigib</i></span></a>
+              <a class="dot-item" href="https://linkedin.com/in/aj-bhatia02" target="_blank" rel="noopener" style="--c:#0A66C2" aria-label="LinkedIn: aj-bhatia02"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span class="tip"><b>LinkedIn</b><i>aj-bhatia02</i></span></a>
+              <a class="dot-item" href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener" style="--c:#4285F4" aria-label="Google Scholar: view publications and metrics"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg><span class="tip"><b>Scholar</b><i>View publications &amp; metrics</i></span></a>
+            </div>
+            <span class="box-label"># connect</span>
+            <div class="quiet">
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5s-7-6-7-11.3A7 7 0 0 1 19 10.2c0 5.3-7 11.3-7 11.3z"/><circle cx="12" cy="10" r="2.6"/></svg> New Delhi, India &middot; CSIR-IGIB</span>
+            <a href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="9.5" r="3.1"/><path d="M11.1 9.5c0 4-2 6.4-5.1 7.6"/><circle cx="17.5" cy="9.5" r="3.1"/><path d="M20.6 9.5c0 4-2 6.4-5.1 7.6"/></svg> <b>24</b> citations</a>
+            <a href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 20V4M4.5 12.4c0-2.6 2-4.2 4.3-4.2s4.2 1.6 4.2 4.2V20"/><path d="M17 20v-4.2M21 20v-8.2"/></svg> h-index <b>3</b></a>
+          </div>
         </div>
-      </div>
+          </div>
+        </div>
     </div>
     </div>
 
@@ -888,6 +906,22 @@
       };
       tg.addEventListener('click', function () { setOpen(!side.classList.contains('open')); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+    }
+    var dotItems = document.querySelectorAll('.dot-item');
+    if (dotItems.length) {
+      var canHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
+      dotItems.forEach(function (it) {
+        it.addEventListener('click', function (e) {
+          if (!canHover && !it.classList.contains('open')) {
+            e.preventDefault();
+            dotItems.forEach(function (x) { x.classList.remove('open'); });
+            it.classList.add('open');
+          }
+        });
+      });
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest('.dot-item')) dotItems.forEach(function (x) { x.classList.remove('open'); });
+      });
     }
   })();
   </script>
