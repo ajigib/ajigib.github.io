@@ -23,7 +23,8 @@
       --accent-soft: #dff2f5;
       --border: #dde3ea;
       --shadow: 0 1px 2px rgba(16,32,50,.05), 0 6px 20px rgba(16,32,50,.05);
-      --side-w: 244px;
+      --side-w: 64px;
+      --side-open: 244px;
       --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
       --sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -52,34 +53,51 @@
     img, svg { max-width: 100%; }
     .wrap { max-width: 1600px; margin: 0 auto; padding: 0 32px; }
 
-    /* ---------- SIDEBAR (terminal) ---------- */
+    /* ---------- SIDEBAR (terminal, collapsed icon rail) ---------- */
     body { padding-left: var(--side-w); }
     header.top {
-      position: fixed; top: 0; left: 0; bottom: 0; width: var(--side-w); z-index: 60; overflow-y: auto;
+      position: fixed; top: 0; left: 0; bottom: 0; width: var(--side-w); z-index: 60;
+      overflow-x: hidden; overflow-y: auto; scrollbar-width: none;
       background: #050806; border-right: 1px solid rgba(74,255,122,.22);
       display: flex; flex-direction: column; font-family: var(--mono); color: #d4d4d4;
+      transition: width .22s ease, box-shadow .22s ease;
     }
-    header.top .term-bar { flex: none; }
-    .brand { display: flex; align-items: center; gap: 12px; padding: 18px 16px 14px; }
-    .brand:hover { text-decoration: none; }
-    .avatar { position: relative; flex: none; width: 46px; height: 46px; border-radius: 12px; overflow: hidden; display: grid; place-items: center; color: #06220f; font-weight: 700; font-size: .85rem; background: #5dff9a; border: 1px solid rgba(93,255,154,.5); }
-    .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .brand-text b { display: block; font-size: .95rem; line-height: 1.25; color: #5dff9a; text-shadow: 0 0 12px rgba(93,255,154,.35); }
-    .brand-text small { display: block; margin-top: 3px; color: #6f9a80; font-size: .68rem; line-height: 1.35; }
-    .side-body { flex: 1; padding: 6px 10px 12px; border-top: 1px solid rgba(74,255,122,.12); }
-    .side-comment { margin: 10px 0 2px; padding: 0 10px; color: #6A9955; font-style: italic; font-size: .76rem; }
-    .side-import { margin: 0 0 8px; padding: 0 10px; font-size: .84rem; }
+    header.top::-webkit-scrollbar { display: none; }
+    header.top .term-bar { flex: none; padding: 12px 8px; gap: 6px; }
+    header.top .term-bar .dot { flex: none; }
+    header.top .term-title { white-space: nowrap; opacity: 0; transition: opacity .15s; }
+    .side-toggle { flex: none; display: flex; align-items: center; gap: 12px; margin: 8px 10px 4px; padding: 10px 11px; border: 0; border-radius: 9px; background: transparent; color: #6f9a80; font: inherit; font-size: .8rem; white-space: nowrap; cursor: pointer; }
+    .side-toggle:hover { background: rgba(255,255,255,.06); color: #5dff9a; }
+    .side-toggle svg { flex: none; width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
+    header.top.open .side-toggle svg { transform: rotate(180deg); }
+    .side-toggle .lbl { color: #6A9955; font-style: italic; }
+    .side-body { flex: 1; padding: 4px 10px 12px; }
     .py-kw { color: #C586C0; } .py-mod { color: #4EC9B0; } .py-obj { color: #9CDCFE; }
     .py-dot { color: #d4d4d4; } .py-fn { color: #DCDCAA; } .py-par { color: #FFD700; }
-    header.top nav ul { list-style: none; display: flex; flex-direction: column; gap: 1px; }
-    header.top nav a { display: flex; align-items: baseline; gap: 9px; padding: 8px 10px; border-radius: 7px; font-size: .84rem; white-space: nowrap; color: #d4d4d4; }
-    header.top nav a .pr { color: #55665c; transition: color .15s; }
+    header.top nav ul { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+    header.top nav a { display: flex; align-items: center; gap: 12px; padding: 11px; border-radius: 9px; font-size: .84rem; white-space: nowrap; color: #d4d4d4; }
     header.top nav a:hover { background: rgba(255,255,255,.06); text-decoration: none; }
     header.top nav a.active { background: rgba(74,255,122,.1); box-shadow: inset 2px 0 0 #5dff9a; }
-    header.top nav a.active .pr, header.top nav a:hover .pr { color: #5dff9a; }
-    .side-foot { flex: none; padding: 12px 18px 16px; font-size: .74rem; color: #6A9955; border-top: 1px solid rgba(74,255,122,.12); letter-spacing: .04em; }
+    .ico { flex: none; width: 22px; height: 22px; fill: none; stroke: #8fb7a0; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: stroke .15s; }
+    header.top nav a:hover .ico, header.top nav a.active .ico { stroke: #5dff9a; }
+    .lbl { opacity: 0; transition: opacity .15s; }
+    .side-foot { flex: none; padding: 12px 22px 16px; font-size: .74rem; color: #6A9955; white-space: nowrap; letter-spacing: .04em; opacity: 0; transition: opacity .15s; }
     .side-foot .na { color: var(--nuc-a); } .side-foot .nt { color: var(--nuc-t); }
     .side-foot .ng { color: var(--nuc-g); } .side-foot .nc { color: var(--nuc-c); }
+    /* expanded: pinned with the toggle, on hover (mouse), or on keyboard focus */
+    @media (min-width: 901px) {
+      header.top.open { width: var(--side-open); box-shadow: 14px 0 44px rgba(0,0,0,.4); }
+      header.top.open .lbl, header.top.open .term-title, header.top.open .side-foot { opacity: 1; }
+    }
+    @media (min-width: 901px) and (hover: hover) {
+      header.top:hover { width: var(--side-open); box-shadow: 14px 0 44px rgba(0,0,0,.4); }
+      header.top:hover .lbl, header.top:hover .term-title, header.top:hover .side-foot { opacity: 1; }
+    }
+    @media (min-width: 901px) {
+      header.top:has(:focus-visible) { width: var(--side-open); box-shadow: 14px 0 44px rgba(0,0,0,.4); }
+      header.top:has(:focus-visible) .lbl, header.top:has(:focus-visible) .term-title, header.top:has(:focus-visible) .side-foot { opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) { header.top, .lbl, .side-foot, .term-title, .side-toggle svg { transition: none; } }
 
     /* ---------- HERO ---------- */
     .hero { position: relative; overflow: hidden; isolation: isolate; }
@@ -131,7 +149,7 @@
     .hero .terminal h1 { font-family: var(--mono); font-size: clamp(2rem, 4.2vw, 3.2rem); line-height: 1.1; letter-spacing: -.02em; font-weight: 700; color: #5dff9a; margin: 4px 0 20px; text-shadow: 0 0 18px rgba(93,255,154,.4); }
     .hero .terminal .role { font-size: .96rem; line-height: 1.7; color: #3df58a; max-width: none; margin: 4px 0 18px; }
     .hero .terminal .affil { font-size: .88rem; line-height: 1.65; color: #29c062; margin: 4px 0 18px; opacity: 1; }
-    .cursor { display: inline-block; width: .62em; height: 1.1em; vertical-align: -.2em; background: #5dff9a; box-shadow: 0 0 10px rgba(93,255,154,.7); animation: blink 1.05s steps(1) infinite; }
+    .cursor { display: inline-block; width: .62em; height: 1.1em; vertical-align: -.2em; background: #5dff9a; box-shadow: 0 0 10px rgba(93,255,154,.7); animation: blink 2.4s steps(1) infinite; }
     @keyframes blink { 50% { opacity: 0; } }
     @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
     /* ---------- FASTA FILE PANEL ---------- */
@@ -158,12 +176,11 @@
     @media (prefers-color-scheme: dark) { .btn:not(.ghost) { color: #06222a; } }
     .portrait-wrap { justify-self: center; position: relative; }
     .portrait-frame {
-      position: relative; width: clamp(230px, 31vw, 350px); aspect-ratio: 1 / 1; border-radius: 34px; overflow: hidden;
-      border: 5px solid var(--surface);
-      box-shadow: 0 0 0 1px var(--border), 0 26px 60px rgba(16,32,50,.22);
+      position: relative; width: clamp(230px, 31vw, 350px); aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; border: 0;
+      box-shadow: 0 24px 55px rgba(16,32,50,.26);
       background: linear-gradient(145deg, #12385a, #0a1f35); display: grid; place-items: center;
     }
-    @media (prefers-color-scheme: dark) { .portrait-frame { box-shadow: 0 0 0 1px var(--border), 0 26px 60px rgba(0,0,0,.55); } }
+    @media (prefers-color-scheme: dark) { .portrait-frame { box-shadow: 0 24px 55px rgba(0,0,0,.6); } }
     .portrait-fallback { font-family: var(--serif); font-size: clamp(3rem, 8vw, 5rem); font-weight: 700; color: rgba(255,255,255,.85); }
     .portrait { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -300,16 +317,14 @@
     @media (max-width: 900px) {
       body { padding-left: 0; }
       html { scroll-padding-top: 64px; }
-      header.top { position: sticky; top: 0; bottom: auto; width: 100%; flex-direction: row; align-items: center; gap: 8px; padding: 7px 12px; overflow: visible; border-right: none; border-bottom: 1px solid rgba(74,255,122,.25); }
-      header.top .term-bar, .side-comment, .side-import, .side-foot { display: none; }
-      .brand { padding: 0; }
-      .brand-text { display: none; }
-      .avatar { width: 36px; height: 36px; border-radius: 10px; }
-      .side-body { flex: 1; min-width: 0; padding: 0; border: none; overflow-x: auto; scrollbar-width: none; }
+      header.top { position: sticky; top: 0; bottom: auto; width: 100%; flex-direction: row; align-items: center; padding: 6px 10px; overflow: visible; border-right: none; border-bottom: 1px solid rgba(74,255,122,.25); }
+      header.top .term-bar, .side-toggle, .side-foot { display: none; }
+      .side-body { flex: 1; min-width: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
       .side-body::-webkit-scrollbar { display: none; }
       header.top nav ul { flex-direction: row; gap: 2px; }
-      header.top nav a { padding: 8px 10px; font-size: .8rem; }
-      header.top nav a .pr { display: none; }
+      header.top nav a { padding: 8px 10px; gap: 8px; font-size: .8rem; }
+      .ico { width: 18px; height: 18px; }
+      .lbl { opacity: 1; }
       header.top nav a.active { box-shadow: inset 0 -2px 0 #5dff9a; border-radius: 6px 6px 0 0; }
       .wrap { padding: 0 20px; }
       .term-body { padding: 16px 16px 18px; }
@@ -321,22 +336,19 @@
 
   <header class="top">
     <div class="term-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="term-title">ajay@igib: ~</span></div>
-    <a class="brand" href="#top">
-      <span class="avatar">AB<img src="profile.jpg" alt="" onerror="this.style.display='none'"></span>
-      <span class="brand-text"><b>Ajay Bhatia</b><small>Bioinformatics researcher</small></span>
-    </a>
+    <button class="side-toggle" id="sideToggle" type="button" aria-expanded="false" aria-label="Expand menu" title="Expand menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6l6 6-6 6M13 6l6 6-6 6"/></svg><span class="lbl"># menu</span>
+    </button>
     <div class="side-body">
-      <p class="side-comment"># navigate</p>
-      <p class="side-import"><span class="py-kw">import</span> <span class="py-mod">ajay</span></p>
       <nav aria-label="Main">
       <ul>
-        <li><a href="#about"><span class="pr">&gt;&gt;&gt;</span><span><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">about</span><span class="py-par">()</span></span></a></li>
-        <li><a href="#research"><span class="pr">&gt;&gt;&gt;</span><span><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">research</span><span class="py-par">()</span></span></a></li>
-        <li><a href="#tools"><span class="pr">&gt;&gt;&gt;</span><span><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">tools</span><span class="py-par">()</span></span></a></li>
-        <li><a href="#publications"><span class="pr">&gt;&gt;&gt;</span><span><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">publications</span><span class="py-par">()</span></span></a></li>
-        <li><a href="#teaching"><span class="pr">&gt;&gt;&gt;</span><span><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">teaching</span><span class="py-par">()</span></span></a></li>
-        <li><a href="#skills"><span class="pr">&gt;&gt;&gt;</span><span><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">skills</span><span class="py-par">()</span></span></a></li>
-        <li><a href="#contact"><span class="pr">&gt;&gt;&gt;</span><span><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">contact</span><span class="py-par">()</span></span></a></li>
+        <li><a href="#about" title="ajay.about()" aria-label="about"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">about</span><span class="py-par">()</span></span></a></li>
+        <li><a href="#research" title="ajay.research()" aria-label="research"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6l-5.2 9.2A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-2.8L14 9V3"/><path d="M7.5 15h9"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">research</span><span class="py-par">()</span></span></a></li>
+        <li><a href="#tools" title="ajay.tools()" aria-label="tools"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">tools</span><span class="py-par">()</span></span></a></li>
+        <li><a href="#publications" title="ajay.publications()" aria-label="publications"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">publications</span><span class="py-par">()</span></span></a></li>
+        <li><a href="#teaching" title="ajay.teaching()" aria-label="teaching"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.6 2.7 3 6 3s6-1.4 6-3v-5"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">teaching</span><span class="py-par">()</span></span></a></li>
+        <li><a href="#skills" title="ajay.skills()" aria-label="skills"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">skills</span><span class="py-par">()</span></span></a></li>
+        <li><a href="#contact" title="ajay.contact()" aria-label="contact"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">contact</span><span class="py-par">()</span></span></a></li>
       </ul>
       </nav>
     </div>
@@ -850,6 +862,20 @@
       Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
       var topEl = document.getElementById('top');
       if (topEl) new IntersectionObserver(function (en) { if (en[0].isIntersecting) links.forEach(function (a) { a.classList.remove('active'); }); }, { rootMargin: '0px 0px -70% 0px' }).observe(topEl);
+    }
+    var side = document.querySelector('header.top'), tg = document.getElementById('sideToggle');
+    if (side && tg) {
+      var setOpen = function (o) {
+        if (!o && side.contains(document.activeElement)) document.activeElement.blur();
+        side.classList.toggle('open', o);
+        tg.setAttribute('aria-expanded', o ? 'true' : 'false');
+        var t = o ? 'Collapse menu' : 'Expand menu';
+        tg.setAttribute('aria-label', t); tg.setAttribute('title', t);
+      };
+      tg.addEventListener('click', function () { setOpen(!side.classList.contains('open')); });
+      side.querySelectorAll('nav a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+      document.addEventListener('click', function (e) { if (!side.contains(e.target)) setOpen(false); });
     }
   })();
   </script>
