@@ -180,11 +180,27 @@
 
     /* ---------- METRICS ---------- */
     .metrics { margin-top: 6px; position: relative; z-index: 5; }
-    .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); background: var(--surface); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); overflow: hidden; }
-    .metric { padding: 18px 20px; border-right: 1px solid var(--border); }
-    .metric:last-child { border-right: none; }
-    .metric b { font-family: var(--serif); font-size: 1.9rem; line-height: 1.1; display: block; color: var(--accent); }
-    .metric span { font-size: .8rem; color: var(--muted); }
+    .info-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    @media (max-width: 1180px) { .info-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .info-grid { grid-template-columns: 1fr; } }
+    .info-card { position: relative; display: flex; align-items: center; gap: 14px; min-width: 0; padding: 14px 16px; color: var(--text);
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow);
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+    a.info-card:hover { transform: translateY(-3px); border-color: var(--accent); text-decoration: none; box-shadow: 0 10px 26px rgba(16,32,50,.14); }
+    .ci { flex: none; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; color: #fff;
+      background: linear-gradient(140deg, var(--g1), var(--g2)); box-shadow: 0 6px 14px color-mix(in srgb, var(--g2) 40%, transparent), inset 0 1px 0 rgba(255,255,255,.35);
+      transition: transform .22s ease; }
+    a.info-card:hover .ci { transform: rotate(-6deg) scale(1.08); }
+    .ci svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .ct { min-width: 0; display: flex; flex-direction: column; line-height: 1.25; }
+    .ct small { font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .ct b { font-size: .9rem; font-weight: 600; overflow-wrap: anywhere; margin-top: 2px; }
+    .ct b.mono-v { font-family: var(--mono); font-size: .8rem; letter-spacing: -.01em; white-space: nowrap; }
+    .ct em { font-style: normal; font-size: .74rem; color: var(--muted); margin-top: 1px; }
+    .info-card.stat .ct b { font-family: var(--serif); font-size: 1.75rem; line-height: 1.05; color: var(--accent); margin-top: 0; }
+    .info-card .go { margin-left: auto; flex: none; font-size: .95rem; color: var(--muted); opacity: .55; transition: transform .18s, opacity .18s, color .18s; }
+    a.info-card:hover .go { transform: translate(2px, -2px); opacity: 1; color: var(--accent); }
+    @media (prefers-reduced-motion: reduce) { .info-card, .ci, .info-card .go { transition: none; } }
 
     /* ---------- SECTIONS ---------- */
     section { padding: 76px 0 8px; }
@@ -301,7 +317,6 @@
     @media (max-width: 560px) {
       section { padding-top: 56px; }
       .pub { grid-template-columns: 1fr; gap: 2px; }
-      .metric { border-right: none; border-bottom: 1px solid var(--border); }
       .contact-card { padding: 26px 20px; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -448,17 +463,21 @@
 
   <main>
 
-    <!-- ================= METRICS ================= -->
+    <!-- ================= CONTACT & METRICS ================= -->
     <div class="metrics">
       <div class="wrap">
-        <div class="metrics-grid">
-          <div class="metric"><b>24</b><span>Citations</span></div>
-          <div class="metric"><b>3</b><span>h-index</span></div>
-          <div class="metric"><b>7</b><span>Published works</span></div>
-          <div class="metric"><b>3</b><span>Web tools developed</span></div>
-          <div class="metric"><b>5 yr</b><span>CSIR-UGC JRF/SRF</span></div>
+        <div class="info-grid">
+          <div class="info-card" style="--g1:#fb7185;--g2:#f97316"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5s-7-6-7-11.3A7 7 0 0 1 19 10.2c0 5.3-7 11.3-7 11.3z"/><circle cx="12" cy="10" r="2.6"/></svg></span><span class="ct"><small>Location</small><b>New Delhi, India</b><em>CSIR-IGIB &middot; AcSIR</em></span></div>
+          <a class="info-card" href="mailto:ajaybhatia.igib@gmail.com" style="--g1:#0e9aa7;--g2:#22d3ee"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3.5"/><path d="M3.8 7.8 12 13.2l8.2-5.4"/></svg></span><span class="ct"><small>Email</small><b>ajaybhatia.igib<wbr>@gmail.com</b></span><span class="go" aria-hidden="true">&#8599;</span></a>
+          <a class="info-card" href="https://orcid.org/0009-0005-2908-5882" target="_blank" rel="noopener" style="--g1:#65a30d;--g2:#22c55e"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.8 8.4v7.6"/><circle cx="8.8" cy="6.2" r=".6" fill="currentColor"/><path d="M12.3 8.4h1.5a3.8 3.8 0 0 1 0 7.6h-1.5z"/></svg></span><span class="ct"><small>ORCID iD</small><b class="mono-v">0009-0005-2908-5882</b></span><span class="go" aria-hidden="true">&#8599;</span></a>
+          <a class="info-card" href="https://github.com/ajigib" target="_blank" rel="noopener" style="--g1:#475569;--g2:#1e293b"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="5.5" r="2.2"/><circle cx="6" cy="18.5" r="2.2"/><circle cx="18" cy="9" r="2.2"/><path d="M6 7.7v8.6M18 11.2c0 3.8-5.2 2.8-11.2 5.6"/></svg></span><span class="ct"><small>GitHub</small><b>@ajigib</b><em>github.com/ajigib</em></span><span class="go" aria-hidden="true">&#8599;</span></a>
+          <a class="info-card" href="https://linkedin.com/in/aj-bhatia02" target="_blank" rel="noopener" style="--g1:#2563eb;--g2:#38bdf8"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4.5"/><path d="M8 10.6V16"/><circle cx="8" cy="7.7" r=".6" fill="currentColor"/><path d="M12 16v-5.4M12 12.8c0-1.5 1.1-2.3 2.4-2.3 1.4 0 2.1.9 2.1 2.5V16"/></svg></span><span class="ct"><small>LinkedIn</small><b>aj-bhatia02</b><em>linkedin.com/in</em></span><span class="go" aria-hidden="true">&#8599;</span></a>
+          <a class="info-card" href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener" style="--g1:#7c3aed;--g2:#a78bfa"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 9 12 4.5 21.5 9 12 13.5z"/><path d="M6.5 11.4V16c0 1.5 2.5 3 5.5 3s5.5-1.5 5.5-3v-4.6"/><path d="M21.5 9v5.2"/></svg></span><span class="ct"><small>Google Scholar</small><b>View profile</b><em>Publications &amp; metrics</em></span><span class="go" aria-hidden="true">&#8599;</span></a>
+          <a class="info-card stat" href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener" style="--g1:#f59e0b;--g2:#fbbf24"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="9.5" r="3.1"/><path d="M11.1 9.5c0 4-2 6.4-5.1 7.6"/><circle cx="17.5" cy="9.5" r="3.1"/><path d="M20.6 9.5c0 4-2 6.4-5.1 7.6"/></svg></span><span class="ct"><small>Citations</small><b>24</b><em>Google Scholar</em></span><span class="go" aria-hidden="true">&#8599;</span></a>
+          <a class="info-card stat" href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener" style="--g1:#ec4899;--g2:#a855f7"><span class="ci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 20V4M4.5 12.4c0-2.6 2-4.2 4.3-4.2s4.2 1.6 4.2 4.2V20"/><path d="M17 20v-4.2M21 20v-8.2"/></svg></span><span class="ct"><small>h-index</small><b>3</b><em>Google Scholar</em></span><span class="go" aria-hidden="true">&#8599;</span></a>
         </div>
       </div>
+    </div>
     </div>
 
     <!-- ================= ABOUT ================= -->
