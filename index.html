@@ -3,122 +3,262 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ajay Bhatia | Bioinformatics Researcher</title>
-  <meta name="description" content="Ajay Bhatia - Ph.D. scholar in Bioinformatics at CSIR-IGIB, working on comparative genomics, horizontal gene transfer and bioinformatics tool development.">
+  <title>Ajay Bhatia | Bioinformatics &amp; Comparative Genomics</title>
+  <meta name="description" content="Ajay Bhatia - Ph.D. scholar in Bioinformatics at CSIR-IGIB / AcSIR. Comparative genomics, horizontal gene transfer, genome rearrangements and bioinformatics tool development.">
+  <meta property="og:title" content="Ajay Bhatia | Bioinformatics &amp; Comparative Genomics">
+  <meta property="og:description" content="Ph.D. scholar at CSIR-IGIB. Horizontal gene transfer, synteny analysis and bioinformatics tools (getENRICH, SyBR, CHITRA).">
+  <meta property="og:image" content="profile.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%AC%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f8f9f6;
+      --bg: #f6f7f9;
       --surface: #ffffff;
-      --text: #1b1f1d;
-      --muted: #5f6762;
-      --accent: #0f7b6c;
-      --accent-soft: #e2f3ef;
-      --border: #e1e5e0;
+      --surface-2: #eef1f5;
+      --text: #14202e;
+      --muted: #5a6778;
+      --accent: #0b7f8f;
+      --accent-2: #5b4fc7;
+      --accent-soft: #dff2f5;
+      --border: #dde3ea;
+      --shadow: 0 1px 2px rgba(16,32,50,.05), 0 6px 20px rgba(16,32,50,.05);
+      --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+      --sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --nuc-a: #22c55e; --nuc-t: #ef4444; --nuc-g: #f59e0b; --nuc-c: #3b82f6;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #0f1312;
-        --surface: #181d1b;
-        --text: #eef2ef;
-        --muted: #9aa5a0;
-        --accent: #4fcfb8;
-        --accent-soft: #14302b;
-        --border: #262d2a;
+        --bg: #0c121a;
+        --surface: #131b26;
+        --surface-2: #19232f;
+        --text: #e8eef5;
+        --muted: #93a1b2;
+        --accent: #4fd1d9;
+        --accent-2: #a395ff;
+        --accent-soft: #123038;
+        --border: #243040;
+        --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+        --nuc-a: #4ade80; --nuc-t: #f87171; --nuc-g: #fbbf24; --nuc-c: #60a5fa;
       }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-    }
+    html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .wrap { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+    img, svg { max-width: 100%; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 22px; }
 
-    header {
-      position: sticky; top: 0; z-index: 10;
+    /* ---------- NAV ---------- */
+    header.top {
+      position: sticky; top: 0; z-index: 50;
       background: color-mix(in srgb, var(--bg) 88%, transparent);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
     }
-    nav { display: flex; justify-content: space-between; align-items: center; min-height: 58px; flex-wrap: wrap; gap: 6px; }
-    nav .logo { font-weight: 700; color: var(--text); }
-    nav ul { display: flex; gap: 18px; list-style: none; flex-wrap: wrap; }
-    nav ul a { color: var(--muted); font-size: 0.92rem; }
-    nav ul a:hover { color: var(--text); text-decoration: none; }
+    nav { display: flex; align-items: center; justify-content: space-between; min-height: 58px; gap: 12px; flex-wrap: wrap; }
+    .brand { font-family: var(--serif); font-weight: 700; font-size: 1.1rem; color: var(--text); display: flex; align-items: center; gap: 9px; }
+    .brand:hover { text-decoration: none; }
+    .brand .mark { width: 26px; height: 26px; border-radius: 7px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display: grid; place-items: center; color: #fff; font-size: .8rem; font-family: var(--mono); font-weight: 700; }
+    nav ul { list-style: none; display: flex; gap: 4px; flex-wrap: wrap; }
+    nav ul a { display: block; padding: 6px 11px; border-radius: 7px; color: var(--muted); font-size: .88rem; font-weight: 500; }
+    nav ul a:hover { background: var(--surface-2); color: var(--text); text-decoration: none; }
 
-    section { padding: 64px 0; border-top: 1px solid var(--border); }
-    section.hero { border-top: none; padding: 90px 0 64px; }
-    h2 { font-size: 1.5rem; margin-bottom: 22px; }
-    h3 { font-size: 1.05rem; margin-bottom: 6px; }
-
-    .hero .eyebrow { color: var(--accent); font-weight: 600; margin-bottom: 8px; }
-    .hero h1 { font-size: clamp(2.2rem, 6vw, 3.5rem); line-height: 1.1; margin-bottom: 14px; }
-    .hero .sub { color: var(--muted); font-size: 1.12rem; max-width: 620px; margin-bottom: 26px; }
-    .btn {
-      display: inline-block; padding: 10px 20px; border-radius: 8px; margin: 0 8px 8px 0;
-      background: var(--accent); color: #fff; font-weight: 600; font-size: 0.95rem;
+    /* ---------- BANNER ---------- */
+    .banner {
+      position: relative; overflow: hidden; color: #eaf3fb; isolation: isolate;
+      background:
+        radial-gradient(900px 420px at 85% 10%, rgba(91,79,199,.45), transparent 60%),
+        radial-gradient(700px 400px at 5% 90%, rgba(11,127,143,.45), transparent 60%),
+        linear-gradient(160deg, #07111f 0%, #0a1f35 55%, #0b2a40 100%);
     }
-    html[data-x] .btn {}
-    .btn:hover { text-decoration: none; opacity: 0.9; }
-    .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
-    @media (prefers-color-scheme: dark) { .btn:not(.ghost) { color: #07201b; } }
-
-    .stats { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
-    .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 18px; }
-    .stat b { display: block; font-size: 1.3rem; color: var(--accent); }
-    .stat span { font-size: 0.82rem; color: var(--muted); }
-
-    p.lead { color: var(--muted); max-width: 680px; margin-bottom: 14px; }
-
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-    .card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 12px; padding: 22px;
-      transition: transform 0.15s ease, border-color 0.15s ease;
+    .banner::before {
+      content: ""; position: absolute; inset: 0; z-index: -2; opacity: .5;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 44px 44px;
+      -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent);
+      mask-image: linear-gradient(to bottom, #000 40%, transparent);
     }
-    .card:hover { transform: translateY(-3px); border-color: var(--accent); }
-    .card .role { font-size: 0.8rem; color: var(--accent); font-weight: 600; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
-    .card p { color: var(--muted); font-size: 0.94rem; margin-bottom: 14px; }
-    .card .links a { font-size: 0.9rem; margin-right: 14px; font-weight: 600; }
+    .banner::after { /* legibility veil on the text side */
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(90deg, rgba(7,17,31,.78) 0%, rgba(7,17,31,.45) 48%, rgba(7,17,31,0) 78%);
+    }
+    #helix { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; opacity: .75; }
+    .banner-inner { display: grid; grid-template-columns: 1.35fr .65fr; gap: 40px; align-items: center; padding: 72px 0 88px; }
+    .eyebrow { font-family: var(--mono); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: #7fe3ea; margin-bottom: 14px; }
+    .banner h1 { font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 4.1rem); line-height: 1.05; font-weight: 700; letter-spacing: -.01em; margin-bottom: 14px; }
+    .banner .role { font-size: 1.15rem; color: #c9d9e8; max-width: 560px; margin-bottom: 10px; }
+    .banner .affil { font-size: .95rem; color: #94abc0; margin-bottom: 26px; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 9px; font-weight: 600; font-size: .92rem; background: #4fd1d9; color: #06222a; border: 1px solid transparent; }
+    .btn:hover { text-decoration: none; filter: brightness(1.08); }
+    .btn.ghost { background: rgba(255,255,255,.06); color: #eaf3fb; border-color: rgba(255,255,255,.22); }
+    .btn.ghost:hover { background: rgba(255,255,255,.12); }
+    .portrait-wrap { justify-self: center; position: relative; }
+    .portrait {
+      width: clamp(190px, 26vw, 290px); height: auto; aspect-ratio: 1 / 1; border-radius: 50%; object-fit: cover; display: block;
+      border: 4px solid rgba(255,255,255,.9);
+      box-shadow: 0 0 0 8px rgba(79,209,217,.22), 0 0 0 9px rgba(79,209,217,.45), 0 24px 60px rgba(0,0,0,.45);
+      background: #0a1f35;
+    }
+    .portrait-tag { position: absolute; bottom: 6px; right: -4px; background: #0a1f35; border: 1px solid rgba(255,255,255,.25); color: #cfe3f3; font-family: var(--mono); font-size: .68rem; padding: 5px 10px; border-radius: 999px; }
 
-    ul.plain { list-style: none; }
-    ul.plain li { padding: 10px 0 10px 18px; position: relative; color: var(--muted); }
-    ul.plain li::before { content: ""; position: absolute; left: 0; top: 19px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-    ul.plain li b { color: var(--text); font-weight: 600; }
+    /* sequence ticker */
+    .ticker { position: absolute; left: 0; right: 0; bottom: 0; height: 40px; overflow: hidden; border-top: 1px solid rgba(255,255,255,.1); background: rgba(5,12,22,.55); backdrop-filter: blur(4px); }
+    .ticker-track { display: inline-flex; white-space: nowrap; height: 100%; align-items: center; font-family: var(--mono); font-size: .95rem; font-weight: 500; letter-spacing: .5em; animation: slide 90s linear infinite; will-change: transform; }
+    .ticker-track span { display: inline-block; }
+    .ticker .a { color: #4ade80; } .ticker .t { color: #f87171; } .ticker .g { color: #fbbf24; } .ticker .c { color: #60a5fa; }
+    @keyframes slide { to { transform: translateX(-50%); } }
 
-    .pub { padding: 16px 0; border-bottom: 1px solid var(--border); }
+    /* ---------- METRICS ---------- */
+    .metrics { margin-top: 28px; position: relative; z-index: 5; }
+    .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); background: var(--surface); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); overflow: hidden; }
+    .metric { padding: 18px 20px; border-right: 1px solid var(--border); }
+    .metric:last-child { border-right: none; }
+    .metric b { font-family: var(--serif); font-size: 1.9rem; line-height: 1.1; display: block; color: var(--accent); }
+    .metric span { font-size: .8rem; color: var(--muted); }
+
+    /* ---------- SECTIONS ---------- */
+    section { padding: 76px 0 8px; }
+    .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 28px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+    .sec-num { font-family: var(--mono); font-size: .8rem; color: var(--accent); font-weight: 700; }
+    h2 { font-family: var(--serif); font-size: 1.85rem; letter-spacing: -.01em; line-height: 1.2; }
+    h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
+    p.lead { color: var(--muted); max-width: 720px; margin-bottom: 14px; font-size: 1.02rem; }
+    .two-col { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; }
+
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; box-shadow: var(--shadow); }
+
+    /* research interest list */
+    .interests { display: grid; gap: 12px; margin-top: 18px; }
+    .interest { display: grid; grid-template-columns: 38px 1fr; gap: 14px; align-items: start; padding: 14px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+    .interest .ico { width: 38px; height: 38px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; }
+    .interest .ico svg { width: 20px; height: 20px; }
+    .interest p { color: var(--muted); font-size: .92rem; }
+
+    /* figures */
+    figure.fig { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 18px 14px; box-shadow: var(--shadow); }
+    figure.fig + figure.fig { margin-top: 18px; }
+    figure.fig svg { width: 100%; height: auto; display: block; color: var(--text); }
+    figcaption { font-size: .8rem; color: var(--muted); margin-top: 10px; }
+    figcaption b { color: var(--text); }
+    .fig-label { font-family: var(--mono); font-size: .68rem; color: var(--accent); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px; display: block; }
+
+    /* workflow */
+    .workflow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 8px; counter-reset: step; }
+    .step { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 12px 14px; }
+    .step::before { counter-increment: step; content: counter(step, decimal-leading-zero); font-family: var(--mono); font-size: .7rem; color: var(--accent); font-weight: 700; display: block; margin-bottom: 4px; }
+    .step:not(:last-child)::after { content: "\2192"; position: absolute; right: -11px; top: 50%; transform: translateY(-50%); z-index: 2; width: 20px; height: 20px; border-radius: 50%; background: var(--bg); border: 1px solid var(--border); color: var(--accent); display: grid; place-items: center; font-size: .75rem; }
+    .step b { display: block; font-size: .88rem; line-height: 1.3; margin-bottom: 6px; }
+    .step small { display: block; font-family: var(--mono); font-size: .66rem; color: var(--muted); line-height: 1.5; }
+
+    /* timeline */
+    .timeline { position: relative; padding-left: 22px; }
+    .timeline::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: 6px; width: 2px; background: var(--border); }
+    .t-item { position: relative; margin-bottom: 20px; }
+    .t-item::before { content: ""; position: absolute; left: -22px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 3px solid var(--accent); }
+    .t-when { font-family: var(--mono); font-size: .76rem; color: var(--accent); font-weight: 700; letter-spacing: .02em; }
+    .t-item p { color: var(--muted); font-size: .92rem; }
+    .t-item b { color: var(--text); }
+
+    .callout { margin-top: 18px; background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); border-radius: 12px; padding: 14px 16px; font-size: .92rem; }
+    .callout b { display: block; margin-bottom: 2px; }
+    .callout span { color: var(--muted); }
+
+    /* tools */
+    .tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px; }
+    .tool { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; box-shadow: var(--shadow); display: flex; flex-direction: column; overflow: hidden; transition: transform .18s ease, border-color .18s ease; }
+    .tool::before { content: ""; position: absolute; left: 0; top: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+    .tool:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .tool .tag { font-family: var(--mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); font-weight: 700; margin-bottom: 8px; }
+    .tool h3 { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 8px; }
+    .tool p { color: var(--muted); font-size: .92rem; flex: 1; margin-bottom: 14px; }
+    .status { display: inline-block; font-size: .72rem; font-weight: 600; line-height: 1.4; padding: 4px 11px; border-radius: 8px; background: var(--surface-2); color: var(--muted); margin-bottom: 14px; align-self: flex-start; }
+    .status.ok { background: color-mix(in srgb, var(--nuc-a) 18%, transparent); color: var(--text); }
+    .status.rev { background: color-mix(in srgb, var(--nuc-g) 22%, transparent); color: var(--text); }
+    .tool .links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .tool .links a { font-size: .85rem; font-weight: 600; padding: 7px 13px; border: 1px solid var(--border); border-radius: 8px; color: var(--text); }
+    .tool .links a:first-child { background: var(--accent); border-color: var(--accent); color: #fff; }
+    @media (prefers-color-scheme: dark) { .tool .links a:first-child { color: #06222a; } }
+    .tool .links a:hover { text-decoration: none; filter: brightness(1.07); }
+
+    /* publications */
+    .pubgroup-title { font-family: var(--mono); font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin: 30px 0 6px; }
+    .pubgroup-title:first-of-type { margin-top: 0; }
+    .pub { display: grid; grid-template-columns: 64px 1fr; gap: 14px; padding: 18px 0; border-bottom: 1px solid var(--border); }
     .pub:last-child { border-bottom: none; }
-    .pub .year { font-size: 0.8rem; color: var(--accent); font-weight: 700; }
-    .pub .title { font-weight: 600; margin: 2px 0; }
-    .pub .meta { color: var(--muted); font-size: 0.9rem; }
-    .badge { display: inline-block; font-size: 0.72rem; padding: 2px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 600; margin-left: 6px; vertical-align: middle; }
-    .subhead { margin: 28px 0 4px; color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+    .pub .yr { font-family: var(--serif); font-weight: 700; font-size: 1.2rem; color: var(--accent); }
+    .pub .title { font-weight: 600; line-height: 1.4; margin-bottom: 4px; }
+    .pub .meta { color: var(--muted); font-size: .88rem; }
+    .pub .meta b { color: var(--text); font-weight: 600; }
+    .chip { display: inline-block; font-size: .68rem; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); margin-left: 6px; vertical-align: middle; font-family: var(--sans); }
+    .chip.warn { background: color-mix(in srgb, var(--nuc-g) 22%, transparent); color: var(--text); }
+    .profile-links { margin-top: 22px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 15px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--text); font-size: .86rem; font-weight: 600; }
+    .pill:hover { border-color: var(--accent); text-decoration: none; }
 
-    .skillgroup { margin-bottom: 18px; }
-    .skillgroup h3 { margin-bottom: 8px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chips span { padding: 5px 13px; border-radius: 999px; font-size: 0.86rem; background: var(--surface); border: 1px solid var(--border); }
+    /* skills */
+    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+    .skillbox h3 { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; }
+    .skillbox h3 i { width: 9px; height: 9px; border-radius: 3px; display: inline-block; }
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+    .chips span { font-family: var(--mono); font-size: .76rem; padding: 4px 10px; border-radius: 7px; background: var(--surface-2); border: 1px solid var(--border); }
 
-    .timeline-item { margin-bottom: 18px; }
-    .timeline-item .when { font-size: 0.82rem; color: var(--accent); font-weight: 700; }
+    /* contact */
+    .contact-card { display: grid; grid-template-columns: 1.1fr .9fr; gap: 30px; align-items: center; background: linear-gradient(150deg, #07111f, #0b2a40); color: #eaf3fb; border-radius: 18px; padding: 36px; position: relative; overflow: hidden; }
+    .contact-card::after { content: "ATGC"; position: absolute; right: 18px; bottom: -22px; font-family: var(--mono); font-weight: 700; font-size: 6.5rem; letter-spacing: .1em; color: rgba(255,255,255,.04); pointer-events: none; }
+    .contact-card h2 { color: #fff; margin-bottom: 10px; }
+    .contact-card p { color: #b6c9db; }
+    .contact-links { display: grid; gap: 9px; position: relative; z-index: 1; }
+    .contact-links a { display: flex; justify-content: space-between; align-items: center; padding: 11px 16px; border-radius: 10px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.16); color: #eaf3fb; font-size: .9rem; font-weight: 500; }
+    .contact-links a:hover { background: rgba(255,255,255,.14); text-decoration: none; }
+    .contact-links a span { color: #7fe3ea; font-family: var(--mono); font-size: .74rem; }
 
-    footer { border-top: 1px solid var(--border); padding: 28px 0; color: var(--muted); font-size: 0.88rem; text-align: center; }
+    footer { margin-top: 70px; border-top: 1px solid var(--border); padding: 26px 0 36px; color: var(--muted); font-size: .84rem; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+    footer .mono { font-family: var(--mono); font-size: .74rem; }
 
-    @media (max-width: 560px) { section { padding: 48px 0; } section.hero { padding: 60px 0 44px; } }
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 880px) {
+      .banner-inner { grid-template-columns: 1fr; padding: 48px 0 78px; text-align: left; }
+      .portrait-wrap { order: -1; justify-self: start; }
+      .banner::after { background: linear-gradient(180deg, rgba(7,17,31,.35), rgba(7,17,31,.75)); }
+      .two-col, .contact-card { grid-template-columns: 1fr; }
+      .workflow { grid-template-columns: repeat(2, 1fr); }
+      .step:not(:last-child)::after { display: none; }
+    }
+    @media (max-width: 560px) {
+      nav { flex-wrap: nowrap; }
+      .brand-name { display: none; }
+      nav ul { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+      nav ul::-webkit-scrollbar { display: none; }
+      nav ul a { padding: 5px 8px; font-size: .82rem; white-space: nowrap; }
+      section { padding-top: 56px; }
+      .pub { grid-template-columns: 1fr; gap: 2px; }
+      .metric { border-right: none; border-bottom: 1px solid var(--border); }
+      .contact-card { padding: 26px 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .ticker-track { animation: none; }
+      .tool { transition: none; }
+    }
   </style>
 </head>
 <body>
 
-  <header>
+  <header class="top">
     <div class="wrap">
-      <nav>
-        <a class="logo" href="#top">Ajay Bhatia</a>
+      <nav aria-label="Main">
+        <a class="brand" href="#top"><span class="mark">AB</span><span class="brand-name">Ajay Bhatia</span></a>
         <ul>
           <li><a href="#about">About</a></li>
+          <li><a href="#research">Research</a></li>
           <li><a href="#tools">Tools</a></li>
           <li><a href="#publications">Publications</a></li>
           <li><a href="#teaching">Teaching</a></li>
@@ -129,233 +269,513 @@
     </div>
   </header>
 
-  <main id="top">
+  <!-- ================= BANNER ================= -->
+  <div class="banner" id="top">
+    <svg id="helix" viewBox="0 0 1400 460" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"></svg>
 
-    <section class="hero">
-      <div class="wrap">
-        <p class="eyebrow">Bioinformatics &middot; Comparative Genomics</p>
-        <h1>Ajay Bhatia</h1>
-        <p class="sub">Ph.D. scholar at CSIR-IGIB, New Delhi. I study horizontal gene transfer and genome evolution, and build web-based and command-line tools that make genomic analysis easier for other researchers.</p>
-        <a class="btn" href="#tools">See my tools</a>
-        <a class="btn ghost" href="#publications">Publications</a>
-        <a class="btn ghost" href="#contact">Contact</a>
-
-        <div class="stats">
-          <div class="stat"><b>24</b><span>Citations</span></div>
-          <div class="stat"><b>3</b><span>h-index</span></div>
-          <div class="stat"><b>3</b><span>Web tools built</span></div>
-          <div class="stat"><b>2</b><span>First-author papers</span></div>
+    <div class="wrap">
+      <div class="banner-inner">
+        <div>
+          <p class="eyebrow">Bioinformatics &middot; Comparative Genomics</p>
+          <h1>Ajay Bhatia</h1>
+          <p class="role">Computational biologist studying horizontal gene transfer and genome evolution, and building tools that make genomic analysis accessible.</p>
+          <p class="affil">Ph.D. Scholar &middot; CSIR-Institute of Genomics and Integrative Biology (CSIR-IGIB) &middot; AcSIR, New Delhi</p>
+          <div class="btn-row">
+            <a class="btn" href="#publications">Publications</a>
+            <a class="btn ghost" href="#tools">Software &amp; web tools</a>
+            <a class="btn ghost" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <div class="portrait-wrap">
+          <img class="portrait" src="profile.jpg" alt="Portrait of Ajay Bhatia" width="600" height="600">
+          <span class="portrait-tag">Ph.D. &middot; Bioinformatics</span>
         </div>
       </div>
-    </section>
+    </div>
 
+    <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
+  </div>
+
+  <main>
+
+    <!-- ================= METRICS ================= -->
+    <div class="metrics">
+      <div class="wrap">
+        <div class="metrics-grid">
+          <div class="metric"><b>24</b><span>Citations</span></div>
+          <div class="metric"><b>3</b><span>h-index</span></div>
+          <div class="metric"><b>7</b><span>Published works</span></div>
+          <div class="metric"><b>3</b><span>Web tools developed</span></div>
+          <div class="metric"><b>5 yr</b><span>CSIR-UGC JRF/SRF</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= ABOUT ================= -->
     <section id="about">
       <div class="wrap">
-        <h2>About</h2>
-        <p class="lead">I'm a doctoral researcher in Bioinformatics at the Academy of Scientific and Innovative Research (AcSIR), working in Dr. Jitendra Narayan's lab at CSIR-Institute of Genomics and Integrative Biology (CSIR-IGIB), New Delhi.</p>
-        <p class="lead">My thesis, <em>Computational Discovery, Analysis and Mapping of Horizontal Gene Transfer Events in Multicellular Organisms</em>, is at the submission stage, with the defence expected in January 2027.</p>
-
-        <h3 style="margin-top: 30px;">Research focus</h3>
-        <ul class="plain">
-          <li><b>Comparative genomics:</b> multi-species genome analysis, synteny reconstruction and detection of evolutionary breakpoints.</li>
-          <li><b>Horizontal gene transfer:</b> detection using homology-based and composition-based approaches.</li>
-          <li><b>Genome annotation:</b> ancestral genome reconstruction, repeat and transposable element annotation, functional enrichment.</li>
-          <li><b>Data processing:</b> quality control of short-read, long-read and optical-mapping data.</li>
-          <li><b>Reproducible tools:</b> Snakemake workflows, plus web and command-line software.</li>
-        </ul>
-
-        <h3 style="margin-top: 30px;">Education</h3>
-        <div class="timeline-item" style="margin-top: 10px;">
-          <div class="when">2021 &ndash; Present</div>
-          <b>Ph.D. in Bioinformatics</b>, AcSIR / CSIR-IGIB, New Delhi
+        <div class="sec-head"><span class="sec-num">01</span><h2>About</h2></div>
+        <div class="two-col">
+          <div>
+            <p class="lead">I'm a doctoral researcher in Bioinformatics at the Academy of Scientific and Innovative Research (AcSIR), working in Dr. Jitendra Narayan's laboratory at CSIR-IGIB, New Delhi.</p>
+            <p class="lead">My thesis, <em>Computational Discovery, Analysis and Mapping of Horizontal Gene Transfer Events in Multicellular Organisms</em>, is at the submission stage, with the defence expected in January 2027.</p>
+            <p class="lead">I want to be part of meaningful research and innovative practices, using my knowledge and analytical skills for scientific advancement and a better quality of life.</p>
+            <div class="callout"><b>Thesis status</b><span>Submission stage &middot; Defence expected January 2027</span></div>
+          </div>
+          <div>
+            <div class="card">
+              <h3 style="margin-bottom:14px;">Education</h3>
+              <div class="timeline">
+                <div class="t-item">
+                  <div class="t-when">2021 &ndash; PRESENT</div>
+                  <p><b>Ph.D. in Bioinformatics</b><br>AcSIR / CSIR-IGIB, New Delhi<br>Supervisor: Dr. Jitendra Narayan</p>
+                </div>
+                <div class="t-item">
+                  <div class="t-when">2019</div>
+                  <p><b>M.Sc. Zoology</b><br>Arni University, Himachal Pradesh<br>First Division</p>
+                </div>
+                <div class="t-item" style="margin-bottom:0;">
+                  <div class="t-when">2017</div>
+                  <p><b>B.Sc. Zoology</b><br>Sidharth Government College, Nadaun (Himachal Pradesh University)<br>First Division</p>
+                </div>
+              </div>
+            </div>
+            <div class="callout" style="margin-top:14px;"><b>CSIR-UGC NET JRF (Life Sciences), 2021&ndash;2026</b><span>National fellowship funding five years of doctoral research. Also qualified for Assistant Professor eligibility.</span></div>
+          </div>
         </div>
-        <div class="timeline-item">
-          <div class="when">2019</div>
-          <b>M.Sc. Zoology</b>, Arni University, Himachal Pradesh &mdash; First Division
-        </div>
-        <div class="timeline-item">
-          <div class="when">2017</div>
-          <b>B.Sc. Zoology</b>, Sidharth Government College, Nadaun (Himachal Pradesh University) &mdash; First Division
-        </div>
-
-        <h3 style="margin-top: 30px;">Honours</h3>
-        <ul class="plain">
-          <li><b>CSIR-UGC NET Junior Research Fellowship (Life Sciences), 2021&ndash;2026:</b> national fellowship funding five years of doctoral research. Also qualified for Assistant Professor eligibility.</li>
-        </ul>
       </div>
     </section>
 
+    <!-- ================= RESEARCH ================= -->
+    <section id="research">
+      <div class="wrap">
+        <div class="sec-head"><span class="sec-num">02</span><h2>Research</h2></div>
+        <div class="two-col">
+          <div>
+            <p class="lead" style="margin-bottom:0;">My work sits between evolutionary genomics and software engineering: finding where genomes have been rearranged or have borrowed genes, and packaging the methods so that others can reproduce them.</p>
+            <div class="interests">
+              <div class="interest">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h6l3 10h9"/><path d="M3 17h6l3-10h9"/></svg></div>
+                <div><h3>Comparative genomics</h3><p>Multi-species genome analysis, synteny reconstruction and detection of evolutionary breakpoints.</p></div>
+              </div>
+              <div class="interest">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="19" r="2"/><path d="M7 6h10M6 8l5 9M18 8l-5 9" stroke-dasharray="3 3"/></svg></div>
+                <div><h3>Horizontal gene transfer</h3><p>Detection using homology-based and composition-based approaches in multicellular organisms.</p></div>
+              </div>
+              <div class="interest">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+                <div><h3>Genome annotation &amp; evolution</h3><p>Ancestral genome reconstruction, repeat and transposable element annotation, functional enrichment.</p></div>
+              </div>
+              <div class="interest">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
+                <div><h3>Data processing &amp; tools</h3><p>Quality control of short-read, long-read and optical-mapping data; Snakemake workflows; web and command-line tools.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <figure class="fig">
+              <span class="fig-label">Fig. 1 &middot; Synteny &amp; rearrangements</span>
+              <svg viewBox="0 0 800 270" role="img" aria-label="Schematic of two genomes with conserved blocks linked by ribbons, one inverted block, and evolutionary breakpoints">
+                <defs>
+                  <linearGradient id="r1" x1="0" x2="1"><stop offset="0" stop-color="#0b7f8f" stop-opacity=".55"/><stop offset="1" stop-color="#0b7f8f" stop-opacity=".25"/></linearGradient>
+                </defs>
+                <g font-family="JetBrains Mono, monospace" font-size="22" fill="currentColor" opacity=".75">
+                  <text x="40" y="26">Genome A</text><text x="40" y="262">Genome B</text>
+                </g>
+                <!-- ribbons -->
+                <g stroke="none">
+                  <path d="M40,66 C40,135 40,135 40,204 L170,204 C170,135 170,135 170,66 Z" fill="#0b7f8f" opacity=".35"/>
+                  <path d="M180,66 C180,140 310,130 310,204 L430,204 C430,130 300,140 300,66 Z" fill="#5b4fc7" opacity=".4"/>
+                  <path d="M310,66 C310,140 180,130 180,204 L300,204 C300,130 430,140 430,66 Z" fill="#d97706" opacity=".4"/>
+                  <path d="M440,66 C440,135 440,135 440,204 L600,204 C600,135 600,135 600,66 Z" fill="#16a34a" opacity=".35"/>
+                  <path d="M610,66 C610,135 610,135 610,204 L760,204 C760,135 760,135 760,66 Z" fill="#db2777" opacity=".35"/>
+                </g>
+                <!-- tracks -->
+                <g>
+                  <rect x="40" y="40" width="130" height="26" rx="5" fill="#0b7f8f"/>
+                  <rect x="180" y="40" width="120" height="26" rx="5" fill="#5b4fc7"/>
+                  <rect x="310" y="40" width="120" height="26" rx="5" fill="#d97706"/>
+                  <rect x="440" y="40" width="160" height="26" rx="5" fill="#16a34a"/>
+                  <rect x="610" y="40" width="150" height="26" rx="5" fill="#db2777"/>
+
+                  <rect x="40" y="204" width="130" height="26" rx="5" fill="#0b7f8f"/>
+                  <rect x="180" y="204" width="120" height="26" rx="5" fill="#d97706"/>
+                  <rect x="310" y="204" width="120" height="26" rx="5" fill="#5b4fc7"/>
+                  <rect x="440" y="204" width="160" height="26" rx="5" fill="#16a34a"/>
+                  <rect x="610" y="204" width="150" height="26" rx="5" fill="#db2777"/>
+                </g>
+                <!-- breakpoints -->
+                <g stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" opacity=".55">
+                  <line x1="175" y1="30" x2="175" y2="240"/><line x1="435" y1="30" x2="435" y2="240"/>
+                </g>
+                <g font-family="JetBrains Mono, monospace" font-size="18" fill="currentColor" opacity=".85" font-weight="700">
+                  <text x="178" y="142" text-anchor="end">breakpoint</text>
+                  <text x="438" y="142" text-anchor="end">breakpoint</text>
+                </g>
+              </svg>
+              <figcaption><b>Schematic.</b> Conserved blocks (synteny) between two genomes; the crossing ribbons mark a rearrangement, bounded by evolutionary breakpoints.</figcaption>
+            </figure>
+
+            <figure class="fig">
+              <span class="fig-label">Fig. 2 &middot; Horizontal gene transfer</span>
+              <svg viewBox="0 0 430 240" role="img" aria-label="Schematic phylogenetic tree with a dashed arrow showing a gene transferred from a distant donor lineage into one species">
+                <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".85">
+                  <path d="M30,50 V205"/>
+                  <path d="M30,50 H110 M110,30 V70 M110,30 H290 M110,70 H290"/>
+                  <path d="M30,140 H110 M110,120 V160 M110,120 H290 M110,160 H290"/>
+                  <path d="M30,205 H290"/>
+                </g>
+                <path d="M190,205 C225,185 232,150 214,124" fill="none" stroke="#d97706" stroke-width="2.4" stroke-dasharray="6 5" stroke-linecap="round"/>
+                <path d="M214,124 l-9,10 M214,124 l-14,3" stroke="#d97706" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+                <circle cx="214" cy="124" r="4.5" fill="#d97706"/>
+                <g font-family="JetBrains Mono, monospace" font-size="13" fill="currentColor">
+                  <text x="298" y="35" font-style="italic">Species A</text>
+                  <text x="298" y="75" font-style="italic">Species B</text>
+                  <text x="298" y="125" font-style="italic" font-weight="700">Species C</text>
+                  <text x="298" y="165" font-style="italic">Species D</text>
+                  <text x="298" y="210" font-style="italic">Donor lineage</text>
+                  <text x="236" y="170" fill="#d97706" font-weight="700">HGT</text>
+                </g>
+              </svg>
+              <figcaption><b>Schematic.</b> A gene present in a distant donor lineage appears in one recipient species, a pattern that homology- and composition-based methods try to detect.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <h3 style="margin: 44px 0 14px;">Analysis workflow</h3>
+        <div class="workflow">
+          <div class="step"><b>Raw genomic data</b><small>short reads<br>long reads<br>optical maps</small></div>
+          <div class="step"><b>Quality control</b><small>FastQC &middot; fastp<br>NanoPlot &middot; SeqKit<br>Bionano Solve</small></div>
+          <div class="step"><b>Alignment &amp; orthology</b><small>LASTZ &middot; MUMmer<br>Satsuma<br>OrthoFinder</small></div>
+          <div class="step"><b>Synteny &amp; breakpoints</b><small>rearrangement<br>analysis<br>ancestral genomes</small></div>
+          <div class="step"><b>HGT detection</b><small>HGTector2<br>DarkHorse<br>Alien_Hunter</small></div>
+          <div class="step"><b>Functional analysis</b><small>GO / KEGG<br>enrichment<br>repeats &amp; TEs</small></div>
+        </div>
+
+        <!-- decorative FASTA -->
+        <div class="card" style="margin-top:26px; font-family: var(--mono); font-size:.78rem; color: var(--muted); overflow:hidden;" aria-hidden="true">
+          <div id="fasta" style="white-space:pre; overflow:hidden; line-height:1.7;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TOOLS ================= -->
     <section id="tools">
       <div class="wrap">
-        <h2>Software &amp; web tools</h2>
-        <div class="grid">
-          <article class="card">
-            <div class="role">Lead developer</div>
+        <div class="sec-head"><span class="sec-num">03</span><h2>Software &amp; web tools</h2></div>
+        <div class="tools">
+          <article class="tool">
+            <div class="tag">Lead developer</div>
             <h3>getENRICH</h3>
-            <p>Gene and pathway enrichment analysis (GO, KEGG) for non-model organisms. Available as a web server and a command-line tool. Published in Bioinformatics Advances, 2025.</p>
+            <span class="status ok">Published &middot; Bioinformatics Advances, 2025</span>
+            <p>Gene and pathway enrichment analysis (GO, KEGG) for non-model organisms. Available as a web server and a command-line tool.</p>
             <div class="links">
               <a href="https://getenrich.igib.res.in" target="_blank" rel="noopener">Web server</a>
-              <a href="https://github.com/BioinformaticsOnLine/getENRICH" target="_blank" rel="noopener">Code</a>
+              <a href="https://github.com/BioinformaticsOnLine/getENRICH" target="_blank" rel="noopener">GitHub</a>
             </div>
           </article>
 
-          <article class="card">
-            <div class="role">Lead developer</div>
+          <article class="tool">
+            <div class="tag">Lead developer</div>
             <h3>SyBR</h3>
-            <p>Scalable Snakemake workflow for synteny inference, evolutionary breakpoint detection and functional analysis. Web server and command-line tool. Under review at BMC Bioinformatics.</p>
+            <span class="status rev">Under review &middot; BMC Bioinformatics</span>
+            <p>Scalable Snakemake workflow for synteny inference, evolutionary breakpoint detection and functional analysis. Web server and command-line tool.</p>
             <div class="links">
               <a href="https://sybr.igib.res.in" target="_blank" rel="noopener">Web server</a>
-              <a href="https://github.com/BioinformaticsOnLine/Sybr" target="_blank" rel="noopener">Code</a>
+              <a href="https://github.com/BioinformaticsOnLine/Sybr" target="_blank" rel="noopener">GitHub</a>
             </div>
           </article>
 
-          <article class="card">
-            <div class="role">Co-developer</div>
+          <article class="tool">
+            <div class="tag">Co-developer</div>
             <h3>CHITRA</h3>
-            <p>Interactive visualisation tool for comparative genomic rearrangement analysis. Published in Bioinformatics Advances, 2026.</p>
+            <span class="status ok">Published &middot; Bioinformatics Advances, 2026</span>
+            <p>Interactive visualisation tool for comparative genomic rearrangement analysis.</p>
             <div class="links">
               <a href="https://chitra.bioinformaticsonline.com" target="_blank" rel="noopener">Web server</a>
-              <a href="https://github.com/BioinformaticsOnLine/CHITRA" target="_blank" rel="noopener">Code</a>
+              <a href="https://github.com/BioinformaticsOnLine/CHITRA" target="_blank" rel="noopener">GitHub</a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- ================= PUBLICATIONS ================= -->
     <section id="publications">
       <div class="wrap">
-        <h2>Publications</h2>
+        <div class="sec-head"><span class="sec-num">04</span><h2>Publications</h2></div>
 
-        <div class="subhead">Main publications</div>
+        <div class="pubgroup-title">Main publications</div>
         <div class="pub">
-          <div class="year">2026</div>
-          <div class="title">CHITRA: an interactive visualization tool for comparative genomic rearrangement analysis</div>
-          <div class="meta">Pruthi P, <b>Bhatia A</b>, Agarwal P, Shukla N, Rani L, Narayan J. <i>Bioinformatics Advances</i>, 6(1), vbag200. <a href="https://doi.org/10.1093/bioadv/vbag200" target="_blank" rel="noopener">doi:10.1093/bioadv/vbag200</a></div>
+          <div class="yr">2026</div>
+          <div>
+            <div class="title">CHITRA: an interactive visualization tool for comparative genomic rearrangement analysis</div>
+            <div class="meta">Pruthi P, <b>Bhatia A</b>, Agarwal P, Shukla N, Rani L, Narayan J. <i>Bioinformatics Advances</i>, 6(1), vbag200. <a href="https://doi.org/10.1093/bioadv/vbag200" target="_blank" rel="noopener">doi:10.1093/bioadv/vbag200</a></div>
+          </div>
         </div>
         <div class="pub">
-          <div class="year">2025</div>
-          <div class="title">getENRICH: a tool for the gene and pathway enrichment analysis of non-model organisms</div>
-          <div class="meta"><b>Bhatia A</b>, Pruthi P, Chakraborty I, Shukla N, Narayan J. <i>Bioinformatics Advances</i>, 5(1), vbaf023. <a href="https://doi.org/10.1093/bioadv/vbaf023" target="_blank" rel="noopener">doi:10.1093/bioadv/vbaf023</a></div>
+          <div class="yr">2025</div>
+          <div>
+            <div class="title">getENRICH: a tool for the gene and pathway enrichment analysis of non-model organisms <span class="chip">First author</span></div>
+            <div class="meta"><b>Bhatia A</b>, Pruthi P, Chakraborty I, Shukla N, Narayan J. <i>Bioinformatics Advances</i>, 5(1), vbaf023. <a href="https://doi.org/10.1093/bioadv/vbaf023" target="_blank" rel="noopener">doi:10.1093/bioadv/vbaf023</a></div>
+          </div>
         </div>
         <div class="pub">
-          <div class="year">2020</div>
-          <div class="title">Altitudinal variation of goat blood biochemical and antioxidant parameters in a sub-tropical region of India</div>
-          <div class="meta"><b>Bhatia A</b>, Kumar S, Kumari M, Kumari N, Badhan K, Giri A. <i>Journal of EcoScience and Technology</i>, 1, 1&ndash;6.</div>
-        </div>
-
-        <div class="subhead">Under review</div>
-        <div class="pub">
-          <div class="year">2026 <span class="badge">Submitted</span></div>
-          <div class="title">SyBR: a scalable Snakemake workflow for synteny inference, evolutionary breakpoint detection, and functional analysis</div>
-          <div class="meta"><b>Bhatia A</b>, Pruthi P, De A, Narayan J. Submitted to <i>BMC Bioinformatics</i>, 30 July 2026. <a href="https://github.com/BioinformaticsOnLine/Sybr" target="_blank" rel="noopener">Code</a></div>
-        </div>
-
-        <div class="subhead">Contributing author</div>
-        <div class="pub">
-          <div class="year">2025</div>
-          <div class="title">Structural insights reveal long-SSRs may affect 4Fe&ndash;4S protein flexibility and function in methanogenesis</div>
-          <div class="meta">Mahfooz S, Anand P, <b>Bhatia A</b>, et al. <i>Journal of Basic Microbiology</i>, 65, e70111. <a href="https://doi.org/10.1002/jobm.70111" target="_blank" rel="noopener">doi:10.1002/jobm.70111</a></div>
-        </div>
-        <div class="pub">
-          <div class="year">2024</div>
-          <div class="title">Comparative genome analysis reveals driving forces behind Monkeypox virus evolution and sheds light on the role of ATC trinucleotide motif</div>
-          <div class="meta">Agarwal P, Shukla N, <b>Bhatia A</b>, Mahfooz S, Narayan J. <i>Virus Evolution</i>, 10(1), veae043. <a href="https://doi.org/10.1093/ve/veae043" target="_blank" rel="noopener">doi:10.1093/ve/veae043</a></div>
-        </div>
-        <div class="pub">
-          <div class="year">2024 <span class="badge">Book chapter</span></div>
-          <div class="title">Computational insights into the microbial universe</div>
-          <div class="meta">Patel M, <b>Bhatia A</b>, Shukla N, Shukla SK, Narayan J. In <i>Unraveling New Frontiers and Advances in Bioinformatics</i>, Springer, Singapore. <a href="https://doi.org/10.1007/978-981-97-7123-3_2" target="_blank" rel="noopener">doi:10.1007/978-981-97-7123-3_2</a></div>
-        </div>
-        <div class="pub">
-          <div class="year">2020</div>
-          <div class="title">Compost from the food waste for organic production of cabbage, cauliflower, and radish under sub-tropical conditions</div>
-          <div class="meta">Kumari N, Sharma A, Devi M, Zargar A, Kumar S, Thakur U, <b>Bhatia A</b>, et al. <i>International Journal of Recycling of Organic Waste in Agriculture</i>, 9(4), 367&ndash;383. <a href="https://doi.org/10.30486/ijrowa.2020.1895397.1049" target="_blank" rel="noopener">doi:10.30486/ijrowa.2020.1895397.1049</a></div>
+          <div class="yr">2020</div>
+          <div>
+            <div class="title">Altitudinal variation of goat blood biochemical and antioxidant parameters in a sub-tropical region of India <span class="chip">First author</span></div>
+            <div class="meta"><b>Bhatia A</b>, Kumar S, Kumari M, Kumari N, Badhan K, Giri A. <i>Journal of EcoScience and Technology</i>, 1, 1&ndash;6.</div>
+          </div>
         </div>
 
-        <p style="margin-top: 22px;">
-          <a href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener">Google Scholar profile</a>
-          &nbsp;&middot;&nbsp;
-          <a href="https://orcid.org/0009-0005-2908-5882" target="_blank" rel="noopener">ORCID: 0009-0005-2908-5882</a>
-        </p>
+        <div class="pubgroup-title">Under review</div>
+        <div class="pub">
+          <div class="yr">2026</div>
+          <div>
+            <div class="title">SyBR: a scalable Snakemake workflow for synteny inference, evolutionary breakpoint detection, and functional analysis <span class="chip warn">Submitted</span> <span class="chip">First author</span></div>
+            <div class="meta"><b>Bhatia A</b>, Pruthi P, De A, Narayan J. Submitted to <i>BMC Bioinformatics</i>, 30 July 2026. <a href="https://github.com/BioinformaticsOnLine/Sybr" target="_blank" rel="noopener">Code</a></div>
+          </div>
+        </div>
+
+        <div class="pubgroup-title">Contributing author</div>
+        <div class="pub">
+          <div class="yr">2025</div>
+          <div>
+            <div class="title">Structural insights reveal long-SSRs may affect 4Fe&ndash;4S protein flexibility and function in methanogenesis</div>
+            <div class="meta">Mahfooz S, Anand P, <b>Bhatia A</b>, et al. <i>Journal of Basic Microbiology</i>, 65, e70111. <a href="https://doi.org/10.1002/jobm.70111" target="_blank" rel="noopener">doi:10.1002/jobm.70111</a></div>
+          </div>
+        </div>
+        <div class="pub">
+          <div class="yr">2024</div>
+          <div>
+            <div class="title">Comparative genome analysis reveals driving forces behind Monkeypox virus evolution and sheds light on the role of ATC trinucleotide motif</div>
+            <div class="meta">Agarwal P, Shukla N, <b>Bhatia A</b>, Mahfooz S, Narayan J. <i>Virus Evolution</i>, 10(1), veae043. <a href="https://doi.org/10.1093/ve/veae043" target="_blank" rel="noopener">doi:10.1093/ve/veae043</a></div>
+          </div>
+        </div>
+        <div class="pub">
+          <div class="yr">2024</div>
+          <div>
+            <div class="title">Computational insights into the microbial universe <span class="chip">Book chapter</span></div>
+            <div class="meta">Patel M, <b>Bhatia A</b>, Shukla N, Shukla SK, Narayan J. In <i>Unraveling New Frontiers and Advances in Bioinformatics</i> (eds. Chaudhary A, Sethi SK, Verma A). Springer, Singapore. <a href="https://doi.org/10.1007/978-981-97-7123-3_2" target="_blank" rel="noopener">doi:10.1007/978-981-97-7123-3_2</a></div>
+          </div>
+        </div>
+        <div class="pub">
+          <div class="yr">2020</div>
+          <div>
+            <div class="title">Compost from the food waste for organic production of cabbage, cauliflower, and radish under sub-tropical conditions</div>
+            <div class="meta">Kumari N, Sharma A, Devi M, Zargar A, Kumar S, Thakur U, <b>Bhatia A</b>, et al. <i>International Journal of Recycling of Organic Waste in Agriculture</i>, 9(4), 367&ndash;383. <a href="https://doi.org/10.30486/ijrowa.2020.1895397.1049" target="_blank" rel="noopener">doi:10.30486/ijrowa.2020.1895397.1049</a></div>
+          </div>
+        </div>
+
+        <div class="profile-links">
+          <a class="pill" href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener">Google Scholar &rarr;</a>
+          <a class="pill" href="https://orcid.org/0009-0005-2908-5882" target="_blank" rel="noopener">ORCID 0009-0005-2908-5882 &rarr;</a>
+        </div>
       </div>
     </section>
 
+    <!-- ================= TEACHING ================= -->
     <section id="teaching">
       <div class="wrap">
-        <h2>Teaching, workshops &amp; conferences</h2>
-
-        <div class="timeline-item">
-          <div class="when">Nov 2025 &amp; Mar 2026</div>
-          <b>Organiser and Instructor</b> &mdash; five-day hands-on workshop &ldquo;Bioinformatics for One Health and Pathogen-Specific Research&rdquo;, CSIR-IGIB with ICMR, New Delhi. Training in One Health, genomics, AMR and bioinformatics.
-          <div style="color: var(--muted); font-size: 0.9rem;">1st edition: 3&ndash;7 Nov 2025 &middot; 2nd edition: 16&ndash;20 Mar 2026</div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="when">Sep 2025 &ndash; Mar 2026</div>
-          <b>Instructor</b> &mdash; Skill India training &ldquo;Genomics and Molecular Technologies for Industrial Applications&rdquo;, CSIR-IGIB, New Delhi.
-          <div style="color: var(--muted); font-size: 0.9rem;">1&ndash;30 Sep 2025 &middot; 1&ndash;7 Feb 2026 (online) &middot; 16&ndash;27 Mar 2026</div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="when">25&ndash;27 Feb 2026</div>
-          <b>Poster presentation</b> &mdash; National Conference on Emerging Trends in Bioinformatics and Computational Biology (ETBCB 2026), Savitribai Phule Pune University, Pune. &ldquo;getENRICH: A Comprehensive Tool for Gene and Pathway Enrichment Analysis in Non-Model Organisms&rdquo;.
+        <div class="sec-head"><span class="sec-num">05</span><h2>Teaching, workshops &amp; conferences</h2></div>
+        <div class="two-col">
+          <div class="card">
+            <h3 style="margin-bottom:16px;">Workshops &amp; training</h3>
+            <div class="timeline">
+              <div class="t-item">
+                <div class="t-when">NOV 2025 &amp; MAR 2026</div>
+                <p><b>Organiser and Instructor</b> &mdash; five-day hands-on workshop &ldquo;Bioinformatics for One Health and Pathogen-Specific Research&rdquo;, CSIR-IGIB with ICMR, New Delhi. Training in One Health, genomics, AMR and bioinformatics.<br>1st edition: 3&ndash;7 Nov 2025 &middot; 2nd edition: 16&ndash;20 Mar 2026</p>
+              </div>
+              <div class="t-item" style="margin-bottom:0;">
+                <div class="t-when">SEP 2025 &ndash; MAR 2026</div>
+                <p><b>Instructor</b> &mdash; Skill India training &ldquo;Genomics and Molecular Technologies for Industrial Applications&rdquo;, CSIR-IGIB, New Delhi.<br>1&ndash;30 Sep 2025 &middot; 1&ndash;7 Feb 2026 (online) &middot; 16&ndash;27 Mar 2026</p>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h3 style="margin-bottom:16px;">Conferences</h3>
+            <div class="timeline">
+              <div class="t-item" style="margin-bottom:0;">
+                <div class="t-when">25&ndash;27 FEB 2026</div>
+                <p><b>Poster presentation</b> &mdash; National Conference on Emerging Trends in Bioinformatics and Computational Biology (ETBCB 2026), Bioinformatics Centre, Savitribai Phule Pune University, Pune.<br>&ldquo;getENRICH: A Comprehensive Tool for Gene and Pathway Enrichment Analysis in Non-Model Organisms&rdquo;</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- ================= SKILLS ================= -->
     <section id="skills">
       <div class="wrap">
-        <h2>Skills</h2>
-
-        <div class="skillgroup">
-          <h3>Programming &amp; systems</h3>
-          <div class="chips"><span>Python</span><span>R</span><span>Bash</span><span>Snakemake</span><span>Linux (primary)</span><span>Windows</span></div>
-        </div>
-        <div class="skillgroup">
-          <h3>Sequence quality control</h3>
-          <div class="chips"><span>FastQC</span><span>MultiQC</span><span>fastp</span><span>cutadapt</span><span>Trimmomatic</span><span>NanoPlot</span><span>NanoFilt</span><span>Bionano Solve</span><span>SeqKit</span></div>
-        </div>
-        <div class="skillgroup">
-          <h3>Comparative genomics</h3>
-          <div class="chips"><span>BLAST</span><span>LASTZ</span><span>MUMmer</span><span>Satsuma</span><span>OrthoFinder</span><span>Synteny &amp; rearrangements</span><span>Viral genome evolution</span></div>
-        </div>
-        <div class="skillgroup">
-          <h3>Horizontal gene transfer detection</h3>
-          <div class="chips"><span>Alienness</span><span>Alien_Hunter</span><span>HGTector2</span><span>DarkHorse</span><span>NCBI nr homology search</span></div>
-        </div>
-        <div class="skillgroup">
-          <h3>Repeats, structure &amp; enrichment</h3>
-          <div class="chips"><span>RepeatModeler</span><span>Transposable elements</span><span>SSR analysis</span><span>Protein structure analysis</span><span>GO / KEGG enrichment</span></div>
-        </div>
-        <div class="skillgroup">
-          <h3>Tool building</h3>
-          <div class="chips"><span>Web-based GUI tools</span><span>CLI tools</span><span>Interactive visualisation</span></div>
-        </div>
-        <div class="skillgroup">
-          <h3>Languages</h3>
-          <div class="chips"><span>English</span><span>Hindi</span><span>Himachali</span></div>
+        <div class="sec-head"><span class="sec-num">06</span><h2>Skills &amp; toolkit</h2></div>
+        <div class="skills">
+          <div class="card skillbox">
+            <h3><i style="background:var(--nuc-a)"></i>Programming &amp; systems</h3>
+            <div class="chips"><span>Python</span><span>R</span><span>Bash</span><span>Snakemake</span><span>Linux (primary)</span><span>Windows</span></div>
+          </div>
+          <div class="card skillbox">
+            <h3><i style="background:var(--nuc-t)"></i>Sequence quality control</h3>
+            <div class="chips"><span>FastQC</span><span>MultiQC</span><span>fastp</span><span>cutadapt</span><span>Trimmomatic</span><span>NanoPlot</span><span>NanoFilt</span><span>Bionano Solve</span><span>SeqKit</span></div>
+          </div>
+          <div class="card skillbox">
+            <h3><i style="background:var(--nuc-g)"></i>Comparative genomics</h3>
+            <div class="chips"><span>BLAST</span><span>LASTZ</span><span>MUMmer</span><span>Satsuma</span><span>OrthoFinder</span><span>Synteny</span><span>Genome rearrangements</span><span>Viral genome evolution</span></div>
+          </div>
+          <div class="card skillbox">
+            <h3><i style="background:var(--nuc-c)"></i>HGT detection</h3>
+            <div class="chips"><span>Alienness</span><span>Alien_Hunter</span><span>HGTector2</span><span>DarkHorse</span><span>NCBI nr homology search</span></div>
+          </div>
+          <div class="card skillbox">
+            <h3><i style="background:var(--accent-2)"></i>Repeats, structure &amp; enrichment</h3>
+            <div class="chips"><span>RepeatModeler</span><span>Transposable elements</span><span>SSR analysis</span><span>Protein structure analysis</span><span>GO / KEGG enrichment</span></div>
+          </div>
+          <div class="card skillbox">
+            <h3><i style="background:var(--accent)"></i>Tool building &amp; languages</h3>
+            <div class="chips"><span>Web-based GUI tools</span><span>CLI tools</span><span>Interactive visualisation</span><span>English</span><span>Hindi</span><span>Himachali</span></div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- ================= CONTACT ================= -->
     <section id="contact">
       <div class="wrap">
-        <h2>Contact</h2>
-        <p class="lead">I'm interested in meaningful research, tool development and collaborations in genomics and bioinformatics. Email is the best way to reach me.</p>
-        <a class="btn" href="mailto:ajaybhatia.igib@gmail.com">ajaybhatia.igib@gmail.com</a>
-        <a class="btn ghost" href="https://github.com/ajigib" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn ghost" href="https://linkedin.com/in/aj-bhatia02" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn ghost" href="https://orcid.org/0009-0005-2908-5882" target="_blank" rel="noopener">ORCID</a>
-        <a class="btn ghost" href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
-        <p style="color: var(--muted); margin-top: 14px; font-size: 0.9rem;">CSIR-Institute of Genomics and Integrative Biology, New Delhi, India</p>
+        <div class="contact-card">
+          <div style="position:relative; z-index:1;">
+            <p class="eyebrow" style="margin-bottom:10px;">Let's collaborate</p>
+            <h2>Get in touch</h2>
+            <p>I'm open to research collaborations and opportunities in genomics, comparative genomics and bioinformatics tool development. Email is the best way to reach me.</p>
+            <p style="margin-top:14px; font-size:.88rem;">CSIR-Institute of Genomics and Integrative Biology, New Delhi, India</p>
+          </div>
+          <div class="contact-links">
+            <a href="mailto:ajaybhatia.igib@gmail.com">ajaybhatia.igib@gmail.com <span>EMAIL</span></a>
+            <a href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener">Google Scholar <span>SCHOLAR</span></a>
+            <a href="https://orcid.org/0009-0005-2908-5882" target="_blank" rel="noopener">0009-0005-2908-5882 <span>ORCID</span></a>
+            <a href="https://github.com/ajigib" target="_blank" rel="noopener">github.com/ajigib <span>GITHUB</span></a>
+            <a href="https://linkedin.com/in/aj-bhatia02" target="_blank" rel="noopener">linkedin.com/in/aj-bhatia02 <span>LINKEDIN</span></a>
+          </div>
+        </div>
       </div>
     </section>
 
   </main>
 
   <footer>
-    <div class="wrap">&copy; 2026 Ajay Bhatia</div>
+    <div class="wrap">
+      <span>&copy; 2026 Ajay Bhatia &middot; CSIR-IGIB / AcSIR, New Delhi</span>
+      <span class="mono">5'-ATGC-3'</span>
+    </div>
   </footer>
 
+  <script>
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---------- seeded random so the page looks the same on every load ---------- */
+    var seed = 20260;
+    function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+    var LET = ['A', 'T', 'G', 'C'];
+
+    /* ---------- sequence ticker ---------- */
+    var ticker = document.getElementById('ticker');
+    if (ticker) {
+      var html = '';
+      for (var i = 0; i < 260; i++) {
+        var l = LET[Math.floor(rnd() * 4)];
+        html += '<span class="' + l.toLowerCase() + '">' + l + '</span>';
+      }
+      ticker.innerHTML = html + html; // duplicated for a seamless loop
+    }
+
+    /* ---------- decorative FASTA block ---------- */
+    var fa = document.getElementById('fasta');
+    if (fa) {
+      var out = '>example_sequence | decorative illustration\n';
+      for (var r = 0; r < 4; r++) {
+        var line = '';
+        for (var k = 0; k < 70; k++) line += LET[Math.floor(rnd() * 4)];
+        out += line + '\n';
+      }
+      fa.textContent = out.trim();
+    }
+
+    /* ---------- animated DNA double helix ---------- */
+    var svg = document.getElementById('helix');
+    if (!svg) return;
+    var NS = 'http://www.w3.org/2000/svg';
+    var W = 1400, H = 460, N = 58, AMP = 118, CY = H / 2;
+    var pairs = [['#4ade80', '#f87171'], ['#fbbf24', '#60a5fa']];
+
+    function el(name, attrs) {
+      var e = document.createElementNS(NS, name);
+      for (var k in attrs) e.setAttribute(k, attrs[k]);
+      svg.appendChild(e);
+      return e;
+    }
+
+    var rungsTop = [], rungsBot = [], dots1 = [], dots2 = [];
+    for (var i = 0; i < N; i++) {
+      var p = pairs[Math.floor(rnd() * 2)];
+      if (rnd() > 0.5) p = [p[1], p[0]];
+      rungsTop.push(el('line', { stroke: p[0], 'stroke-width': 3, 'stroke-linecap': 'round' }));
+      rungsBot.push(el('line', { stroke: p[1], 'stroke-width': 3, 'stroke-linecap': 'round' }));
+    }
+    var strand1 = el('path', { fill: 'none', stroke: '#67e8f9', 'stroke-width': 3.2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' });
+    var strand2 = el('path', { fill: 'none', stroke: '#c4b5fd', 'stroke-width': 3.2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' });
+    for (var j = 0; j < N; j++) {
+      dots1.push(el('circle', { fill: '#a5f3fc' }));
+      dots2.push(el('circle', { fill: '#ddd6fe' }));
+    }
+
+    function draw(t) {
+      var phase = t * 0.00055, d1 = '', d2 = '';
+      for (var i = 0; i < N; i++) {
+        var x = 20 + i * (W - 40) / (N - 1);
+        var ang = i * 0.36 + phase;
+        var s = Math.sin(ang), c = Math.cos(ang);
+        var env = 0.72 + 0.28 * Math.sin(i * 0.09 + 1.2);
+        var y1 = CY + AMP * env * s;
+        var y2 = 2 * CY - y1;
+        var front1 = (c + 1) / 2, front2 = 1 - front1;
+
+        rungsTop[i].setAttribute('x1', x); rungsTop[i].setAttribute('y1', y1);
+        rungsTop[i].setAttribute('x2', x); rungsTop[i].setAttribute('y2', CY);
+        rungsBot[i].setAttribute('x1', x); rungsBot[i].setAttribute('y1', CY);
+        rungsBot[i].setAttribute('x2', x); rungsBot[i].setAttribute('y2', y2);
+        var ro = (0.22 + 0.38 * Math.abs(s)).toFixed(2);
+        rungsTop[i].setAttribute('opacity', ro); rungsBot[i].setAttribute('opacity', ro);
+
+        dots1[i].setAttribute('cx', x); dots1[i].setAttribute('cy', y1);
+        dots1[i].setAttribute('r', (2.6 + 3.6 * front1).toFixed(2));
+        dots1[i].setAttribute('opacity', (0.35 + 0.65 * front1).toFixed(2));
+        dots2[i].setAttribute('cx', x); dots2[i].setAttribute('cy', y2);
+        dots2[i].setAttribute('r', (2.6 + 3.6 * front2).toFixed(2));
+        dots2[i].setAttribute('opacity', (0.35 + 0.65 * front2).toFixed(2));
+
+        d1 += (i ? 'L' : 'M') + x.toFixed(1) + ' ' + y1.toFixed(1);
+        d2 += (i ? 'L' : 'M') + x.toFixed(1) + ' ' + y2.toFixed(1);
+      }
+      strand1.setAttribute('d', d1);
+      strand2.setAttribute('d', d2);
+    }
+
+    draw(0);
+    if (reduce) return;
+
+    var running = true, raf = 0;
+    function loop(t) { if (!running) return; draw(t); raf = requestAnimationFrame(loop); }
+    raf = requestAnimationFrame(loop);
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        var vis = entries[0].isIntersecting;
+        if (vis && !running) { running = true; raf = requestAnimationFrame(loop); }
+        if (!vis) { running = false; cancelAnimationFrame(raf); }
+      }, { threshold: 0 }).observe(document.getElementById('top'));
+    }
+  })();
+  </script>
 </body>
 </html>
