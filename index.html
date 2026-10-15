@@ -548,9 +548,10 @@
     .hm-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: .92rem; padding: 11px 20px; border-radius: 999px; color: #fff; background: linear-gradient(90deg, #2fb36d, #0f8aa0); box-shadow: 0 10px 22px rgba(15,138,160,.25); transition: transform .2s ease; }
     .hm-link::after { content: "\2197"; }
     .hm-link:hover { transform: translateY(-2px); text-decoration: none; }
-    .hm-pins { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-    .hm-pin { font: inherit; font-size: .86rem; font-weight: 700; display: inline-flex; align-items: center; gap: 7px; cursor: pointer; padding: 9px 16px; border-radius: 999px; color: var(--text); background: var(--surface); border: 1.5px solid var(--border); transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
-    .hm-pin svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .hm-mapcol { display: grid; grid-template-columns: 1fr 190px; gap: 14px; align-items: stretch; }
+    .hm-pins { display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+    .hm-pin { font: inherit; font-size: .84rem; font-weight: 700; text-align: left; line-height: 1.25; display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 11px 14px; border-radius: 14px; color: var(--text); background: var(--surface); border: 1.5px solid var(--border); transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
+    .hm-pin svg { flex: none; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
     .hm-pin:hover { border-color: #2fb36d; transform: translateY(-1px); }
     .hm-pin.on { color: #fff; border-color: transparent; background: linear-gradient(90deg, #2fb36d, #0f8aa0); box-shadow: 0 8px 18px rgba(15,138,160,.28); }
     .hm-map { position: relative; border-radius: 26px; overflow: hidden; height: 400px; background: linear-gradient(135deg, #cfe9dc, #bcd9ea); box-shadow: var(--shadow); border: 1px solid var(--border); }
@@ -622,6 +623,9 @@
       .ev-grid { grid-template-columns: 1fr; }
       .hm { grid-template-columns: 1fr; gap: 26px; }
       .hm-map { height: 300px; }
+      .hm-mapcol { grid-template-columns: 1fr; }
+      .hm-pins { flex-direction: row; flex-wrap: wrap; order: -1; }
+      .hm-pin { padding: 9px 14px; border-radius: 999px; }
       .hm-photos { grid-template-columns: 1fr; }
       .hm-ph { height: 210px; }
       .sk-row { grid-template-columns: 1fr; gap: 12px; padding: 18px 0; }
@@ -679,6 +683,7 @@
       .intro-summary { font-size: 1.04rem; }
     }
     /* ---- responsive fixes ---- */
+    @media (max-width: 1100px) and (min-width: 901px) { .hm-mapcol { grid-template-columns: 1fr; } .hm-pins { flex-direction: row; flex-wrap: wrap; order: -1; } .hm-pin { border-radius: 999px; } }
     @media (max-width: 1100px) { .rs-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 680px) { .rs-grid { grid-template-columns: 1fr; gap: 18px; } .rs-card { padding: 22px 20px 20px; } }
     @media (max-width: 400px) {
@@ -1228,17 +1233,17 @@
               <li><b>Region</b>Western Himalayas</li>
               <li><b>Language</b>Himachali, Hindi</li>
             </ul>
-            <a class="hm-link" id="hmLink" href="https://www.google.com/maps/search/?api=1&amp;query=Himachal+Pradesh,+India" target="_blank" rel="noopener">Open in Google Maps</a>
+            <a class="hm-link" id="hmLink" href="https://www.google.com/maps/search/?api=1&amp;query=31.698583,76.365056" target="_blank" rel="noopener">Open in Google Maps</a>
           </div>
           <div class="hm-mapcol">
-            <div class="hm-pins" role="tablist" aria-label="Map locations">
+            <div class="hm-map">
+              <iframe id="hmFrame" title="Map of Banoh village, Himachal Pradesh" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=31.698583,76.365056&amp;t=k&amp;z=16&amp;output=embed"></iframe>
+            </div>
+            <div class="hm-pins" role="tablist" aria-label="Map locations" aria-orientation="vertical">
+              <button type="button" class="hm-pin on" role="tab" aria-selected="true" data-loc="village"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.200 7-11.500A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg>Banoh (village)</button>
+              <button type="button" class="hm-pin" role="tab" aria-selected="false" data-loc="state"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.200 7-11.500A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg>Himachal Pradesh</button>
               <button type="button" class="hm-pin" role="tab" aria-selected="false" data-loc="north"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.200 7-11.500A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg>CSIR-IGIB North Campus</button>
               <button type="button" class="hm-pin" role="tab" aria-selected="false" data-loc="south"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.200 7-11.500A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg>CSIR-IGIB South Campus</button>
-              <button type="button" class="hm-pin on" role="tab" aria-selected="true" data-loc="state"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.200 7-11.500A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg>Himachal Pradesh</button>
-              <button type="button" class="hm-pin" role="tab" aria-selected="false" data-loc="village"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.200 7-11.500A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg>Banoh (village)</button>
-            </div>
-            <div class="hm-map">
-              <iframe id="hmFrame" title="Satellite map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Himachal+Pradesh,+India&amp;t=k&amp;z=7&amp;output=embed"></iframe>
             </div>
           </div>
         </div>
