@@ -534,6 +534,30 @@
     .sk-list li::after { content: "/"; position: absolute; right: 0; top: 2px; color: var(--sc); opacity: .55; }
     .sk-list li:last-child::after { content: none; }
     .sk-list li:hover { color: var(--sc); }
+    /* ---- home state & village ---- */
+    .hm { display: grid; grid-template-columns: 1fr 1.15fr; gap: 44px; align-items: center; }
+    .hm-kicker { font-family: var(--mono); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #2fb36d; }
+    .hm-text h3 { font-family: var(--serif); font-size: clamp(2.1rem, 4vw, 3rem); line-height: 1.08; margin: 8px 0 12px; }
+    .hm-text h3 span { background: linear-gradient(90deg, #2fb36d, #0f8aa0); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hm-sub { font-weight: 600; color: var(--text); margin: 0 0 12px; }
+    .hm-text p { color: var(--muted); line-height: 1.7; margin: 0 0 18px; }
+    .hm-text .hm-sub { color: var(--text); }
+    .hm-facts { list-style: none; margin: 0 0 22px; padding: 0; border-top: 1px solid var(--border); }
+    .hm-facts li { display: flex; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: .94rem; }
+    .hm-facts b { flex: none; width: 90px; font-family: var(--mono); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #2fb36d; padding-top: 3px; }
+    .hm-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: .92rem; padding: 11px 20px; border-radius: 999px; color: #fff; background: linear-gradient(90deg, #2fb36d, #0f8aa0); box-shadow: 0 10px 22px rgba(15,138,160,.25); transition: transform .2s ease; }
+    .hm-link::after { content: "\2197"; }
+    .hm-link:hover { transform: translateY(-2px); text-decoration: none; }
+    .hm-map { position: relative; border-radius: 26px; overflow: hidden; height: 400px; background: linear-gradient(135deg, #cfe9dc, #bcd9ea); box-shadow: var(--shadow); border: 1px solid var(--border); }
+    .hm-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .hm-photos { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 18px; margin-top: 30px; }
+    .hm-ph { position: relative; margin: 0; height: 240px; border-radius: 22px; overflow: hidden; background: linear-gradient(135deg, #2fb36d, #0f8aa0); box-shadow: var(--shadow); }
+    .hm-ph.b { background: linear-gradient(135deg, #0f8aa0, #3d6fd8); } .hm-ph.c { background: linear-gradient(135deg, #d9822b, #c5503a); }
+    .hm-fb { position: absolute; inset: 0; display: grid; place-items: center; background-image: radial-gradient(rgba(255,255,255,.16) 1.2px, transparent 1.4px); background-size: 16px 16px; }
+    .hm-fb svg { width: 48px; height: 48px; fill: none; stroke: rgba(255,255,255,.85); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+    .hm-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+    .hm-ph:hover img { transform: scale(1.05); }
+    .hm-ph.has-img .hm-fb { display: none; }
     .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
     .skillbox h3 { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; }
     .skillbox h3 i { width: 9px; height: 9px; border-radius: 3px; display: inline-block; }
@@ -594,6 +618,10 @@
       .portrait-wrap { order: -1; justify-self: start; }
       .two-col, .contact-card, .about-edu, .about-top, .pb-grid { grid-template-columns: 1fr; }
       .ev-grid { grid-template-columns: 1fr; }
+      .hm { grid-template-columns: 1fr; gap: 26px; }
+      .hm-map { height: 300px; }
+      .hm-photos { grid-template-columns: 1fr; }
+      .hm-ph { height: 210px; }
       .sk-row { grid-template-columns: 1fr; gap: 12px; padding: 18px 0; }
       .sk-list { font-size: .84rem; }
       .t1 { min-width: 1020px; }
@@ -670,6 +698,7 @@
         <li><a href="#publications" title="ajay.publications()" aria-label="publications"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">publications</span><span class="py-par">()</span></span></a></li>
         <li><a href="#teaching" title="ajay.teaching()" aria-label="teaching"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.6 2.7 3 6 3s6-1.4 6-3v-5"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">teaching</span><span class="py-par">()</span></span></a></li>
         <li><a href="#skills" title="ajay.skills()" aria-label="skills"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">skills</span><span class="py-par">()</span></span></a></li>
+        <li><a href="#home" title="ajay.home()" aria-label="home"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.500 12 4l9 7.500M5.500 10v10h13V10M10 20v-5.500h4V20"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">home</span><span class="py-par">()</span></span></a></li>
         <li><a href="#contact" title="ajay.contact()" aria-label="contact"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">contact</span><span class="py-par">()</span></span></a></li>
       </ul>
       </nav>
@@ -1166,7 +1195,37 @@
           <div class="sk-row" style="--sc:var(--nuc-g)"><div class="sk-head"><b>03</b><h3>Comparative genomics</h3></div><ul class="sk-list"><li>BLAST</li><li>LASTZ</li><li>MUMmer</li><li>Satsuma</li><li>OrthoFinder</li><li>Synteny</li><li>Genome rearrangements</li><li>Viral genome evolution</li></ul></div>
           <div class="sk-row" style="--sc:var(--nuc-c)"><div class="sk-head"><b>04</b><h3>HGT detection</h3></div><ul class="sk-list"><li>Alienness</li><li>Alien_Hunter</li><li>HGTector2</li><li>DarkHorse</li><li>NCBI nr homology search</li></ul></div>
           <div class="sk-row" style="--sc:var(--accent-2)"><div class="sk-head"><b>05</b><h3>Repeats, structure &amp; enrichment</h3></div><ul class="sk-list"><li>RepeatModeler</li><li>Transposable elements</li><li>SSR analysis</li><li>Protein structure analysis</li><li>GO / KEGG enrichment</li></ul></div>
-          <div class="sk-row" style="--sc:var(--accent)"><div class="sk-head"><b>06</b><h3>Tool building &amp; languages</h3></div><ul class="sk-list"><li>Web-based GUI tools</li><li>CLI tools</li><li>Interactive visualisation</li><li>English</li><li>Hindi</li><li>Himachali</li></ul></div>
+          <div class="sk-row" style="--sc:var(--accent)"><div class="sk-head"><b>06</b><h3>Tool building</h3></div><ul class="sk-list"><li>Web-based GUI tools</li><li>CLI tools</li><li>Interactive visualisation</li></ul></div>
+          <div class="sk-row" style="--sc:#e0589a"><div class="sk-head"><b>07</b><h3>Languages</h3></div><ul class="sk-list"><li>English</li><li>Hindi</li><li>Himachali</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HOME ================= -->
+    <section id="home">
+      <div class="wrap">
+        <div class="sec-head"><h2>Home state &amp; village</h2></div>
+        <div class="hm">
+          <div class="hm-text">
+            <span class="hm-kicker">Where I come from</span>
+            <h3>Himachal <span>Pradesh</span></h3>
+            <p class="hm-sub">Dev Bhoomi, the &ldquo;Land of the Gods&rdquo; in the western Himalayas, India.</p>
+            <p>My roots are in the hills of Himachal Pradesh, where I did my schooling and graduation before moving to New Delhi for research.</p>
+            <ul class="hm-facts">
+              <li><b>State</b>Himachal Pradesh, India</li>
+              <li><b>Region</b>Western Himalayas</li>
+              <li><b>Language</b>Himachali, Hindi</li>
+            </ul>
+            <a class="hm-link" href="https://www.google.com/maps/search/?api=1&amp;query=Himachal+Pradesh,+India" target="_blank" rel="noopener">Open in Google Maps</a>
+          </div>
+          <div class="hm-map">
+            <iframe title="Map of Himachal Pradesh" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Himachal+Pradesh,+India&amp;z=7&amp;output=embed"></iframe>
+          </div>
+        </div>
+        <div class="hm-photos" id="hmPhotos" aria-label="Home photos">
+          <figure class="hm-ph a"><div class="hm-fb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 19 9 8l4 6 3-4 6 9zM16 6.500a1.500 1.500 0 1 0 0-.01"/></svg></div><img src="home-1.jpg" alt="Home photo 1" loading="lazy" data-base="home-1"></figure>
+          <figure class="hm-ph b"><div class="hm-fb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 19 9 8l4 6 3-4 6 9zM16 6.500a1.500 1.500 0 1 0 0-.01"/></svg></div><img src="home-2.jpg" alt="Home photo 2" loading="lazy" data-base="home-2"></figure>
+          <figure class="hm-ph c"><div class="hm-fb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 19 9 8l4 6 3-4 6 9zM16 6.500a1.500 1.500 0 1 0 0-.01"/></svg></div><img src="home-3.jpg" alt="Home photo 3" loading="lazy" data-base="home-3"></figure>
         </div>
       </div>
     </section>
@@ -1324,6 +1383,14 @@
     b.addEventListener('click',function(){
       var m=b.getAttribute('data-mail'),done=function(){ b.textContent='Copied \u2713'; setTimeout(function(){ b.textContent='Copy email'; },1800); };
       try{ navigator.clipboard.writeText(m).then(done,function(){ b.textContent=m; }); }catch(e){ b.textContent=m; }
+    });
+  })();
+  (function(){
+    var exts=['jpg','jpeg','png','JPG','PNG','webp'];
+    document.querySelectorAll('.hm-ph img').forEach(function(img){
+      var base=img.getAttribute('data-base'),k=1,fig=img.parentNode;
+      img.addEventListener('load',function(){ fig.classList.add('has-img'); });
+      img.addEventListener('error',function(){ if(k<exts.length){ img.src=base+'.'+exts[k++]; } else { img.remove(); } });
     });
   })();
 </script>
