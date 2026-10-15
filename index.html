@@ -263,6 +263,133 @@
     .jr-meta { font-family: var(--mono); font-size: .8rem; font-weight: 600; color: var(--text); }
     .jr-pic.empty { display: none; }
     @media (prefers-reduced-motion: reduce) { .jr-item.now .jr-node { animation: none; } }
+    .rs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 6px; }
+    .rs-card { --sc: var(--accent); position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; padding: 26px 24px 22px; border-radius: 22px;
+      background: linear-gradient(165deg, color-mix(in srgb, var(--sc) 9%, var(--surface)) 0%, var(--surface) 60%);
+      border: 1px solid color-mix(in srgb, var(--sc) 22%, var(--border)); box-shadow: var(--shadow);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .rs-card::before { content: ""; position: absolute; z-index: -1; right: -80px; top: -90px; width: 230px; height: 230px; border-radius: 50%;
+      background: radial-gradient(circle, color-mix(in srgb, var(--sc) 24%, transparent), transparent 68%); transition: transform .45s ease; }
+    .rs-card:hover { transform: translateY(-5px); border-color: var(--sc); box-shadow: 0 24px 46px color-mix(in srgb, var(--sc) 20%, transparent); }
+    .rs-card:hover::before { transform: scale(1.35); }
+    .rs-viz { margin: -26px -24px 20px; padding: 16px 20px 6px; border-bottom: 1px solid color-mix(in srgb, var(--sc) 18%, var(--border)); background: color-mix(in srgb, var(--sc) 7%, var(--surface)); color: var(--text); }
+    .rs-viz svg { display: block; width: 100%; height: auto; }
+    .rs-viz .c { fill: var(--sc); } .rs-viz .cs { stroke: var(--sc); } .rs-viz .g { fill: currentColor; opacity: .18; } .rs-viz .m { fill: currentColor; stroke: currentColor; }
+    .rs-card header { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .rs-card h4 { font-family: var(--serif); font-size: 1.4rem; line-height: 1.15; margin: 0; letter-spacing: -.01em; }
+    .rs-card ol { list-style: none; margin: 0 0 20px; padding: 0 0 0 24px; position: relative; flex: 1; margin-bottom: 4px; }
+    .rs-card ol::before { content: ""; position: absolute; left: 5px; top: 9px; bottom: 12px; width: 2px; border-radius: 2px; background: linear-gradient(180deg, var(--sc), color-mix(in srgb, var(--sc) 15%, transparent)); }
+    .rs-lead { margin: 0 0 16px; font-size: .95rem; line-height: 1.55; color: var(--text); font-weight: 500; }
+    .rs-card li { position: relative; margin-bottom: 14px; font-size: .94rem; line-height: 1.55; color: var(--muted); }
+    .rs-card li::before { content: ""; position: absolute; left: -24px; top: .42em; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); border: 3px solid var(--sc); box-sizing: border-box; }
+    .rs-card li b { color: var(--text); font-weight: 700; }
+    .rs-card .chips { display: flex; flex-wrap: wrap; gap: 7px; padding-top: 16px; border-top: 1px dashed color-mix(in srgb, var(--sc) 30%, var(--border)); }
+    .rs-card .chips span { font-family: var(--mono); font-size: .73rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; color: var(--text);
+      background: color-mix(in srgb, var(--sc) 11%, transparent); border: 1px solid color-mix(in srgb, var(--sc) 26%, transparent); }
+    @media (prefers-reduced-motion: reduce) { .rs-card, .rs-card::before { transition: none; } }
+    .pub-head { flex-wrap: wrap; justify-content: space-between; align-items: center; }
+    .pub-head .profile-links { margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+    .pb-stats { display: flex; flex-wrap: wrap; gap: 10px 34px; margin-bottom: 22px; }
+    .pb-stats div { display: flex; align-items: baseline; gap: 8px; }
+    .pb-stats b { font-family: var(--serif); font-size: 2rem; line-height: 1; color: var(--accent); }
+    .pb-stats span { font-size: .86rem; color: var(--muted); }
+    .pb-tabs { display: flex; gap: 8px; margin-bottom: 24px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+    .pb-tabs::-webkit-scrollbar { display: none; }
+    .pb-tabs button { flex: none; font: inherit; font-size: .88rem; font-weight: 600; cursor: pointer; padding: 8px 16px; border-radius: 999px; color: var(--muted); background: var(--surface); border: 1px solid var(--border); transition: all .18s ease; }
+    .pb-tabs button i { font-style: normal; font-family: var(--mono); font-size: .74rem; margin-left: 6px; padding: 1px 7px; border-radius: 999px; background: var(--surface-2); }
+    .pb-tabs button:hover { color: var(--text); border-color: var(--accent); }
+    .pb-tabs button.on { color: #fff; background: linear-gradient(135deg, var(--accent), var(--accent-2)); border-color: transparent; box-shadow: 0 8px 20px color-mix(in srgb, var(--accent) 30%, transparent); }
+    .pb-tabs button.on i { background: rgba(255,255,255,.22); }
+    @media (prefers-color-scheme: dark) { .pb-tabs button.on { color: #06222a; } .pb-tabs button.on i { background: rgba(0,0,0,.18); } }
+    .pb-bar { display: flex; align-items: center; justify-content: space-between; gap: 14px 20px; flex-wrap: wrap; margin-bottom: 24px; }
+    .pb-bar .pb-tabs { margin-bottom: 0; }
+    .pb-links2 { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pb-links2 .pill { padding: 8px 16px; font-size: .88rem; background: var(--surface); }
+    .pb-links2 .pill:hover { color: var(--accent); }
+    .pb-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .pb { --sc: var(--accent); position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; padding: 14px 18px 14px 22px; border-radius: 14px;
+      background: linear-gradient(160deg, color-mix(in srgb, var(--sc) 7%, var(--surface)), var(--surface) 60%); border: 1px solid color-mix(in srgb, var(--sc) 20%, var(--border)); box-shadow: var(--shadow);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
+    .pb::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--sc), color-mix(in srgb, var(--sc) 30%, transparent)); }
+    .pb:hover { transform: translateY(-3px); border-color: var(--sc); box-shadow: 0 20px 40px color-mix(in srgb, var(--sc) 18%, transparent); }
+    .pb[hidden] { display: none; }
+    .pb-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+    .pb-year { font-family: var(--serif); font-size: 1.45rem; font-weight: 700; line-height: 1; letter-spacing: -.02em; color: var(--sc); }
+    .pb-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .pb-tag, .pb-grp { font-family: var(--mono); font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: 3px 8px; border-radius: 999px; }
+    .pb-grp { color: var(--sc); background: color-mix(in srgb, var(--sc) 12%, transparent); border: 1px solid color-mix(in srgb, var(--sc) 28%, transparent); }
+    .pb-tag { color: var(--muted); background: var(--surface-2); }
+    .pb-tag.fa { color: #fff; background: var(--sc); }
+    .pb-title { font-family: var(--serif); font-size: 1.02rem; line-height: 1.3; margin: 0 0 6px; }
+    .pb-title a { color: inherit; }
+    .pb.has-link .pb-title a::after { content: " \2197"; color: var(--sc); font-family: var(--sans, inherit); font-weight: 700; }
+    .pb.has-link .pb-title a::before { content: ""; position: absolute; inset: 0; z-index: 1; }
+    .pb.has-link:hover .pb-title a { color: var(--sc); text-decoration: none; }
+    .pb.has-link { cursor: pointer; }
+    .pb-auth { margin: 0 0 2px; font-size: .8rem; line-height: 1.45; color: var(--muted); }
+    .pb-auth b { color: var(--text); font-weight: 700; padding: 0 3px; border-radius: 4px; background: color-mix(in srgb, var(--sc) 14%, transparent); }
+    .pb-venue { margin: 0; font-size: .8rem; line-height: 1.45; color: var(--text); flex: 1; }
+    .pb-links { display: flex; gap: 8px; padding-top: 14px; border-top: 1px dashed color-mix(in srgb, var(--sc) 30%, var(--border)); }
+    .pb-links a { display: inline-flex; align-items: center; gap: 5px; font-size: .82rem; font-weight: 700; padding: 6px 13px; border-radius: 9px; color: var(--sc); background: color-mix(in srgb, var(--sc) 11%, transparent); transition: all .18s ease; }
+    .pb-links a::after { content: "\2197"; transition: transform .18s ease; }
+    .pb-links a:hover { text-decoration: none; background: var(--sc); color: #fff; }
+    .pb-links a:hover::after { transform: translate(2px,-2px); }
+    @media (prefers-reduced-motion: reduce) { .pb { transition: none; } }
+    .ev-group { display: flex; align-items: center; gap: 14px; margin: 6px 0 18px; }
+    .ev-gl { font-family: var(--mono); font-size: .76rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); white-space: nowrap; }
+    .ev-group::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+    .ev-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-bottom: 38px; }
+    .ev-grid.one { grid-template-columns: 1fr; margin-bottom: 0; }
+    .ev { --sc: var(--accent); display: flex; flex-direction: column; overflow: hidden; border-radius: 22px; background: var(--surface); border: 1px solid color-mix(in srgb, var(--sc) 22%, var(--border)); box-shadow: var(--shadow); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .ev:hover { transform: translateY(-4px); border-color: var(--sc); box-shadow: 0 22px 44px color-mix(in srgb, var(--sc) 18%, transparent); }
+    .ev-media { position: relative; margin: 0; aspect-ratio: 16 / 9; overflow: hidden; background: linear-gradient(135deg, color-mix(in srgb, var(--sc) 85%, #000), color-mix(in srgb, var(--sc) 45%, #000)); }
+    .ev-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+    .ev:hover .ev-media img { transform: scale(1.04); }
+    .ev-fallback { position: absolute; inset: 0; display: grid; place-items: center; background-image: radial-gradient(rgba(255,255,255,.16) 1.2px, transparent 1.4px); background-size: 16px 16px; }
+    .ev-fallback svg { width: 64px; height: 64px; fill: none; stroke: rgba(255,255,255,.85); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+    .ev-media.has-img .ev-fallback { display: none; }
+    .ev-media::after { content: ""; position: absolute; inset: auto 0 0 0; height: 45%; background: linear-gradient(0deg, rgba(0,0,0,.45), transparent); pointer-events: none; }
+    .ev-date { position: absolute; z-index: 1; left: 16px; bottom: 14px; font-family: var(--mono); font-size: .74rem; font-weight: 700; letter-spacing: .06em; color: #fff; padding: 5px 12px; border-radius: 999px; background: rgba(255,255,255,.18); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.3); }
+    .ev-body { display: flex; flex-direction: column; padding: 22px 24px 22px; flex: 1; }
+    .ev-role { align-self: flex-start; font-family: var(--mono); font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--sc); padding: 4px 11px; border-radius: 999px; background: color-mix(in srgb, var(--sc) 12%, transparent); border: 1px solid color-mix(in srgb, var(--sc) 28%, transparent); margin-bottom: 12px; }
+    .ev-body h4 { font-family: var(--serif); font-size: 1.3rem; line-height: 1.25; margin: 0 0 6px; }
+    .ev-sub { font-size: .86rem; font-weight: 600; color: var(--sc); margin-bottom: 10px; }
+    .ev-body p { margin: 0 0 14px; color: var(--muted); font-size: .94rem; line-height: 1.6; flex: 1; }
+    .ev-dates { list-style: none; margin: 0; padding: 12px 0 0; display: flex; flex-wrap: wrap; gap: 8px; border-top: 1px dashed color-mix(in srgb, var(--sc) 30%, var(--border)); }
+    .ev-dates li { font-size: .8rem; font-weight: 600; padding: 4px 11px; border-radius: 8px; color: var(--text); background: color-mix(in srgb, var(--sc) 9%, transparent); }
+    .ev.wide { flex-direction: row; }
+    .ev.wide .ev-media { flex: 0 0 42%; aspect-ratio: auto; min-height: 280px; }
+    .ev.wide .ev-body { justify-content: center; padding: 28px 32px; }
+    .ev.wide .ev-body h4 { font-size: 1.5rem; }
+    @media (prefers-reduced-motion: reduce) { .ev, .ev-media img { transition: none; } }
+    .collage { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; padding: 34px 0 44px; }
+    .cl { --sz: 220px; --dy: 0px; position: relative; width: var(--sz); height: var(--sz); margin: 0 -14px; transform: translateY(var(--dy)); flex: none; transition: transform .35s ease; }
+    .cl:nth-child(8n+1) { --sz: 240px; --dy: 16px; } .cl:nth-child(8n+2) { --sz: 290px; --dy: -8px; } .cl:nth-child(8n+3) { --sz: 220px; --dy: 22px; } .cl:nth-child(8n+4) { --sz: 190px; --dy: -10px; }
+    .cl:nth-child(8n+5) { --sz: 220px; --dy: 20px; } .cl:nth-child(8n+6) { --sz: 160px; --dy: -24px; } .cl:nth-child(8n+7) { --sz: 250px; --dy: 4px; } .cl:nth-child(8n+8) { --sz: 180px; --dy: -14px; }
+    .cl:hover { transform: translateY(var(--dy)) scale(1.07); z-index: 3; }
+    .cl img, .cl-ph { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 5px var(--bg), 0 14px 30px rgba(16,32,50,.22); }
+    .cl-ph { background: radial-gradient(rgba(255,255,255,.2) 1.2px, transparent 1.4px) 0 0 / 14px 14px, linear-gradient(135deg, #0f8aa0, #3d4fb8); }
+    .cl:nth-child(3n+2) .cl-ph { background: radial-gradient(rgba(255,255,255,.2) 1.2px, transparent 1.4px) 0 0 / 14px 14px, linear-gradient(135deg, #d9822b, #b8512f); }
+    .cl:nth-child(3n) .cl-ph { background: radial-gradient(rgba(255,255,255,.2) 1.2px, transparent 1.4px) 0 0 / 14px 14px, linear-gradient(135deg, #6a4fd0, #3d6fd8); }
+    .cl.off { display: none; }
+    .collage.has-photos .cl-ph { display: none; }
+    .collage:not(.has-photos) .cl:nth-child(n+7) { display: none; }
+    .ev-strip { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 22px; color: #fff; background: radial-gradient(rgba(255,255,255,.14) 1.2px, transparent 1.4px) 0 0 / 14px 14px, linear-gradient(120deg, color-mix(in srgb, var(--sc) 90%, #000), color-mix(in srgb, var(--sc) 50%, #000)); }
+    .ev-strip svg { width: 30px; height: 30px; fill: none; stroke: rgba(255,255,255,.9); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .ev-when { font-family: var(--mono); font-size: .76rem; font-weight: 700; letter-spacing: .06em; padding: 5px 12px; border-radius: 999px; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3); }
+    .ws-list { display: grid; grid-template-columns: 1fr 1fr; }
+    .ws-item { --sc: var(--accent); display: flex; flex-direction: column; padding: 26px 30px 24px; position: relative; }
+    .ws-item + .ws-item { border-left: 1px solid var(--border); }
+    .ws-item::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: linear-gradient(90deg, var(--sc), color-mix(in srgb, var(--sc) 20%, transparent)); }
+    .ws-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+    .ws-ico { width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center; color: #fff; background: linear-gradient(135deg, var(--sc), color-mix(in srgb, var(--sc) 55%, #000)); box-shadow: 0 8px 18px color-mix(in srgb, var(--sc) 32%, transparent); }
+    .ws-ico svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .ws-when { font-family: var(--mono); font-size: .74rem; font-weight: 700; letter-spacing: .05em; color: var(--sc); padding: 5px 12px; border-radius: 999px; background: color-mix(in srgb, var(--sc) 11%, transparent); border: 1px solid color-mix(in srgb, var(--sc) 26%, transparent); }
+    .ws-item h4 { font-family: var(--serif); font-size: 1.3rem; line-height: 1.25; margin: 0 0 6px; }
+    .ws-box:hover { transform: none; box-shadow: var(--shadow); border-color: color-mix(in srgb, var(--accent) 22%, var(--border)); }
+    .ws-item .ev-role { margin-bottom: 12px; align-self: flex-start; }
+    .ws-item p { margin: 0 0 16px; color: var(--muted); font-size: .94rem; line-height: 1.6; flex: 1; }
+    .ev-grid.one:has(.ws-box) { margin-bottom: 40px; }
     .about-edu { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: start; margin-top: 28px; }
     .about-edu .callout { margin-top: 0 !important; }
     .two-col { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; }
@@ -389,8 +516,17 @@
       .hero-dna.left { display: none; }
       .hero-code { opacity: .2; -webkit-mask-image: none; mask-image: none; }
       .portrait-wrap { order: -1; justify-self: start; }
-      .two-col, .contact-card, .about-edu, .about-top { grid-template-columns: 1fr; }
-      .jr::before { left: 7px; margin-left: 0; }
+      .two-col, .contact-card, .about-edu, .about-top, .pb-grid { grid-template-columns: 1fr; }
+      .ev-grid { grid-template-columns: 1fr; }
+      .ws-list { grid-template-columns: 1fr; }
+      .ws-item + .ws-item { border-left: 0; border-top: 1px solid var(--border); }
+      .ws-item { padding: 22px 20px; }
+      .ev.wide { flex-direction: column; }
+      .cl:nth-child(n) { transform: translateY(calc(var(--dy) * .5)) scale(.6); margin: -44px -42px; }
+      .collage { padding: 4px 0 8px; }
+      .ev.wide .ev-media { flex: none; aspect-ratio: 16 / 9; min-height: 0; }
+      .ev.wide .ev-body { padding: 22px 24px; }
+            .jr::before { left: 7px; margin-left: 0; }
       .jr-item, .jr-item.l, .jr-item.r { grid-template-columns: 16px 1fr; gap: 0 18px; align-items: start; padding: 22px 0; }
       .jr-node { grid-column: 1; grid-row: 1; margin-top: 4px; }
       .jr-item .jr-text, .jr-item.l .jr-text, .jr-item.r .jr-text { grid-column: 2; grid-row: 1; text-align: left; padding: 0; }
@@ -406,7 +542,7 @@
     @media (max-width: 560px) {
       section { padding-top: 56px; }
       section#about { padding: 72px 0 56px; }
-      .pub { grid-template-columns: 1fr; gap: 2px; }
+          .pub { grid-template-columns: 1fr; gap: 2px; }
       .contact-card { padding: 26px 20px; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -709,112 +845,141 @@
     <section id="research">
       <div class="wrap">
         <div class="sec-head"><h2>Research</h2></div>
-        <div class="two-col">
-          <div>
-            <p class="lead" style="margin-bottom:0;">My work sits between evolutionary genomics and software engineering: finding where genomes have been rearranged or have borrowed genes, and packaging the methods so that others can reproduce them.</p>
-            <div class="interests">
-              <div class="interest">
-                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h6l3 10h9"/><path d="M3 17h6l3-10h9"/></svg></div>
-                <div><h3>Comparative genomics</h3><p>Multi-species genome analysis, synteny reconstruction and detection of evolutionary breakpoints.</p></div>
-              </div>
-              <div class="interest">
-                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="19" r="2"/><path d="M7 6h10M6 8l5 9M18 8l-5 9" stroke-dasharray="3 3"/></svg></div>
-                <div><h3>Horizontal gene transfer</h3><p>Detection using homology-based and composition-based approaches in multicellular organisms.</p></div>
-              </div>
-              <div class="interest">
-                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
-                <div><h3>Genome annotation &amp; evolution</h3><p>Ancestral genome reconstruction, repeat and transposable element annotation, functional enrichment.</p></div>
-              </div>
-              <div class="interest">
-                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
-                <div><h3>Data processing &amp; tools</h3><p>Quality control of short-read, long-read and optical-mapping data; Snakemake workflows; web and command-line tools.</p></div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <figure class="fig">
-              <span class="fig-label">Fig. 1 &middot; Synteny &amp; rearrangements</span>
-              <svg viewBox="0 0 800 270" role="img" aria-label="Schematic of two genomes with conserved blocks linked by ribbons, one inverted block, and evolutionary breakpoints">
-                <defs>
-                  <linearGradient id="r1" x1="0" x2="1"><stop offset="0" stop-color="#0b7f8f" stop-opacity=".55"/><stop offset="1" stop-color="#0b7f8f" stop-opacity=".25"/></linearGradient>
-                </defs>
-                <g font-family="JetBrains Mono, monospace" font-size="22" fill="currentColor" opacity=".75">
-                  <text x="40" y="26">Genome A</text><text x="40" y="262">Genome B</text>
-                </g>
-                <!-- ribbons -->
-                <g stroke="none">
-                  <path d="M40,66 C40,135 40,135 40,204 L170,204 C170,135 170,135 170,66 Z" fill="#0b7f8f" opacity=".35"/>
-                  <path d="M180,66 C180,140 310,130 310,204 L430,204 C430,130 300,140 300,66 Z" fill="#5b4fc7" opacity=".4"/>
-                  <path d="M310,66 C310,140 180,130 180,204 L300,204 C300,130 430,140 430,66 Z" fill="#d97706" opacity=".4"/>
-                  <path d="M440,66 C440,135 440,135 440,204 L600,204 C600,135 600,135 600,66 Z" fill="#16a34a" opacity=".35"/>
-                  <path d="M610,66 C610,135 610,135 610,204 L760,204 C760,135 760,135 760,66 Z" fill="#db2777" opacity=".35"/>
-                </g>
-                <!-- tracks -->
-                <g>
-                  <rect x="40" y="40" width="130" height="26" rx="5" fill="#0b7f8f"/>
-                  <rect x="180" y="40" width="120" height="26" rx="5" fill="#5b4fc7"/>
-                  <rect x="310" y="40" width="120" height="26" rx="5" fill="#d97706"/>
-                  <rect x="440" y="40" width="160" height="26" rx="5" fill="#16a34a"/>
-                  <rect x="610" y="40" width="150" height="26" rx="5" fill="#db2777"/>
-
-                  <rect x="40" y="204" width="130" height="26" rx="5" fill="#0b7f8f"/>
-                  <rect x="180" y="204" width="120" height="26" rx="5" fill="#d97706"/>
-                  <rect x="310" y="204" width="120" height="26" rx="5" fill="#5b4fc7"/>
-                  <rect x="440" y="204" width="160" height="26" rx="5" fill="#16a34a"/>
-                  <rect x="610" y="204" width="150" height="26" rx="5" fill="#db2777"/>
-                </g>
-                <!-- breakpoints -->
-                <g stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" opacity=".55">
-                  <line x1="175" y1="30" x2="175" y2="240"/><line x1="435" y1="30" x2="435" y2="240"/>
-                </g>
-                <g font-family="JetBrains Mono, monospace" font-size="18" fill="currentColor" opacity=".85" font-weight="700">
-                  <text x="178" y="142" text-anchor="end">breakpoint</text>
-                  <text x="438" y="142" text-anchor="end">breakpoint</text>
-                </g>
-              </svg>
-              <figcaption><b>Schematic.</b> Conserved blocks (synteny) between two genomes; the crossing ribbons mark a rearrangement, bounded by evolutionary breakpoints.</figcaption>
-            </figure>
-
-            <figure class="fig">
-              <span class="fig-label">Fig. 2 &middot; Horizontal gene transfer</span>
-              <svg viewBox="0 0 430 240" role="img" aria-label="Schematic phylogenetic tree with a dashed arrow showing a gene transferred from a distant donor lineage into one species">
-                <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".85">
-                  <path d="M30,50 V205"/>
-                  <path d="M30,50 H110 M110,30 V70 M110,30 H290 M110,70 H290"/>
-                  <path d="M30,140 H110 M110,120 V160 M110,120 H290 M110,160 H290"/>
-                  <path d="M30,205 H290"/>
-                </g>
-                <path d="M190,205 C225,185 232,150 214,124" fill="none" stroke="#d97706" stroke-width="2.4" stroke-dasharray="6 5" stroke-linecap="round"/>
-                <path d="M214,124 l-9,10 M214,124 l-14,3" stroke="#d97706" stroke-width="2.4" stroke-linecap="round" fill="none"/>
-                <circle cx="214" cy="124" r="4.5" fill="#d97706"/>
-                <g font-family="JetBrains Mono, monospace" font-size="13" fill="currentColor">
-                  <text x="298" y="35" font-style="italic">Species A</text>
-                  <text x="298" y="75" font-style="italic">Species B</text>
-                  <text x="298" y="125" font-style="italic" font-weight="700">Species C</text>
-                  <text x="298" y="165" font-style="italic">Species D</text>
-                  <text x="298" y="210" font-style="italic">Donor lineage</text>
-                  <text x="236" y="170" fill="#d97706" font-weight="700">HGT</text>
-                </g>
-              </svg>
-              <figcaption><b>Schematic.</b> A gene present in a distant donor lineage appears in one recipient species, a pattern that homology- and composition-based methods try to detect.</figcaption>
-            </figure>
-          </div>
-        </div>
-
-        <h3 style="margin: 44px 0 14px;">Analysis workflow</h3>
-        <div class="workflow">
-          <div class="step"><b>Raw genomic data</b><small>short reads<br>long reads<br>optical maps</small></div>
-          <div class="step"><b>Quality control</b><small>FastQC &middot; fastp<br>NanoPlot &middot; SeqKit<br>Bionano Solve</small></div>
-          <div class="step"><b>Alignment &amp; orthology</b><small>LASTZ &middot; MUMmer<br>Satsuma<br>OrthoFinder</small></div>
-          <div class="step"><b>Synteny &amp; breakpoints</b><small>rearrangement<br>analysis<br>ancestral genomes</small></div>
-          <div class="step"><b>HGT detection</b><small>HGTector2<br>DarkHorse<br>Alien_Hunter</small></div>
-          <div class="step"><b>Functional analysis</b><small>GO / KEGG<br>enrichment<br>repeats &amp; TEs</small></div>
-        </div>
-
-        <!-- decorative FASTA -->
-        <div class="card" style="margin-top:26px; font-family: var(--mono); font-size:.78rem; color: var(--muted); overflow:hidden;" aria-hidden="true">
-          <div id="fasta" style="white-space:pre; overflow:hidden; line-height:1.7;"></div>
+        <div class="rs-grid">
+            <article class="rs-card" style="--sc:#0f8aa0">
+              <div class="rs-viz"><svg viewBox="0 0 360 150" role="img" aria-label="Assemblies ranked by contiguity; the best are kept">
+<g><rect x="24.0" y="120" width="9" height="8" rx="2" class="g"/><rect x="37.5" y="118" width="9" height="10" rx="2" class="g"/><rect x="51.0" y="116" width="9" height="12" rx="2" class="g"/><rect x="64.5" y="115" width="9" height="13" rx="2" class="g"/><rect x="78.0" y="113" width="9" height="15" rx="2" class="g"/><rect x="91.5" y="111" width="9" height="17" rx="2" class="g"/><rect x="105.0" y="110" width="9" height="18" rx="2" class="g"/><rect x="118.5" y="108" width="9" height="20" rx="2" class="g"/><rect x="132.0" y="106" width="9" height="22" rx="2" class="g"/><rect x="145.5" y="104" width="9" height="24" rx="2" class="g"/><rect x="159.0" y="101" width="9" height="27" rx="2" class="g"/><rect x="172.5" y="98" width="9" height="30" rx="2" class="c"/><rect x="186.0" y="95" width="9" height="33" rx="2" class="c"/><rect x="199.5" y="91" width="9" height="37" rx="2" class="c"/><rect x="213.0" y="86" width="9" height="42" rx="2" class="c"/><rect x="226.5" y="76" width="9" height="52" rx="2" class="c"/><rect x="240.0" y="66" width="9" height="62" rx="2" class="c"/><rect x="253.5" y="54" width="9" height="74" rx="2" class="c"/><rect x="267.0" y="40" width="9" height="88" rx="2" class="c"/><rect x="280.5" y="28" width="9" height="100" rx="2" class="c"/><rect x="294.0" y="16" width="9" height="112" rx="2" class="c"/></g><line x1="24" y1="128" x2="336" y2="128" class="m" stroke-width="1.2" opacity=".4"/>
+<line x1="169.0" y1="14" x2="169.0" y2="134" stroke="currentColor" stroke-dasharray="4 4" opacity=".5"/>
+<text x="26" y="146" font-family="JetBrains Mono, monospace" font-size="10.5" fill="currentColor" opacity=".75">assemblies</text><text x="236" y="146" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="700" fill="var(--sc)">kept</text>
+<text x="26" y="22" font-family="JetBrains Mono, monospace" font-size="10.5" fill="currentColor" opacity=".75">contiguity &#8594;</text></svg></div>
+              <header><h4>Data &amp; quality control</h4></header>
+              <p class="rs-lead">Getting trustworthy genome data before any analysis begins.</p>
+              <ol>
+                <li><b>Genome assembly</b> &mdash; a genome sequence reconstructed by stitching sequencing reads into longer pieces.</li>
+                <li><b>Contiguity (N50)</b> &mdash; a measure of how long the assembled pieces are; longer pieces mean fewer breaks and gaps.</li>
+                <li><b>Completeness</b> &mdash; how many of the genes expected in every member of a group are actually present.</li>
+              </ol>
+            </article>
+            <article class="rs-card" style="--sc:#3d6fd8">
+              <div class="rs-viz"><svg viewBox="0 0 360 150" role="img" aria-label="Synteny blocks between two genomes with breakpoints at rearrangements">
+<path d="M24,38 C24,75 24,75 24,112 L94,112 C94,75 94,75 94,38 Z" fill="#0f8aa0" opacity=".3"/><path d="M162,38 C162,75 98,75 98,112 L158,112 C158,75 222,75 222,38 Z" fill="#d9822b" opacity=".3"/><path d="M98,38 C98,75 162,75 162,112 L222,112 C222,75 158,75 158,38 Z" fill="#6a4fd0" opacity=".3"/><path d="M226,38 C226,75 226,75 226,112 L278,112 C278,75 278,75 278,38 Z" fill="#2fb36d" opacity=".3"/><path d="M282,38 C282,75 282,75 282,112 L336,112 C336,75 336,75 336,38 Z" fill="#e0527a" opacity=".3"/><rect x="24" y="22" width="70" height="16" rx="4" fill="#0f8aa0"/><rect x="98" y="22" width="60" height="16" rx="4" fill="#6a4fd0"/><rect x="162" y="22" width="60" height="16" rx="4" fill="#d9822b"/><rect x="226" y="22" width="52" height="16" rx="4" fill="#2fb36d"/><rect x="282" y="22" width="54" height="16" rx="4" fill="#e0527a"/><rect x="24" y="112" width="70" height="16" rx="4" fill="#0f8aa0"/><rect x="98" y="112" width="60" height="16" rx="4" fill="#d9822b"/><rect x="162" y="112" width="60" height="16" rx="4" fill="#6a4fd0"/><rect x="226" y="112" width="52" height="16" rx="4" fill="#2fb36d"/><rect x="282" y="112" width="54" height="16" rx="4" fill="#e0527a"/>
+<g stroke="currentColor" stroke-dasharray="3 4" opacity=".55"><line x1="95" y1="14" x2="95" y2="136"/><line x1="224" y1="14" x2="224" y2="136"/></g>
+<text x="24" y="14" font-family="JetBrains Mono, monospace" font-size="10.5" fill="currentColor" opacity=".75">reference</text><text x="24" y="146" font-family="JetBrains Mono, monospace" font-size="10.5" fill="currentColor" opacity=".75">query</text>
+<text x="99" y="82" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="700" fill="var(--sc)">EBR</text><text x="228" y="82" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="700" fill="var(--sc)">EBR</text></svg></div>
+              <header><h4>Synteny &amp; breakpoints</h4></header>
+              <p class="rs-lead">Comparing gene order between species to see how chromosomes were rearranged.</p>
+              <ol>
+                <li><b>Synteny</b> &mdash; conservation of gene order along chromosomes between species.</li>
+                <li><b>Synteny block</b> &mdash; a stretch of genome where genes keep the same order and orientation.</li>
+                <li><b>Evolutionary breakpoint</b> &mdash; a point where that order is broken by an inversion, translocation, fission or fusion.</li>
+              </ol>
+            </article>
+            <article class="rs-card" style="--sc:#d9822b">
+              <div class="rs-viz"><svg viewBox="0 0 360 170" role="img" aria-label="Phylogenetic tree showing a gene moving from a donor lineage into a recipient species, next to a blueprint-style drawing of a bdelloid rotifer">
+<defs>
+<pattern id="bpGrid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#5ec8ff" stroke-opacity=".14" stroke-width=".6"/></pattern>
+<pattern id="bpGrid5" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M50 0H0V50" fill="none" stroke="#5ec8ff" stroke-opacity=".22" stroke-width=".8"/></pattern>
+<linearGradient id="bpPanel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d2f5e"/><stop offset="1" stop-color="#07182f"/></linearGradient>
+<linearGradient id="bpScan" x1="0" x2="1"><stop offset="0" stop-color="#5ec8ff" stop-opacity="0"/><stop offset=".5" stop-color="#8be4ff" stop-opacity=".9"/><stop offset="1" stop-color="#5ec8ff" stop-opacity="0"/></linearGradient>
+<filter id="bpGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".8">
+<path d="M10,80 V33 M10,80 V113 M10,33 H28 M28,20 V46 M28,20 H150 M28,46 H70"/>
+<path d="M10,113 H28 M28,84 V130 M28,84 H150 M28,130 H56 M56,116 V144 M56,116 H150 M56,144 H150"/></g>
+<g font-family="JetBrains Mono, monospace" font-size="10.5" fill="currentColor" opacity=".75"><text x="156" y="24">donor</text><text x="76" y="50">other</text><text x="156" y="120">rotifers</text><text x="156" y="148">outgroup</text></g>
+<text x="156" y="88" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="700" font-style="italic" fill="var(--sc)">recipient</text>
+<path d="M88,20 C124,26 128,62 112,82" fill="none" stroke="var(--sc)" stroke-width="2.2" stroke-dasharray="6 5" stroke-linecap="round"/>
+<path d="M112,82 l-1,-9 M112,82 l-9,-4" stroke="var(--sc)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+<circle cx="112" cy="84" r="5" class="c"/><circle cx="112" cy="84" r="9" fill="none" class="cs" opacity=".4"/>
+<rect x="122" y="40" width="20" height="8" rx="3" class="c"/><text x="146" y="47" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="700" fill="var(--sc)">HGT</text>
+<!-- blueprint panel -->
+<rect x="218" y="6" width="140" height="158" rx="10" fill="url(#bpPanel)"/>
+<rect x="218" y="6" width="140" height="158" rx="10" fill="url(#bpGrid)"/><rect x="218" y="6" width="140" height="158" rx="10" fill="url(#bpGrid5)"/>
+<rect x="218.5" y="6.5" width="139" height="157" rx="10" fill="none" stroke="#5ec8ff" stroke-opacity=".45"/>
+<g stroke="#5ec8ff" stroke-width="1.4" fill="none" opacity=".9"><path d="M226,18 V12 H232 M350,18 V12 H344 M226,152 V158 H232 M350,152 V158 H344"/></g>
+<text x="238" y="16" font-family="JetBrains Mono, monospace" font-size="7.5" fill="#9fdcff" opacity=".8">ROTIFER &#183; SCHEMATIC</text>
+<rect x="222" y="86" width="132" height="1.2" fill="url(#bpScan)" opacity=".7"/>
+<g transform="translate(288,88) scale(.95)" fill="none" stroke="#5ec8ff" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" filter="url(#bpGlow)">
+<path d="M-7,30 C-6,38 -4,44 -3,48 H3 C4,44 6,38 7,30" fill="#38bdf8" fill-opacity=".10"/>
+<path d="M-3,47 L-8,55 M3,47 L8,55" stroke-width="1.4"/><path d="M-2,49 L-4,59 M0,49 V61 M2,49 L4,59" stroke-width=".9"/>
+<path d="M-6,38 H6 M-5,43 H5" opacity=".5" stroke-width=".8"/>
+<path d="M-10,-26 C-16,-16 -19,-4 -17,8 C-16,20 -11,28 -8,32 H8 C11,28 16,20 17,8 C19,-4 16,-16 10,-26 Z" fill="#38bdf8" fill-opacity=".09" stroke-width="1.3"/>
+<path d="M-15,-12 Q0,-7 15,-12 M-17,2 Q0,7 17,2 M-15,16 Q0,21 15,16" opacity=".4" stroke-width=".8" stroke-dasharray="2 2"/>
+<path d="M-9,-27 C-11,-36 -8,-42 -4,-45 H4 C8,-42 11,-36 9,-27 Z" fill="#38bdf8" fill-opacity=".08"/>
+<ellipse cx="-13" cy="-48" rx="10" ry="6.5" fill="#38bdf8" fill-opacity=".10"/><ellipse cx="13" cy="-48" rx="10" ry="6.5" fill="#38bdf8" fill-opacity=".10"/>
+<ellipse cx="-13" cy="-48" rx="12.5" ry="8.5" stroke-width="3.4" stroke-dasharray=".8 2" opacity=".6"/><ellipse cx="13" cy="-48" rx="12.5" ry="8.5" stroke-width="3.4" stroke-dasharray=".8 2" opacity=".6"/>
+<ellipse cx="-13" cy="-48" rx="5" ry="3" opacity=".7"/><ellipse cx="13" cy="-48" rx="5" ry="3" opacity=".7"/>
+<path d="M-2.5,-45 C-2.5,-52 -2,-58 0,-61 C2,-58 2.5,-52 2.5,-45" fill="#38bdf8" fill-opacity=".14"/><path d="M0,-61 V-65" stroke-width="1.4"/>
+<circle cx="-3.6" cy="-36" r="1.4" fill="#8be4ff" stroke="none"/><circle cx="3.6" cy="-36" r="1.4" fill="#8be4ff" stroke="none"/>
+<ellipse cx="0" cy="-22" rx="6.5" ry="5.2" fill="#38bdf8" fill-opacity=".16"/><path d="M-3.5,-24 L0,-20 L3.5,-24 M-3,-21 H3" stroke-width=".8"/>
+<ellipse cx="0" cy="-3" rx="8.5" ry="9.5" fill="#38bdf8" fill-opacity=".14"/>
+<g fill="#8be4ff" stroke="none" opacity=".75"><circle cx="-3" cy="-5" r=".9"/><circle cx="2.5" cy="-1" r="1.1"/><circle cx="-1" cy="2" r=".8"/><circle cx="3" cy="-6" r=".8"/></g>
+<path d="M0,-12 V-17 M0,6 C0,12 -3,16 0,21 C2,24 0,26 0,29" stroke-width="1" opacity=".85"/>
+<ellipse cx="-9.5" cy="13" rx="4.5" ry="5.5" fill="#38bdf8" fill-opacity=".10"/><circle cx="-9.5" cy="13" r="1.8" opacity=".8"/>
+<ellipse cx="9" cy="9" rx="3.4" ry="4.2" fill="#38bdf8" fill-opacity=".10"/></g>
+<g stroke="#5ec8ff" stroke-width=".7" opacity=".85" fill="none">
+<path d="M252,35 L262,35 L274,41"/><path d="M252,60 L262,60 L284,66"/><path d="M252,101 L262,101 L278,99"/>
+<path d="M290,27 L300,27 L322,27"/><path d="M296,84 L308,80 L322,80"/><path d="M292,132 L306,132 L322,132"/></g>
+<g font-family="JetBrains Mono, monospace" font-size="7.5" fill="#9fdcff"><text x="222" y="33">corona</text><text x="222" y="58">mastax</text><text x="222" y="99">ovary</text>
+<text x="324" y="30">antenna</text><text x="324" y="83">stomach</text><text x="324" y="135">foot</text></g>
+<text x="238" y="160" font-family="JetBrains Mono, monospace" font-size="7.5" fill="#9fdcff" opacity=".7">bdelloid rotifer</text></svg></div>
+              <header><h4>HGT detection</h4></header>
+              <p class="rs-lead">Finding genes that entered a genome from another species rather than from a parent.</p>
+              <ol>
+                <li><b>Horizontal gene transfer</b> &mdash; movement of genetic material between organisms outside normal parent-to-offspring inheritance.</li>
+                <li><b>Donor and recipient</b> &mdash; the lineage a gene came from, and the genome that received it.</li>
+                <li><b>Alien index</b> &mdash; a score comparing similarity to distant versus close relatives; foreign genes look closer to distant ones.</li>
+              </ol>
+            </article>
+            <article class="rs-card" style="--sc:#6a4fd0">
+              <div class="rs-viz"><svg viewBox="0 0 360 150" role="img" aria-label="Ancestral chromosome fragments reconstructed at the root of the tree and projected onto the reference">
+<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".8">
+<path d="M20,60 H46 M46,32 V88 M46,32 H92 M46,88 H92 M92,18 V46 M92,18 H150 M92,46 H150 M92,74 V102 M92,74 H150 M92,102 H150"/></g>
+<circle cx="46" cy="60" r="7" class="c"/><text x="10" y="124" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="700" fill="var(--sc)">ancestor</text><path d="M30,116 L44,68" stroke="var(--sc)" stroke-width="1.2" opacity=".6"/>
+<g font-family="JetBrains Mono, monospace" font-size="10.5" fill="currentColor" opacity=".75"><text x="156" y="22">reference</text><text x="156" y="50">relatives</text><text x="156" y="78">relatives</text><text x="156" y="106">outgroup</text></g>
+<g><rect x="232" y="26" width="44" height="12" rx="3" class="c" opacity=".9"/><rect x="282" y="26" width="30" height="12" rx="3" class="c" opacity=".55"/><rect x="318" y="26" width="26" height="12" rx="3" class="c" opacity=".9"/>
+<rect x="232" y="124" width="22" height="12" rx="3" class="c"/><rect x="262" y="124" width="52" height="12" rx="3" class="c" opacity=".6"/><rect x="322" y="124" width="22" height="12" rx="3" class="c"/></g>
+<g stroke="var(--sc)" stroke-width="1.2" opacity=".5" stroke-dasharray="3 3"><path d="M243,38 V124 M297,38 L288,124 M331,38 V124"/></g>
+<text x="232" y="18" font-family="JetBrains Mono, monospace" font-size="10.5" fill="currentColor" opacity=".75">ancestral fragments</text><text x="232" y="148" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="700" fill="var(--sc)">on reference</text></svg></div>
+              <header><h4>Ancestral genome</h4></header>
+              <p class="rs-lead">Inferring what the genome of a long-gone common ancestor may have looked like.</p>
+              <ol>
+                <li><b>Ancestral reconstruction</b> &mdash; estimating the genome organisation of a common ancestor from its living descendants.</li>
+                <li><b>Outgroup</b> &mdash; a more distant relative used to tell ancient features from newly evolved ones.</li>
+                <li><b>Ancestral fragment</b> &mdash; a stretch of chromosome inferred to have been intact in the ancestor.</li>
+              </ol>
+            </article>
+            <article class="rs-card" style="--sc:#2fb36d">
+              <div class="rs-viz"><svg viewBox="0 0 360 150" role="img" aria-label="Transposable elements concentrate in breakpoint regions and chromosome ends">
+<rect x="24" y="53" width="2" height="9" class="c" opacity=".85"/><rect x="27" y="47" width="2" height="15" class="c" opacity=".85"/><rect x="30" y="53" width="2" height="9" class="c" opacity=".85"/><rect x="33" y="46" width="2" height="16" class="c" opacity=".85"/><rect x="45" y="46" width="2" height="16" class="c" opacity=".85"/><rect x="48" y="42" width="2" height="20" class="c" opacity=".85"/><rect x="51" y="53" width="2" height="9" class="c" opacity=".85"/><rect x="54" y="54" width="2" height="8" class="c" opacity=".85"/><rect x="84" y="54" width="2" height="8" class="c" opacity=".85"/><rect x="114" y="56" width="2" height="6" class="c" opacity=".85"/><rect x="147" y="58" width="2" height="4" class="c" opacity=".85"/><rect x="156" y="44" width="2" height="18" class="c" opacity=".85"/><rect x="159" y="49" width="2" height="13" class="c" opacity=".85"/><rect x="162" y="44" width="2" height="18" class="c" opacity=".85"/><rect x="165" y="48" width="2" height="14" class="c" opacity=".85"/><rect x="171" y="47" width="2" height="15" class="c" opacity=".85"/><rect x="174" y="49" width="2" height="13" class="c" opacity=".85"/><rect x="177" y="45" width="2" height="17" class="c" opacity=".85"/><rect x="180" y="46" width="2" height="16" class="c" opacity=".85"/><rect x="183" y="49" width="2" height="13" class="c" opacity=".85"/><rect x="186" y="54" width="2" height="8" class="c" opacity=".85"/><rect x="189" y="50" width="2" height="12" class="c" opacity=".85"/><rect x="195" y="51" width="2" height="11" class="c" opacity=".85"/><rect x="207" y="56" width="2" height="6" class="c" opacity=".85"/><rect x="225" y="56" width="2" height="6" class="c" opacity=".85"/><rect x="246" y="54" width="2" height="8" class="c" opacity=".85"/><rect x="267" y="58" width="2" height="4" class="c" opacity=".85"/><rect x="294" y="58" width="2" height="4" class="c" opacity=".85"/><rect x="297" y="57" width="2" height="5" class="c" opacity=".85"/><rect x="306" y="46" width="2" height="16" class="c" opacity=".85"/><rect x="309" y="51" width="2" height="11" class="c" opacity=".85"/><rect x="312" y="54" width="2" height="8" class="c" opacity=".85"/><rect x="315" y="46" width="2" height="16" class="c" opacity=".85"/><rect x="318" y="48" width="2" height="14" class="c" opacity=".85"/><rect x="321" y="51" width="2" height="11" class="c" opacity=".85"/><rect x="324" y="51" width="2" height="11" class="c" opacity=".85"/><rect x="327" y="47" width="2" height="15" class="c" opacity=".85"/><rect x="330" y="48" width="2" height="14" class="c" opacity=".85"/><rect x="333" y="44" width="2" height="18" class="c" opacity=".85"/><rect x="24" y="64" width="312" height="10" rx="5" class="g"/>
+<rect x="150" y="64" width="46" height="10" rx="3" class="c" opacity=".35"/><text x="148" y="90" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="700" fill="var(--sc)">breakpoint</text>
+<text x="24" y="90" font-family="JetBrains Mono, monospace" font-size="10.5" fill="currentColor" opacity=".75">chromosome end</text>
+<text x="24" y="116" font-family="JetBrains Mono, monospace" font-size="10.5" fill="currentColor" opacity=".75">TE share</text>
+<rect x="100" y="106" width="36" height="12" rx="3" class="g"/><text x="140" y="116" font-family="JetBrains Mono, monospace" font-size="10.5" fill="currentColor" opacity=".75">expected</text>
+<rect x="100" y="124" width="76" height="12" rx="3" class="c"/><text x="180" y="134" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="700" fill="var(--sc)">observed</text></svg></div>
+              <header><h4>Repeats &amp; function</h4></header>
+              <p class="rs-lead">Understanding the repetitive DNA that shapes genomes and what genes do.</p>
+              <ol>
+                <li><b>Transposable element</b> &mdash; a DNA sequence that can copy itself or move to new places in the genome.</li>
+                <li><b>Repeat masking</b> &mdash; marking repetitive sequence so it does not confuse gene and alignment analysis.</li>
+                <li><b>Functional enrichment</b> &mdash; testing whether a gene set is unusually rich in particular pathways or functions.</li>
+              </ol>
+            </article>
+            <article class="rs-card" style="--sc:#e0527a">
+              <div class="rs-viz"><svg viewBox="0 0 360 150" role="img" aria-label="Observed value compared with a null distribution from 10,000 permutations">
+<rect x="30.0" y="118.0" width="8.5" height="0.0" rx="2" class="g"/><rect x="41.0" y="117.9" width="8.5" height="0.1" rx="2" class="g"/><rect x="52.0" y="117.7" width="8.5" height="0.3" rx="2" class="g"/><rect x="63.0" y="117.0" width="8.5" height="1.0" rx="2" class="g"/><rect x="74.0" y="115.5" width="8.5" height="2.5" rx="2" class="g"/><rect x="85.0" y="112.1" width="8.5" height="5.9" rx="2" class="g"/><rect x="96.0" y="105.7" width="8.5" height="12.3" rx="2" class="g"/><rect x="107.0" y="95.0" width="8.5" height="23.0" rx="2" class="g"/><rect x="118.0" y="79.6" width="8.5" height="38.4" rx="2" class="g"/><rect x="129.0" y="61.0" width="8.5" height="57.0" rx="2" class="g"/><rect x="140.0" y="42.3" width="8.5" height="75.7" rx="2" class="g"/><rect x="151.0" y="28.2" width="8.5" height="89.8" rx="2" class="g"/><rect x="162.0" y="23.0" width="8.5" height="95.0" rx="2" class="g"/><rect x="173.0" y="28.2" width="8.5" height="89.8" rx="2" class="g"/><rect x="184.0" y="42.3" width="8.5" height="75.7" rx="2" class="g"/><rect x="195.0" y="61.0" width="8.5" height="57.0" rx="2" class="g"/><rect x="206.0" y="79.6" width="8.5" height="38.4" rx="2" class="g"/><rect x="217.0" y="95.0" width="8.5" height="23.0" rx="2" class="g"/><rect x="228.0" y="105.7" width="8.5" height="12.3" rx="2" class="g"/><rect x="239.0" y="112.1" width="8.5" height="5.9" rx="2" class="g"/><rect x="250.0" y="115.5" width="8.5" height="2.5" rx="2" class="g"/><rect x="261.0" y="117.0" width="8.5" height="1.0" rx="2" class="g"/><rect x="272.0" y="117.7" width="8.5" height="0.3" rx="2" class="g"/><rect x="283.0" y="117.9" width="8.5" height="0.1" rx="2" class="g"/><rect x="294.0" y="118.0" width="8.5" height="0.0" rx="2" class="g"/><line x1="24" y1="118" x2="336" y2="118" stroke="currentColor" opacity=".35"/>
+<line x1="286" y1="28" x2="286" y2="118" class="cs" stroke-width="2.4"/><circle cx="286" cy="28" r="4.5" class="c"/>
+<text x="224" y="22" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="700" fill="var(--sc)">observed</text>
+<line x1="162" y1="40" x2="162" y2="118" stroke="currentColor" stroke-dasharray="4 4" opacity=".5"/>
+<text x="24" y="138" font-family="JetBrains Mono, monospace" font-size="10.5" fill="currentColor" opacity=".75">null distribution</text></svg></div>
+              <header><h4>Statistics</h4></header>
+              <p class="rs-lead">Telling a real biological pattern apart from chance.</p>
+              <ol>
+                <li><b>Permutation test</b> &mdash; comparing an observed value with many random rearrangements of the same data.</li>
+                <li><b>Odds ratio</b> &mdash; how many times more likely an outcome is in one group than in another.</li>
+                <li><b>Multiple-testing correction</b> &mdash; adjusting significance when many tests are run, to limit false positives.</li>
+              </ol>
+            </article>
         </div>
       </div>
     </section>
@@ -822,73 +987,75 @@
     <!-- ================= PUBLICATIONS ================= -->
     <section id="publications">
       <div class="wrap">
-        <div class="sec-head"><h2>Publications</h2></div>
-
-        <div class="pubgroup-title">Main publications</div>
-        <div class="pub">
-          <div class="yr">2026</div>
-          <div>
-            <div class="title">CHITRA: an interactive visualization tool for comparative genomic rearrangement analysis</div>
-            <div class="meta">Pruthi P, <b>Bhatia A</b>, Agarwal P, Shukla N, Rani L, Narayan J. <i>Bioinformatics Advances</i>, 6(1), vbag200. <a href="https://doi.org/10.1093/bioadv/vbag200" target="_blank" rel="noopener">doi:10.1093/bioadv/vbag200</a></div>
-          </div>
+        <div class="sec-head"><h2>Publications</h2>
         </div>
-        <div class="pub">
-          <div class="yr">2025</div>
-          <div>
-            <div class="title">getENRICH: a tool for the gene and pathway enrichment analysis of non-model organisms <span class="chip">First author</span></div>
-            <div class="meta"><b>Bhatia A</b>, Pruthi P, Chakraborty I, Shukla N, Narayan J. <i>Bioinformatics Advances</i>, 5(1), vbaf023. <a href="https://doi.org/10.1093/bioadv/vbaf023" target="_blank" rel="noopener">doi:10.1093/bioadv/vbaf023</a></div>
-          </div>
+        <div class="pb-stats">
+          <div><b>8</b><span>papers</span></div>
+          <div><b>3</b><span>first-author</span></div>
+          <div><b>1</b><span>under review</span></div>
+          <div><b>1</b><span>book chapter</span></div>
         </div>
-        <div class="pub">
-          <div class="yr">2020</div>
-          <div>
-            <div class="title">Altitudinal variation of goat blood biochemical and antioxidant parameters in a sub-tropical region of India <span class="chip">First author</span></div>
-            <div class="meta"><b>Bhatia A</b>, Kumar S, Kumari M, Kumari N, Badhan K, Giri A. <i>Journal of EcoScience and Technology</i>, 1, 1&ndash;6.</div>
+        <div class="pb-bar">
+          <div class="pb-tabs" role="tablist" aria-label="Filter publications">
+            <button type="button" class="on" data-f="all" role="tab" aria-selected="true">All <i>8</i></button>
+            <button type="button" data-f="main" role="tab" aria-selected="false">Main <i>3</i></button>
+            <button type="button" data-f="review" role="tab" aria-selected="false">Under review <i>1</i></button>
+            <button type="button" data-f="contrib" role="tab" aria-selected="false">Contributing <i>4</i></button>
           </div>
-        </div>
-
-        <div class="pubgroup-title">Under review</div>
-        <div class="pub">
-          <div class="yr">2026</div>
-          <div>
-            <div class="title">SyBR: a scalable Snakemake workflow for synteny inference, evolutionary breakpoint detection, and functional analysis <span class="chip warn">Submitted</span> <span class="chip">First author</span></div>
-            <div class="meta"><b>Bhatia A</b>, Pruthi P, De A, Narayan J. Submitted to <i>BMC Bioinformatics</i>, 30 July 2026. <a href="https://github.com/BioinformaticsOnLine/Sybr" target="_blank" rel="noopener">Code</a></div>
-          </div>
-        </div>
-
-        <div class="pubgroup-title">Contributing author</div>
-        <div class="pub">
-          <div class="yr">2025</div>
-          <div>
-            <div class="title">Structural insights reveal long-SSRs may affect 4Fe&ndash;4S protein flexibility and function in methanogenesis</div>
-            <div class="meta">Mahfooz S, Anand P, <b>Bhatia A</b>, et al. <i>Journal of Basic Microbiology</i>, 65, e70111. <a href="https://doi.org/10.1002/jobm.70111" target="_blank" rel="noopener">doi:10.1002/jobm.70111</a></div>
-          </div>
-        </div>
-        <div class="pub">
-          <div class="yr">2024</div>
-          <div>
-            <div class="title">Comparative genome analysis reveals driving forces behind Monkeypox virus evolution and sheds light on the role of ATC trinucleotide motif</div>
-            <div class="meta">Agarwal P, Shukla N, <b>Bhatia A</b>, Mahfooz S, Narayan J. <i>Virus Evolution</i>, 10(1), veae043. <a href="https://doi.org/10.1093/ve/veae043" target="_blank" rel="noopener">doi:10.1093/ve/veae043</a></div>
-          </div>
-        </div>
-        <div class="pub">
-          <div class="yr">2024</div>
-          <div>
-            <div class="title">Computational insights into the microbial universe <span class="chip">Book chapter</span></div>
-            <div class="meta">Patel M, <b>Bhatia A</b>, Shukla N, Shukla SK, Narayan J. In <i>Unraveling New Frontiers and Advances in Bioinformatics</i> (eds. Chaudhary A, Sethi SK, Verma A). Springer, Singapore. <a href="https://doi.org/10.1007/978-981-97-7123-3_2" target="_blank" rel="noopener">doi:10.1007/978-981-97-7123-3_2</a></div>
-          </div>
-        </div>
-        <div class="pub">
-          <div class="yr">2020</div>
-          <div>
-            <div class="title">Compost from the food waste for organic production of cabbage, cauliflower, and radish under sub-tropical conditions</div>
-            <div class="meta">Kumari N, Sharma A, Devi M, Zargar A, Kumar S, Thakur U, <b>Bhatia A</b>, et al. <i>International Journal of Recycling of Organic Waste in Agriculture</i>, 9(4), 367&ndash;383. <a href="https://doi.org/10.30486/ijrowa.2020.1895397.1049" target="_blank" rel="noopener">doi:10.30486/ijrowa.2020.1895397.1049</a></div>
-          </div>
-        </div>
-
-        <div class="profile-links">
+          <div class="pb-links2">
           <a class="pill" href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener">Google Scholar &rarr;</a>
           <a class="pill" href="https://orcid.org/0009-0005-2908-5882" target="_blank" rel="noopener">ORCID 0009-0005-2908-5882 &rarr;</a>
+          </div>
+        </div>
+        <div class="pb-grid" id="pbGrid">
+          <article class="pb has-link" data-g="main" style="--sc:#0f8aa0">
+            <div class="pb-top"><span class="pb-year">2026</span><span class="pb-tags"><span class="pb-grp">Main</span><span class="pb-tag">Journal article</span></span></div>
+            <h3 class="pb-title"><a href="https://doi.org/10.1093/bioadv/vbag200" target="_blank" rel="noopener">CHITRA: an interactive visualization tool for comparative genomic rearrangement analysis</a></h3>
+            <p class="pb-auth">Pruthi P, <b>Bhatia A</b>, Agarwal P, Shukla N, Rani L, Narayan J.</p>
+            <p class="pb-venue"><i>Bioinformatics Advances</i>, 6(1), vbag200</p>
+          </article>
+          <article class="pb has-link" data-g="main" style="--sc:#0f8aa0">
+            <div class="pb-top"><span class="pb-year">2025</span><span class="pb-tags"><span class="pb-grp">Main</span><span class="pb-tag">Journal article</span><span class="pb-tag fa">First author</span></span></div>
+            <h3 class="pb-title"><a href="https://doi.org/10.1093/bioadv/vbaf023" target="_blank" rel="noopener">getENRICH: a tool for the gene and pathway enrichment analysis of non-model organisms</a></h3>
+            <p class="pb-auth"><b>Bhatia A</b>, Pruthi P, Chakraborty I, Shukla N, Narayan J.</p>
+            <p class="pb-venue"><i>Bioinformatics Advances</i>, 5(1), vbaf023</p>
+          </article>
+          <article class="pb" data-g="main" style="--sc:#0f8aa0">
+            <div class="pb-top"><span class="pb-year">2020</span><span class="pb-tags"><span class="pb-grp">Main</span><span class="pb-tag">Journal article</span><span class="pb-tag fa">First author</span></span></div>
+            <h3 class="pb-title">Altitudinal variation of goat blood biochemical and antioxidant parameters in a sub-tropical region of India</h3>
+            <p class="pb-auth"><b>Bhatia A</b>, Kumar S, Kumari M, Kumari N, Badhan K, Giri A.</p>
+            <p class="pb-venue"><i>Journal of EcoScience and Technology</i>, 1, 1&ndash;6</p>
+          </article>
+          <article class="pb has-link" data-g="review" style="--sc:#d9822b">
+            <div class="pb-top"><span class="pb-year">2026</span><span class="pb-tags"><span class="pb-grp">Under review</span><span class="pb-tag fa">First author</span></span></div>
+            <h3 class="pb-title"><a href="https://github.com/BioinformaticsOnLine/Sybr" target="_blank" rel="noopener">SyBR: a scalable Snakemake workflow for synteny inference, evolutionary breakpoint detection, and functional analysis</a></h3>
+            <p class="pb-auth"><b>Bhatia A</b>, Pruthi P, De A, Narayan J.</p>
+            <p class="pb-venue">Submitted to <i>BMC Bioinformatics</i>, 30 July 2026</p>
+          </article>
+          <article class="pb has-link" data-g="contrib" style="--sc:#6a4fd0">
+            <div class="pb-top"><span class="pb-year">2025</span><span class="pb-tags"><span class="pb-grp">Contributing</span><span class="pb-tag">Journal article</span></span></div>
+            <h3 class="pb-title"><a href="https://doi.org/10.1002/jobm.70111" target="_blank" rel="noopener">Structural insights reveal long-SSRs may affect 4Fe&ndash;4S protein flexibility and function in methanogenesis</a></h3>
+            <p class="pb-auth">Mahfooz S, Anand P, <b>Bhatia A</b>, et al.</p>
+            <p class="pb-venue"><i>Journal of Basic Microbiology</i>, 65, e70111</p>
+          </article>
+          <article class="pb has-link" data-g="contrib" style="--sc:#6a4fd0">
+            <div class="pb-top"><span class="pb-year">2024</span><span class="pb-tags"><span class="pb-grp">Contributing</span><span class="pb-tag">Journal article</span></span></div>
+            <h3 class="pb-title"><a href="https://doi.org/10.1093/ve/veae043" target="_blank" rel="noopener">Comparative genome analysis reveals driving forces behind Monkeypox virus evolution and sheds light on the role of ATC trinucleotide motif</a></h3>
+            <p class="pb-auth">Agarwal P, Shukla N, <b>Bhatia A</b>, Mahfooz S, Narayan J.</p>
+            <p class="pb-venue"><i>Virus Evolution</i>, 10(1), veae043</p>
+          </article>
+          <article class="pb has-link" data-g="contrib" style="--sc:#6a4fd0">
+            <div class="pb-top"><span class="pb-year">2024</span><span class="pb-tags"><span class="pb-grp">Contributing</span><span class="pb-tag">Book chapter</span></span></div>
+            <h3 class="pb-title"><a href="https://doi.org/10.1007/978-981-97-7123-3_2" target="_blank" rel="noopener">Computational insights into the microbial universe</a></h3>
+            <p class="pb-auth">Patel M, <b>Bhatia A</b>, Shukla N, Shukla SK, Narayan J.</p>
+            <p class="pb-venue">In <i>Unraveling New Frontiers and Advances in Bioinformatics</i> (eds. Chaudhary A, Sethi SK, Verma A). Springer, Singapore</p>
+          </article>
+          <article class="pb has-link" data-g="contrib" style="--sc:#6a4fd0">
+            <div class="pb-top"><span class="pb-year">2020</span><span class="pb-tags"><span class="pb-grp">Contributing</span><span class="pb-tag">Journal article</span></span></div>
+            <h3 class="pb-title"><a href="https://doi.org/10.30486/ijrowa.2020.1895397.1049" target="_blank" rel="noopener">Compost from the food waste for organic production of cabbage, cauliflower, and radish under sub-tropical conditions</a></h3>
+            <p class="pb-auth">Kumari N, Sharma A, Devi M, Zargar A, Kumar S, Thakur U, <b>Bhatia A</b>, et al.</p>
+            <p class="pb-venue"><i>International Journal of Recycling of Organic Waste in Agriculture</i>, 9(4), 367&ndash;383</p>
+          </article>
         </div>
       </div>
     </section>
@@ -897,29 +1064,52 @@
     <section id="teaching">
       <div class="wrap">
         <div class="sec-head"><h2>Teaching, workshops &amp; conferences</h2></div>
-        <div class="two-col">
-          <div class="card">
-            <h3 style="margin-bottom:16px;">Workshops &amp; training</h3>
-            <div class="timeline">
-              <div class="t-item">
-                <div class="t-when">NOV 2025 &amp; MAR 2026</div>
-                <p><b>Organiser and Instructor</b> &mdash; five-day hands-on workshop &ldquo;Bioinformatics for One Health and Pathogen-Specific Research&rdquo;, CSIR-IGIB with ICMR, New Delhi. Training in One Health, genomics, AMR and bioinformatics.<br>1st edition: 3&ndash;7 Nov 2025 &middot; 2nd edition: 16&ndash;20 Mar 2026</p>
-              </div>
-              <div class="t-item" style="margin-bottom:0;">
-                <div class="t-when">SEP 2025 &ndash; MAR 2026</div>
-                <p><b>Instructor</b> &mdash; Skill India training &ldquo;Genomics and Molecular Technologies for Industrial Applications&rdquo;, CSIR-IGIB, New Delhi.<br>1&ndash;30 Sep 2025 &middot; 1&ndash;7 Feb 2026 (online) &middot; 16&ndash;27 Mar 2026</p>
-              </div>
+        <div class="ev-group"><span class="ev-gl">Workshops &amp; training</span></div>
+        <div class="collage" id="collage" aria-label="Workshop photos">
+          <figure class="cl"><div class="cl-ph" aria-hidden="true"></div><img src="workshop-1.jpg" alt="Workshop photo 1" loading="lazy" data-base="workshop-1"></figure>
+          <figure class="cl"><div class="cl-ph" aria-hidden="true"></div><img src="workshop-2.jpg" alt="Workshop photo 2" loading="lazy" data-base="workshop-2"></figure>
+          <figure class="cl"><div class="cl-ph" aria-hidden="true"></div><img src="workshop-3.jpg" alt="Workshop photo 3" loading="lazy" data-base="workshop-3"></figure>
+        </div>
+        <div class="ev-grid one">
+          <article class="ev ws-box">
+            <div class="ws-list">
+            <div class="ws-item" style="--sc:#0f8aa0">
+              <div class="ws-top"><span class="ws-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l9-4 9 4-9 4zM7 10.5V15c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-4.5M21 8v5"/></svg></span><span class="ws-when">NOV 2025 &amp; MAR 2026</span></div>
+              <span class="ev-role">Organiser and Instructor</span>
+              <h4>Bioinformatics for One Health and Pathogen-Specific Research</h4>
+              <span class="ev-sub">Five-day hands-on workshop &middot; CSIR-IGIB with ICMR, New Delhi</span>
+              <p>Training in One Health, genomics, AMR and bioinformatics.</p>
+              <ul class="ev-dates"><li>1st edition &middot; 3&ndash;7 Nov 2025</li><li>2nd edition &middot; 16&ndash;20 Mar 2026</li></ul>
+            
             </div>
-          </div>
-          <div class="card">
-            <h3 style="margin-bottom:16px;">Conferences</h3>
-            <div class="timeline">
-              <div class="t-item" style="margin-bottom:0;">
-                <div class="t-when">25&ndash;27 FEB 2026</div>
-                <p><b>Poster presentation</b> &mdash; National Conference on Emerging Trends in Bioinformatics and Computational Biology (ETBCB 2026), Bioinformatics Centre, Savitribai Phule Pune University, Pune.<br>&ldquo;getENRICH: A Comprehensive Tool for Gene and Pathway Enrichment Analysis in Non-Model Organisms&rdquo;</p>
-              </div>
+            <div class="ws-item" style="--sc:#d9822b">
+              <div class="ws-top"><span class="ws-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3M8 15h8"/></svg></span><span class="ws-when">SEP 2025 &ndash; MAR 2026</span></div>
+              <span class="ev-role">Instructor</span>
+              <h4>Genomics and Molecular Technologies for Industrial Applications</h4>
+              <span class="ev-sub">Skill India training &middot; CSIR-IGIB, New Delhi</span>
+              <p>Hands-on training in genomics and molecular technologies.</p>
+              <ul class="ev-dates"><li>1&ndash;30 Sep 2025</li><li>1&ndash;7 Feb 2026 (online)</li><li>16&ndash;27 Mar 2026</li></ul>
+            
             </div>
-          </div>
+            </div>
+          </article>
+        </div>
+        <div class="ev-group"><span class="ev-gl">Conferences</span></div>
+        <div class="ev-grid one">
+          <article class="ev wide" style="--sc:#6a4fd0">
+            <figure class="ev-media">
+              <div class="ev-fallback" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 4h18v11H3zM12 15v5M8 20h8M7 11l3-3 2.5 2.5L17 7"/></svg></div>
+              <img src="conference.jpg" alt="getENRICH: A Comprehensive Tool for Gene and Pathway Enrichment Analysis in Non-Model Organisms" loading="lazy" data-base="conference">
+              <span class="ev-date">25&ndash;27 FEB 2026</span>
+            </figure>
+            <div class="ev-body">
+              <span class="ev-role">Poster presentation</span>
+              <h4>getENRICH: A Comprehensive Tool for Gene and Pathway Enrichment Analysis in Non-Model Organisms</h4>
+              <span class="ev-sub">ETBCB 2026 &middot; National Conference on Emerging Trends in Bioinformatics and Computational Biology</span>
+              <p>Bioinformatics Centre, Savitribai Phule Pune University, Pune.</p>
+              <ul class="ev-dates"><li>25&ndash;27 Feb 2026</li></ul>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -1071,6 +1261,35 @@
         if(k<exts.length){ img.src=base+'.'+exts[k++]; }
         else { img.parentNode.classList.add('empty'); }
       });
+    });
+  })();
+  (function(){
+    var tabs=document.querySelectorAll('.pb-tabs button'),cards=document.querySelectorAll('#pbGrid .pb');
+    tabs.forEach(function(t){ t.addEventListener('click',function(){
+      var f=t.getAttribute('data-f');
+      tabs.forEach(function(x){ var on=x===t; x.classList.toggle('on',on); x.setAttribute('aria-selected',on); });
+      cards.forEach(function(c){ c.hidden = !(f==='all'||c.getAttribute('data-g')===f); });
+    }); });
+  })();
+  (function(){
+    var exts=['jpg','jpeg','png','JPG','PNG','webp'];
+    document.querySelectorAll('.ev-media img').forEach(function(img){
+      var base=img.getAttribute('data-base'),k=1,fig=img.parentNode;
+      img.addEventListener('load',function(){ fig.classList.add('has-img'); });
+      img.addEventListener('error',function(){
+        if(k<exts.length){ img.src=base+'.'+exts[k++]; } else { img.remove(); }
+      });
+    });
+  })();
+  (function(){
+    var box=document.getElementById('collage'); if(!box) return;
+    var exts=['jpg','jpeg','png','JPG','PNG','webp'],slots=[].slice.call(box.querySelectorAll('.cl')),pending=slots.length,ok=0;
+    function done(){ if(--pending>0) return; if(ok>0){ box.classList.add('has-photos'); slots.forEach(function(c){ if(!c.getAttribute('data-ok')) c.classList.add('off'); }); } }
+    slots.forEach(function(c){
+      var img=c.querySelector('img'),base=img.getAttribute('data-base'),k=1;
+      img.addEventListener('load',function(){ c.setAttribute('data-ok','1'); ok++; done(); });
+      img.addEventListener('error',function(){ if(k<exts.length){ img.src=base+'.'+exts[k++]; } else { img.remove(); done(); } });
+      img.loading='eager'; img.src=img.src;
     });
   })();
 </script>
