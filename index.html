@@ -265,21 +265,40 @@
     .callout span { color: var(--muted); }
 
     /* tools */
-    .tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px; }
-    .tool { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; box-shadow: var(--shadow); display: flex; flex-direction: column; overflow: hidden; transition: transform .18s ease, border-color .18s ease; }
-    .tool::before { content: ""; position: absolute; left: 0; top: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
-    .tool:hover { transform: translateY(-3px); border-color: var(--accent); }
-    .tool .tag { font-family: var(--mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); font-weight: 700; margin-bottom: 8px; }
-    .tool h3 { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 8px; }
-    .tool p { color: var(--muted); font-size: .92rem; flex: 1; margin-bottom: 14px; }
-    .status { display: inline-block; font-size: .72rem; font-weight: 600; line-height: 1.4; padding: 4px 11px; border-radius: 8px; background: var(--surface-2); color: var(--muted); margin-bottom: 14px; align-self: flex-start; }
-    .status.ok { background: color-mix(in srgb, var(--nuc-a) 18%, transparent); color: var(--text); }
-    .status.rev { background: color-mix(in srgb, var(--nuc-g) 22%, transparent); color: var(--text); }
-    .tool .links { display: flex; gap: 10px; flex-wrap: wrap; }
-    .tool .links a { font-size: .85rem; font-weight: 600; padding: 7px 13px; border: 1px solid var(--border); border-radius: 8px; color: var(--text); }
-    .tool .links a:first-child { background: var(--accent); border-color: var(--accent); color: #fff; }
-    @media (prefers-color-scheme: dark) { .tool .links a:first-child { color: #06222a; } }
-    .tool .links a:hover { text-decoration: none; filter: brightness(1.07); }
+    .tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
+    .tool { --tc: var(--accent); position: relative; display: flex; flex-direction: column; padding: 26px 24px 22px; border-radius: 20px; overflow: hidden; isolation: isolate;
+      background: linear-gradient(160deg, color-mix(in srgb, var(--tc) 9%, var(--surface)) 0%, var(--surface) 55%);
+      border: 1px solid color-mix(in srgb, var(--tc) 22%, var(--border)); box-shadow: var(--shadow);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
+    .tool:nth-child(2) { --tc: var(--accent-2); }
+    .tool:nth-child(3) { --tc: #d9822b; }
+    .tool::before { content: ""; position: absolute; z-index: -1; right: -70px; top: -70px; width: 200px; height: 200px; border-radius: 50%;
+      background: radial-gradient(circle, color-mix(in srgb, var(--tc) 26%, transparent), transparent 68%); transition: transform .4s ease; }
+    .tool:hover { transform: translateY(-5px); border-color: var(--tc); box-shadow: 0 22px 44px color-mix(in srgb, var(--tc) 20%, transparent); }
+    .tool:hover::before { transform: scale(1.35); }
+    .tool-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+    .tool-ico { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; color: #fff;
+      background: linear-gradient(135deg, var(--tc), color-mix(in srgb, var(--tc) 55%, #000)); box-shadow: 0 8px 18px color-mix(in srgb, var(--tc) 38%, transparent); }
+    .tool-ico svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .tool-ico { position: relative; overflow: hidden; }
+    .tool-ico img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 6px; background: #fff; }
+    .tool-ico.has-logo { background: #fff; box-shadow: 0 6px 16px rgba(16,32,50,.18); border: 1px solid color-mix(in srgb, var(--tc) 25%, var(--border)); }
+    .tool .tag { font-family: var(--mono); font-size: .66rem; text-transform: uppercase; letter-spacing: .09em; font-weight: 700; color: var(--tc);
+      padding: 5px 11px; border-radius: 999px; background: color-mix(in srgb, var(--tc) 12%, transparent); border: 1px solid color-mix(in srgb, var(--tc) 28%, transparent); }
+    .tool h3 { font-family: var(--serif); font-size: 1.75rem; line-height: 1.1; letter-spacing: -.01em; margin-bottom: 10px; }
+    .status { display: inline-flex; align-items: center; gap: 8px; font-size: .76rem; font-weight: 600; line-height: 1.4; color: var(--muted); margin-bottom: 14px; align-self: flex-start; }
+    .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--muted); flex: none; }
+    .status.ok::before { background: #2fb36d; box-shadow: 0 0 0 4px rgba(47,179,109,.18); }
+    .status.rev::before { background: #e0a21b; box-shadow: 0 0 0 4px rgba(224,162,27,.2); }
+    .tool p { color: var(--muted); font-size: .93rem; line-height: 1.65; flex: 1; margin-bottom: 20px; }
+    .tool .links { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 16px; border-top: 1px dashed color-mix(in srgb, var(--tc) 30%, var(--border)); }
+    .tool .links a { display: inline-flex; align-items: center; gap: 6px; font-size: .85rem; font-weight: 600; padding: 8px 14px; border-radius: 10px; color: var(--text);
+      background: color-mix(in srgb, var(--surface) 80%, transparent); border: 1px solid var(--border); transition: all .18s ease; }
+    .tool .links a::after { content: "\2197"; font-size: .95em; opacity: .7; transition: transform .18s ease; }
+    .tool .links a:first-child { background: var(--tc); border-color: var(--tc); color: #fff; }
+    @media (prefers-color-scheme: dark) { .tool .links a:first-child { color: #07141c; } }
+    .tool .links a:hover { text-decoration: none; transform: translateY(-1px); border-color: var(--tc); }
+    .tool .links a:hover::after { transform: translate(2px,-2px); }
 
     /* publications */
     .pubgroup-title { font-family: var(--mono); font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin: 30px 0 6px; }
@@ -509,7 +528,7 @@
         <div class="sec-head"><h2>Software &amp; web tools</h2></div>
         <div class="tools">
           <article class="tool">
-            <div class="tag">Lead developer</div>
+            <div class="tool-top"><span class="tool-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><img src="logo-getenrich.png" alt="" onload="this.parentNode.classList.add('has-logo')" onerror="this.remove()"></span><span class="tag">Lead developer</span></div>
             <h3>getENRICH</h3>
             <span class="status ok">Published &middot; Bioinformatics Advances, 2025</span>
             <p>Gene and pathway enrichment analysis (GO, KEGG) for non-model organisms. Available as a web server and a command-line tool.</p>
@@ -520,7 +539,7 @@
           </article>
 
           <article class="tool">
-            <div class="tag">Lead developer</div>
+            <div class="tool-top"><span class="tool-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7h10M17 7h4M3 17h4M11 17h10"/><path d="M13 7l-2 10"/></svg><img src="logo-sybr.png" alt="" onload="this.parentNode.classList.add('has-logo')" onerror="this.remove()"></span><span class="tag">Lead developer</span></div>
             <h3>SyBR</h3>
             <span class="status rev">Under review &middot; BMC Bioinformatics</span>
             <p>Scalable Snakemake workflow for synteny inference, evolutionary breakpoint detection and functional analysis. Web server and command-line tool.</p>
@@ -531,7 +550,7 @@
           </article>
 
           <article class="tool">
-            <div class="tag">Co-developer</div>
+            <div class="tool-top"><span class="tool-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="8" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7l8 1M7 8l4 8M17 10.5l-4 5.5"/></svg><img src="logo-chitra.png" alt="" onload="this.parentNode.classList.add('has-logo')" onerror="this.remove()"></span><span class="tag">Co-developer</span></div>
             <h3>CHITRA</h3>
             <span class="status ok">Published &middot; Bioinformatics Advances, 2026</span>
             <p>Interactive visualisation tool for comparative genomic rearrangement analysis.</p>
