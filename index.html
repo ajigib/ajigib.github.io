@@ -221,6 +221,9 @@
     h2 { font-family: var(--serif); font-size: 1.85rem; letter-spacing: -.01em; line-height: 1.2; }
     h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
     p.lead { color: var(--muted); max-width: 720px; margin-bottom: 14px; font-size: 1.02rem; }
+    .about-full .lead { max-width: none; }
+    .about-edu { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: start; margin-top: 28px; }
+    .about-edu .callout { margin-top: 0 !important; }
     .two-col { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; }
 
     .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; box-shadow: var(--shadow); }
@@ -324,7 +327,7 @@
       .hero-dna.left { display: none; }
       .hero-code { opacity: .2; -webkit-mask-image: none; mask-image: none; }
       .portrait-wrap { order: -1; justify-self: start; }
-      .two-col, .contact-card { grid-template-columns: 1fr; }
+      .two-col, .contact-card, .about-edu { grid-template-columns: 1fr; }
       .workflow { grid-template-columns: repeat(2, 1fr); }
       .step:not(:last-child)::after { display: none; }
     }
@@ -367,9 +370,9 @@
       <nav aria-label="Main">
       <ul>
         <li class="li-top"><a class="to-top" href="#top" title="ajay.top()" aria-label="Back to top"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V7M6.5 12.5 12 7l5.5 5.5M5 3.5h14"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">top</span><span class="py-par">()</span></span></a></li>
+        <li><a href="#tools" title="ajay.tools()" aria-label="tools"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">tools</span><span class="py-par">()</span></span></a></li>
         <li><a href="#about" title="ajay.about()" aria-label="about"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">about</span><span class="py-par">()</span></span></a></li>
         <li><a href="#research" title="ajay.research()" aria-label="research"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6l-5.2 9.2A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-2.8L14 9V3"/><path d="M7.5 15h9"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">research</span><span class="py-par">()</span></span></a></li>
-        <li><a href="#tools" title="ajay.tools()" aria-label="tools"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">tools</span><span class="py-par">()</span></span></a></li>
         <li><a href="#publications" title="ajay.publications()" aria-label="publications"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">publications</span><span class="py-par">()</span></span></a></li>
         <li><a href="#teaching" title="ajay.teaching()" aria-label="teaching"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.6 2.7 3 6 3s6-1.4 6-3v-5"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">teaching</span><span class="py-par">()</span></span></a></li>
         <li><a href="#skills" title="ajay.skills()" aria-label="skills"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">skills</span><span class="py-par">()</span></span></a></li>
@@ -500,18 +503,57 @@
     </div>
     </div>
 
+    <!-- ================= TOOLS ================= -->
+    <section id="tools">
+      <div class="wrap">
+        <div class="sec-head"><h2>Software &amp; web tools</h2></div>
+        <div class="tools">
+          <article class="tool">
+            <div class="tag">Lead developer</div>
+            <h3>getENRICH</h3>
+            <span class="status ok">Published &middot; Bioinformatics Advances, 2025</span>
+            <p>Gene and pathway enrichment analysis (GO, KEGG) for non-model organisms. Available as a web server and a command-line tool.</p>
+            <div class="links">
+              <a href="https://getenrich.igib.res.in" target="_blank" rel="noopener">Web server</a>
+              <a href="https://github.com/BioinformaticsOnLine/getENRICH" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </article>
+
+          <article class="tool">
+            <div class="tag">Lead developer</div>
+            <h3>SyBR</h3>
+            <span class="status rev">Under review &middot; BMC Bioinformatics</span>
+            <p>Scalable Snakemake workflow for synteny inference, evolutionary breakpoint detection and functional analysis. Web server and command-line tool.</p>
+            <div class="links">
+              <a href="https://sybr.igib.res.in" target="_blank" rel="noopener">Web server</a>
+              <a href="https://github.com/BioinformaticsOnLine/Sybr" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </article>
+
+          <article class="tool">
+            <div class="tag">Co-developer</div>
+            <h3>CHITRA</h3>
+            <span class="status ok">Published &middot; Bioinformatics Advances, 2026</span>
+            <p>Interactive visualisation tool for comparative genomic rearrangement analysis.</p>
+            <div class="links">
+              <a href="https://chitra.bioinformaticsonline.com" target="_blank" rel="noopener">Web server</a>
+              <a href="https://github.com/BioinformaticsOnLine/CHITRA" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= ABOUT ================= -->
     <section id="about">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">01</span><h2>About</h2></div>
-        <div class="two-col">
-          <div>
+        <div class="sec-head"><h2>About</h2></div>
+        <div class="about-full">
             <p class="lead">I'm a doctoral researcher in Bioinformatics at the Academy of Scientific and Innovative Research (AcSIR), working in Dr. Jitendra Narayan's laboratory at CSIR-IGIB, New Delhi.</p>
-            <p class="lead">My thesis, <em>Computational Discovery, Analysis and Mapping of Horizontal Gene Transfer Events in Multicellular Organisms</em>, is at the submission stage, with the defence expected in January 2027.</p>
+            <p class="lead">My thesis is <em>Computational Discovery, Analysis and Mapping of Horizontal Gene Transfer Events in Multicellular Organisms</em>.</p>
             <p class="lead">I want to be part of meaningful research and innovative practices, using my knowledge and analytical skills for scientific advancement and a better quality of life.</p>
-            <div class="callout"><b>Thesis status</b><span>Submission stage &middot; Defence expected January 2027</span></div>
-          </div>
-          <div>
+        </div>
+        <div class="about-edu">
             <div class="card">
               <h3 style="margin-bottom:14px;">Education</h3>
               <div class="timeline">
@@ -530,7 +572,6 @@
               </div>
             </div>
             <div class="callout" style="margin-top:14px;"><b>CSIR-UGC NET JRF (Life Sciences), 2021&ndash;2026</b><span>National fellowship funding five years of doctoral research. Also qualified for Assistant Professor eligibility.</span></div>
-          </div>
         </div>
       </div>
     </section>
@@ -538,7 +579,7 @@
     <!-- ================= RESEARCH ================= -->
     <section id="research">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">02</span><h2>Research</h2></div>
+        <div class="sec-head"><h2>Research</h2></div>
         <div class="two-col">
           <div>
             <p class="lead" style="margin-bottom:0;">My work sits between evolutionary genomics and software engineering: finding where genomes have been rearranged or have borrowed genes, and packaging the methods so that others can reproduce them.</p>
@@ -649,51 +690,10 @@
       </div>
     </section>
 
-    <!-- ================= TOOLS ================= -->
-    <section id="tools">
-      <div class="wrap">
-        <div class="sec-head"><span class="sec-num">03</span><h2>Software &amp; web tools</h2></div>
-        <div class="tools">
-          <article class="tool">
-            <div class="tag">Lead developer</div>
-            <h3>getENRICH</h3>
-            <span class="status ok">Published &middot; Bioinformatics Advances, 2025</span>
-            <p>Gene and pathway enrichment analysis (GO, KEGG) for non-model organisms. Available as a web server and a command-line tool.</p>
-            <div class="links">
-              <a href="https://getenrich.igib.res.in" target="_blank" rel="noopener">Web server</a>
-              <a href="https://github.com/BioinformaticsOnLine/getENRICH" target="_blank" rel="noopener">GitHub</a>
-            </div>
-          </article>
-
-          <article class="tool">
-            <div class="tag">Lead developer</div>
-            <h3>SyBR</h3>
-            <span class="status rev">Under review &middot; BMC Bioinformatics</span>
-            <p>Scalable Snakemake workflow for synteny inference, evolutionary breakpoint detection and functional analysis. Web server and command-line tool.</p>
-            <div class="links">
-              <a href="https://sybr.igib.res.in" target="_blank" rel="noopener">Web server</a>
-              <a href="https://github.com/BioinformaticsOnLine/Sybr" target="_blank" rel="noopener">GitHub</a>
-            </div>
-          </article>
-
-          <article class="tool">
-            <div class="tag">Co-developer</div>
-            <h3>CHITRA</h3>
-            <span class="status ok">Published &middot; Bioinformatics Advances, 2026</span>
-            <p>Interactive visualisation tool for comparative genomic rearrangement analysis.</p>
-            <div class="links">
-              <a href="https://chitra.bioinformaticsonline.com" target="_blank" rel="noopener">Web server</a>
-              <a href="https://github.com/BioinformaticsOnLine/CHITRA" target="_blank" rel="noopener">GitHub</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <!-- ================= PUBLICATIONS ================= -->
     <section id="publications">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">04</span><h2>Publications</h2></div>
+        <div class="sec-head"><h2>Publications</h2></div>
 
         <div class="pubgroup-title">Main publications</div>
         <div class="pub">
@@ -767,7 +767,7 @@
     <!-- ================= TEACHING ================= -->
     <section id="teaching">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">05</span><h2>Teaching, workshops &amp; conferences</h2></div>
+        <div class="sec-head"><h2>Teaching, workshops &amp; conferences</h2></div>
         <div class="two-col">
           <div class="card">
             <h3 style="margin-bottom:16px;">Workshops &amp; training</h3>
@@ -798,7 +798,7 @@
     <!-- ================= SKILLS ================= -->
     <section id="skills">
       <div class="wrap">
-        <div class="sec-head"><span class="sec-num">06</span><h2>Skills &amp; toolkit</h2></div>
+        <div class="sec-head"><h2>Skills &amp; toolkit</h2></div>
         <div class="skills">
           <div class="card skillbox">
             <h3><i style="background:var(--nuc-a)"></i>Programming &amp; systems</h3>
