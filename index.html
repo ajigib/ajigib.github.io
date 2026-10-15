@@ -221,6 +221,10 @@
     h2 { font-family: var(--serif); font-size: 1.85rem; letter-spacing: -.01em; line-height: 1.2; }
     h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
     p.lead { color: var(--muted); max-width: 720px; margin-bottom: 14px; font-size: 1.02rem; }
+    .about-top { display: grid; grid-template-columns: minmax(0,1fr) minmax(260px,380px); gap: 40px; align-items: center; }
+    .about-top.no-img { grid-template-columns: 1fr; }
+    .about-fig { margin: 0; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); background: var(--surface-2); }
+    .about-fig img { display: block; width: 100%; height: auto; max-height: 440px; object-fit: cover; }
     .about-full .lead { max-width: none; }
     .about-edu { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: start; margin-top: 28px; }
     .about-edu .callout { margin-top: 0 !important; }
@@ -348,7 +352,7 @@
       .hero-dna.left { display: none; }
       .hero-code { opacity: .2; -webkit-mask-image: none; mask-image: none; }
       .portrait-wrap { order: -1; justify-self: start; }
-      .two-col, .contact-card, .about-edu { grid-template-columns: 1fr; }
+      .two-col, .contact-card, .about-edu, .about-top { grid-template-columns: 1fr; }
       .workflow { grid-template-columns: repeat(2, 1fr); }
       .step:not(:last-child)::after { display: none; }
     }
@@ -569,10 +573,15 @@
     <section id="about">
       <div class="wrap">
         <div class="sec-head"><h2>About</h2></div>
-        <div class="about-full">
+        <div class="about-top">
+          <div class="about-full">
             <p class="lead">I'm a doctoral researcher in Bioinformatics at the Academy of Scientific and Innovative Research (AcSIR), working in Dr. Jitendra Narayan's laboratory at CSIR-IGIB, New Delhi.</p>
             <p class="lead">My thesis is <em>Computational Discovery, Analysis and Mapping of Horizontal Gene Transfer Events in Multicellular Organisms</em>.</p>
             <p class="lead">I want to be part of meaningful research and innovative practices, using my knowledge and analytical skills for scientific advancement and a better quality of life.</p>
+          </div>
+          <figure class="about-fig" id="aboutFig">
+            <img id="aboutImg" src="about.jpg" alt="Ajay Bhatia at work" loading="lazy">
+          </figure>
         </div>
         <div class="about-edu">
             <div class="card">
@@ -947,6 +956,14 @@
       });
     }
   })();
-  </script>
+    (function(){
+    var img=document.getElementById('aboutImg'); if(!img) return;
+    var alts=['about.jpeg','about.png','about.JPG','about.PNG','about.webp'],k=0;
+    img.addEventListener('error',function(){
+      if(k<alts.length){ img.src=alts[k++]; }
+      else { var f=document.getElementById('aboutFig'); if(f) f.remove(); var t=document.querySelector('.about-top'); if(t) t.classList.add('no-img'); }
+    });
+  })();
+</script>
 </body>
 </html>
