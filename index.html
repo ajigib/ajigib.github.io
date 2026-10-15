@@ -260,6 +260,11 @@
     .jr-sub { display: block; font-size: .92rem; font-weight: 600; color: var(--sc); margin: 3px 0 10px; }
     .jr-text p { margin: 0 0 10px; font-size: .94rem; line-height: 1.6; color: var(--muted); }
     .jr-text p em { font-style: normal; opacity: .85; }
+    .jr-fel { max-width: 420px; display: flex; gap: 10px; align-items: flex-start; margin: 12px 0 10px; padding-top: 12px; border-top: 1px dashed color-mix(in srgb, var(--sc) 35%, var(--border)); text-align: left; }
+    .jr-fel svg { flex: none; width: 22px; height: 22px; margin-top: 2px; fill: none; stroke: var(--sc); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .jr-item.l .jr-fel { flex-direction: row-reverse; text-align: right; margin-left: auto; max-width: 420px; }
+    .jr-fel b { display: block; font-size: .88rem; line-height: 1.35; color: var(--text); }
+    .jr-fel em { display: block; font-style: normal; font-size: .8rem; line-height: 1.5; color: var(--muted); margin-top: 2px; }
     .jr-meta { font-family: var(--mono); font-size: .8rem; font-weight: 600; color: var(--text); }
     .jr-pic.empty { display: none; }
     @media (prefers-reduced-motion: reduce) { .jr-item.now .jr-node { animation: none; } }
@@ -516,6 +521,19 @@
     .pill:hover { border-color: var(--accent); text-decoration: none; }
 
     /* skills */
+    /* ---- skills: open ledger rows ---- */
+    .sk-rows { border-top: 2px solid var(--text); }
+    .sk-row { --sc: var(--accent); display: grid; grid-template-columns: 300px 1fr; gap: 10px 36px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .sk-head { display: flex; align-items: baseline; gap: 14px; }
+    .sk-head b { font-family: var(--mono); font-size: .8rem; font-weight: 800; color: var(--sc); letter-spacing: .04em; }
+    .sk-head h3 { margin: 0; font-family: var(--serif); font-size: 1.18rem; line-height: 1.25; position: relative; }
+    .sk-head h3::after { content: ""; display: block; width: 34px; height: 3px; border-radius: 3px; margin-top: 8px; background: var(--sc); transition: width .3s ease; }
+    .sk-row:hover .sk-head h3::after { width: 64px; }
+    .sk-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 0; font-family: var(--mono); font-size: .9rem; color: var(--text); }
+    .sk-list li { position: relative; padding: 2px 16px 2px 0; margin-right: 16px; }
+    .sk-list li::after { content: "/"; position: absolute; right: 0; top: 2px; color: var(--sc); opacity: .55; }
+    .sk-list li:last-child::after { content: none; }
+    .sk-list li:hover { color: var(--sc); }
     .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
     .skillbox h3 { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; }
     .skillbox h3 i { width: 9px; height: 9px; border-radius: 3px; display: inline-block; }
@@ -523,6 +541,34 @@
     .chips span { font-family: var(--mono); font-size: .76rem; padding: 4px 10px; border-radius: 7px; background: var(--surface-2); border: 1px solid var(--border); }
 
     /* contact */
+    /* ---- contact ---- */
+    .ct { position: relative; overflow: hidden; isolation: isolate; text-align: center; padding: 64px 40px 40px; border-radius: 28px; color: #eaf3fb; background: radial-gradient(rgba(255,255,255,.06) 1.2px, transparent 1.4px) 0 0 / 20px 20px, linear-gradient(160deg, #06101d, #0a2740 60%, #0b3a4f); box-shadow: 0 30px 60px rgba(6,16,29,.3); }
+    .ct-glow { position: absolute; z-index: -1; left: 50%; top: -140px; width: 640px; height: 420px; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(56,189,248,.38), transparent); filter: blur(10px); }
+    .ct-helix { position: absolute; z-index: -1; right: 28px; top: 22px; display: flex; gap: 10px; font-family: var(--mono); font-weight: 800; font-size: 1.1rem; }
+    .ct-helix span { color: #5ec8ff; opacity: .4; }
+    .ct-helix span:nth-child(4n+2) { color: #ff9d4d; } .ct-helix span:nth-child(4n+3) { color: #5be3a1; } .ct-helix span:nth-child(4n) { color: #ff6b8b; }
+    .ct .eyebrow { color: #7fe3ea; margin-bottom: 14px; }
+    .ct h2 { font-size: clamp(2rem, 4.4vw, 3.3rem); line-height: 1.12; color: #fff; margin: 0 0 18px; }
+    .ct h2 span { background: linear-gradient(90deg, #7fe3ea, #8fb4ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .ct-lead { max-width: 620px; margin: 0 auto 30px; color: #b6c9db; font-size: 1.02rem; line-height: 1.7; }
+    .ct-cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 40px; }
+    .ct-mail { display: inline-flex; align-items: center; gap: 12px; padding: 16px 28px; border-radius: 999px; font-weight: 700; font-size: 1.08rem; color: #04202f; background: linear-gradient(90deg, #7fe3ea, #8fd0ff); box-shadow: 0 12px 30px rgba(94,200,255,.35); transition: transform .2s ease, box-shadow .2s ease; }
+    .ct-mail svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .ct-mail:hover { transform: translateY(-3px); text-decoration: none; box-shadow: 0 18px 38px rgba(94,200,255,.5); }
+    .ct-copy { font: inherit; font-weight: 700; font-size: .95rem; cursor: pointer; padding: 16px 24px; border-radius: 999px; color: #eaf3fb; background: transparent; border: 1.5px solid rgba(255,255,255,.3); transition: background .2s ease, border-color .2s ease; }
+    .ct-copy:hover { background: rgba(255,255,255,.1); border-color: #7fe3ea; }
+    .ct-socs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 760px; margin: 0 auto 34px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,.14); }
+    .ct-soc { display: flex; flex-direction: column; align-items: center; gap: 4px; color: #eaf3fb; }
+    .ct-soc:hover { text-decoration: none; }
+    .ct-ico { width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 8px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2); transition: transform .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease; }
+    .ct-ico svg { width: 26px; height: 26px; fill: none; stroke: #7fe3ea; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: stroke .25s ease; }
+    .ct-soc:hover .ct-ico { transform: translateY(-5px) scale(1.06); background: #7fe3ea; border-color: #7fe3ea; box-shadow: 0 14px 28px rgba(94,200,255,.35); }
+    .ct-soc:hover .ct-ico svg { stroke: #04202f; }
+    .ct-soc b { font-size: .92rem; font-weight: 700; }
+    .ct-soc em { font-style: normal; font-family: var(--mono); font-size: .72rem; color: #9fb6ca; overflow-wrap: anywhere; }
+    .ct-loc { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0; font-size: .86rem; color: #9fb6ca; }
+    .ct-loc svg { width: 16px; height: 16px; flex: none; fill: none; stroke: #7fe3ea; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    @media (prefers-reduced-motion: reduce) { .ct-mail, .ct-ico { transition: none; } }
     .contact-card { display: grid; grid-template-columns: 1.1fr .9fr; gap: 30px; align-items: center; background: linear-gradient(150deg, #07111f, #0b2a40); color: #eaf3fb; border-radius: 18px; padding: 36px; position: relative; overflow: hidden; }
     .contact-card::after { content: "ATGC"; position: absolute; right: 18px; bottom: -22px; font-family: var(--mono); font-weight: 700; font-size: 6.5rem; letter-spacing: .1em; color: rgba(255,255,255,.04); pointer-events: none; }
     .contact-card h2 { color: #fff; margin-bottom: 10px; }
@@ -548,6 +594,8 @@
       .portrait-wrap { order: -1; justify-self: start; }
       .two-col, .contact-card, .about-edu, .about-top, .pb-grid { grid-template-columns: 1fr; }
       .ev-grid { grid-template-columns: 1fr; }
+      .sk-row { grid-template-columns: 1fr; gap: 12px; padding: 18px 0; }
+      .sk-list { font-size: .84rem; }
       .t1 { min-width: 1020px; }
       .ws-list { grid-template-columns: 1fr; }
       .ws-item + .ws-item { border-left: 0; border-top: 1px solid var(--border); }
@@ -558,6 +606,7 @@
       .ev.wide .ev-media { flex: none; aspect-ratio: 16 / 9; min-height: 0; }
       .ev.wide .ev-body { padding: 22px 24px; }
             .jr::before { left: 7px; margin-left: 0; }
+      .jr-item.l .jr-fel { flex-direction: row; text-align: left; margin-left: 0; max-width: none; }
       .jr-item, .jr-item.l, .jr-item.r { grid-template-columns: 16px 1fr; gap: 0 18px; align-items: start; padding: 22px 0; }
       .jr-node { grid-column: 1; grid-row: 1; margin-top: 4px; }
       .jr-item .jr-text, .jr-item.l .jr-text, .jr-item.r .jr-text { grid-column: 2; grid-row: 1; text-align: left; padding: 0; }
@@ -575,6 +624,10 @@
       section#about { padding: 72px 0 56px; }
           .pub { grid-template-columns: 1fr; gap: 2px; }
       .contact-card { padding: 26px 20px; }
+      .ct { padding: 48px 20px 28px; border-radius: 22px; }
+      .ct-helix { display: none; }
+      .ct-mail { font-size: .95rem; padding: 14px 20px; max-width: 100%; overflow-wrap: anywhere; }
+      .ct-socs { grid-template-columns: repeat(2, 1fr); gap: 22px 10px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -792,22 +845,13 @@
         <div class="about-top">
           <div class="about-full">
             <p class="lead">I'm a doctoral researcher in Bioinformatics at the Academy of Scientific and Innovative Research (AcSIR), working in Dr. Jitendra Narayan's laboratory at CSIR-IGIB, New Delhi.</p>
-            <p class="lead">My thesis is <em>Computational Discovery, Analysis and Mapping of Horizontal Gene Transfer Events in Multicellular Organisms</em>.</p>
+            <p class="lead">My thesis, titled <em>Computational Discovery, Analysis and Mapping of Horizontal Gene Transfer Events in Multicellular Organisms</em>, focuses on identifying evolutionary breakpoint regions and ancestral chromosome fragments in <em>Adineta vaga</em>, and mapping horizontally transferred genes (HGTs) onto those regions.</p>
             <p class="lead">I want to be part of meaningful research and innovative practices, using my knowledge and analytical skills for scientific advancement and a better quality of life.</p>
           </div>
           <figure class="about-fig" id="aboutFig">
             <img id="aboutImg" src="about.jpg" alt="Ajay Bhatia at work" loading="lazy">
           </figure>
         </div>
-        <aside class="fellowship" aria-label="Fellowship">
-          <div class="fel-medal" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="M8.7 13.6 7 21l5-2.8 5 2.8-1.7-7.4M12 6.6l.9 1.8 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2-1.5-1.4 2-.3z"/></svg></div>
-          <div class="fel-body">
-            <span class="fel-kicker">Fellowship</span>
-            <h3>CSIR-UGC NET JRF (Life Sciences)</h3>
-            <p>National fellowship funding five years of doctoral research. Also qualified for Assistant Professor eligibility.</p>
-          </div>
-          <span class="fel-years">2021&ndash;2026</span>
-        </aside>
       </div>
     </section>
 
@@ -823,6 +867,7 @@
               <h3>Ph.D.</h3>
               <span class="jr-sub">Bioinformatics</span>
               <p>CSIR-Institute of Genomics and Integrative Biology<br><em>AcSIR</em></p>
+              <span class="jr-fel"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="5.5"/><path d="M8.7 13.6 7 21l5-2.8 5 2.8-1.7-7.4"/></svg><span><b>CSIR-UGC NET JRF (Life Sciences)</b><em>National fellowship funding five years of doctoral research; also qualified for Assistant Professor eligibility.</em></span></span>
               <span class="jr-meta">In progress</span>
             </div>
             <span class="jr-node" aria-hidden="true"></span>
@@ -1115,31 +1160,13 @@
     <section id="skills">
       <div class="wrap">
         <div class="sec-head"><h2>Skills &amp; toolkit</h2></div>
-        <div class="skills">
-          <div class="card skillbox">
-            <h3><i style="background:var(--nuc-a)"></i>Programming &amp; systems</h3>
-            <div class="chips"><span>Python</span><span>R</span><span>Bash</span><span>Snakemake</span><span>Linux (primary)</span><span>Windows</span></div>
-          </div>
-          <div class="card skillbox">
-            <h3><i style="background:var(--nuc-t)"></i>Sequence quality control</h3>
-            <div class="chips"><span>FastQC</span><span>MultiQC</span><span>fastp</span><span>cutadapt</span><span>Trimmomatic</span><span>NanoPlot</span><span>NanoFilt</span><span>Bionano Solve</span><span>SeqKit</span></div>
-          </div>
-          <div class="card skillbox">
-            <h3><i style="background:var(--nuc-g)"></i>Comparative genomics</h3>
-            <div class="chips"><span>BLAST</span><span>LASTZ</span><span>MUMmer</span><span>Satsuma</span><span>OrthoFinder</span><span>Synteny</span><span>Genome rearrangements</span><span>Viral genome evolution</span></div>
-          </div>
-          <div class="card skillbox">
-            <h3><i style="background:var(--nuc-c)"></i>HGT detection</h3>
-            <div class="chips"><span>Alienness</span><span>Alien_Hunter</span><span>HGTector2</span><span>DarkHorse</span><span>NCBI nr homology search</span></div>
-          </div>
-          <div class="card skillbox">
-            <h3><i style="background:var(--accent-2)"></i>Repeats, structure &amp; enrichment</h3>
-            <div class="chips"><span>RepeatModeler</span><span>Transposable elements</span><span>SSR analysis</span><span>Protein structure analysis</span><span>GO / KEGG enrichment</span></div>
-          </div>
-          <div class="card skillbox">
-            <h3><i style="background:var(--accent)"></i>Tool building &amp; languages</h3>
-            <div class="chips"><span>Web-based GUI tools</span><span>CLI tools</span><span>Interactive visualisation</span><span>English</span><span>Hindi</span><span>Himachali</span></div>
-          </div>
+        <div class="sk-rows">
+          <div class="sk-row" style="--sc:var(--nuc-a)"><div class="sk-head"><b>01</b><h3>Programming &amp; systems</h3></div><ul class="sk-list"><li>Python</li><li>R</li><li>Bash</li><li>Snakemake</li><li>Linux (primary)</li><li>Windows</li></ul></div>
+          <div class="sk-row" style="--sc:var(--nuc-t)"><div class="sk-head"><b>02</b><h3>Sequence quality control</h3></div><ul class="sk-list"><li>FastQC</li><li>MultiQC</li><li>fastp</li><li>cutadapt</li><li>Trimmomatic</li><li>NanoPlot</li><li>NanoFilt</li><li>Bionano Solve</li><li>SeqKit</li></ul></div>
+          <div class="sk-row" style="--sc:var(--nuc-g)"><div class="sk-head"><b>03</b><h3>Comparative genomics</h3></div><ul class="sk-list"><li>BLAST</li><li>LASTZ</li><li>MUMmer</li><li>Satsuma</li><li>OrthoFinder</li><li>Synteny</li><li>Genome rearrangements</li><li>Viral genome evolution</li></ul></div>
+          <div class="sk-row" style="--sc:var(--nuc-c)"><div class="sk-head"><b>04</b><h3>HGT detection</h3></div><ul class="sk-list"><li>Alienness</li><li>Alien_Hunter</li><li>HGTector2</li><li>DarkHorse</li><li>NCBI nr homology search</li></ul></div>
+          <div class="sk-row" style="--sc:var(--accent-2)"><div class="sk-head"><b>05</b><h3>Repeats, structure &amp; enrichment</h3></div><ul class="sk-list"><li>RepeatModeler</li><li>Transposable elements</li><li>SSR analysis</li><li>Protein structure analysis</li><li>GO / KEGG enrichment</li></ul></div>
+          <div class="sk-row" style="--sc:var(--accent)"><div class="sk-head"><b>06</b><h3>Tool building &amp; languages</h3></div><ul class="sk-list"><li>Web-based GUI tools</li><li>CLI tools</li><li>Interactive visualisation</li><li>English</li><li>Hindi</li><li>Himachali</li></ul></div>
         </div>
       </div>
     </section>
@@ -1147,20 +1174,23 @@
     <!-- ================= CONTACT ================= -->
     <section id="contact">
       <div class="wrap">
-        <div class="contact-card">
-          <div style="position:relative; z-index:1;">
-            <p class="eyebrow" style="margin-bottom:10px;">Let's collaborate</p>
-            <h2>Get in touch</h2>
-            <p>I'm open to research collaborations and opportunities in genomics, comparative genomics and bioinformatics tool development. Email is the best way to reach me.</p>
-            <p style="margin-top:14px; font-size:.88rem;">CSIR-Institute of Genomics and Integrative Biology, New Delhi, India</p>
+        <div class="ct">
+          <div class="ct-glow" aria-hidden="true"></div>
+          <div class="ct-helix" aria-hidden="true"><span>A</span><span>T</span><span>G</span><span>C</span><span>G</span><span>A</span><span>T</span><span>C</span></div>
+          <p class="eyebrow">Let's collaborate</p>
+          <h2>Have a genome to <span>decode</span>?<br>Let's talk.</h2>
+          <p class="ct-lead">I'm open to research collaborations and opportunities in genomics, comparative genomics and bioinformatics tool development. Email is the best way to reach me.</p>
+          <div class="ct-cta">
+            <a class="ct-mail" href="mailto:ajaybhatia.igib@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 7.500l9 6 9-6"/></svg>ajaybhatia.igib@gmail.com</a>
+            <button type="button" class="ct-copy" id="ctCopy" data-mail="ajaybhatia.igib@gmail.com">Copy email</button>
           </div>
-          <div class="contact-links">
-            <a href="mailto:ajaybhatia.igib@gmail.com">ajaybhatia.igib@gmail.com <span>EMAIL</span></a>
-            <a href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener">Google Scholar <span>SCHOLAR</span></a>
-            <a href="https://orcid.org/0009-0005-2908-5882" target="_blank" rel="noopener">0009-0005-2908-5882 <span>ORCID</span></a>
-            <a href="https://github.com/ajigib" target="_blank" rel="noopener">github.com/ajigib <span>GITHUB</span></a>
-            <a href="https://linkedin.com/in/aj-bhatia02" target="_blank" rel="noopener">linkedin.com/in/aj-bhatia02 <span>LINKEDIN</span></a>
+          <div class="ct-socs">
+            <a class="ct-soc" href="https://scholar.google.com/citations?user=kkVThB0AAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar"><span class="ct-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 8.5l10 5.5 8-4.4V15h2V8.5z"/><path d="M6 12.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.5l-6 3.3z"/></svg></span><b>Google Scholar</b><em>Publications</em></a>
+            <a class="ct-soc" href="https://orcid.org/0009-0005-2908-5882" target="_blank" rel="noopener" aria-label="ORCID"><span class="ct-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 8v8M9 8.2h2.8a3.8 3.8 0 0 1 0 7.6H9" fill="none"/></svg></span><b>ORCID</b><em>0009-0005-2908-5882</em></a>
+            <a class="ct-soc" href="https://github.com/ajigib" target="_blank" rel="noopener" aria-label="GitHub"><span class="ct-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.3-4-2-6-2.5m12 4.5v-3.2a2.8 2.8 0 0 0-.8-2.2c2.700-.3 5.500-1.300 5.500-6a4.600 4.600 0 0 0-1.300-3.200 4.300 4.300 0 0 0-.1-3.200s-1-.3-3.400 1.300a11.700 11.700 0 0 0-6 0C6.500 2.600 5.500 2.900 5.500 2.900a4.300 4.300 0 0 0-.1 3.200A4.600 4.600 0 0 0 4 9.300c0 4.700 2.800 5.700 5.500 6a2.800 2.800 0 0 0-.8 2.200V21"/></svg></span><b>GitHub</b><em>ajigib</em></a>
+            <a class="ct-soc" href="https://linkedin.com/in/aj-bhatia02" target="_blank" rel="noopener" aria-label="LinkedIn"><span class="ct-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg></span><b>LinkedIn</b><em>aj-bhatia02</em></a>
           </div>
+          <p class="ct-loc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.200 7-11.500A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg>CSIR-Institute of Genomics and Integrative Biology, New Delhi, India</p>
         </div>
       </div>
     </section>
@@ -1287,6 +1317,13 @@
       img.addEventListener('load',function(){ c.setAttribute('data-ok','1'); ok++; done(); });
       img.addEventListener('error',function(){ if(k<exts.length){ img.src=base+'.'+exts[k++]; } else { img.remove(); done(); } });
       img.loading='eager'; img.src=img.src;
+    });
+  })();
+  (function(){
+    var b=document.getElementById('ctCopy'); if(!b) return;
+    b.addEventListener('click',function(){
+      var m=b.getAttribute('data-mail'),done=function(){ b.textContent='Copied \u2713'; setTimeout(function(){ b.textContent='Copy email'; },1800); };
+      try{ navigator.clipboard.writeText(m).then(done,function(){ b.textContent=m; }); }catch(e){ b.textContent=m; }
     });
   })();
 </script>
