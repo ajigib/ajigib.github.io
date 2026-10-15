@@ -390,6 +390,36 @@
     .ws-item .ev-role { margin-bottom: 12px; align-self: flex-start; }
     .ws-item p { margin: 0 0 16px; color: var(--muted); font-size: .94rem; line-height: 1.6; flex: 1; }
     .ev-grid.one:has(.ws-box) { margin-bottom: 40px; }
+    /* ---- single horizontal timeline ---- */
+    .t1-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0 0 8px; padding: 0; font-family: var(--mono); font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+    .t1-legend li { display: flex; align-items: center; gap: 8px; }
+    .t1-legend li::before { content: ""; width: 11px; height: 11px; border-radius: 50%; background: var(--sc); }
+    .t1-scroll { overflow-x: auto; margin-bottom: 40px; padding: 6px 0 14px; scrollbar-width: thin; }
+    .t1 { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: auto 54px auto; min-width: 1060px; }
+    .t1-line { grid-column: 1 / -1; grid-row: 2; align-self: center; height: 4px; border-radius: 4px; background: linear-gradient(90deg, #d9822b, #0f8aa0 22%, #d9822b 50%, #7c5cff 66%, #0f8aa0 82%, #d9822b); opacity: .75; }
+    .t1-node { grid-row: 2; justify-self: center; align-self: center; width: 22px; height: 22px; border-radius: 50%; background: var(--sc); box-shadow: 0 0 0 5px var(--bg), 0 6px 14px color-mix(in srgb, var(--sc) 45%, transparent); position: relative; z-index: 1; }
+    .t1-node.sq { border-radius: 6px; transform: rotate(45deg); }
+    .t1-lb { --sc: var(--accent); position: relative; justify-self: center; width: 164%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 10px; z-index: 0; }
+    .t1-lb.first { justify-self: start; width: 160%; align-items: flex-start; text-align: left; padding-left: 0; }
+    .t1-lb.last { justify-self: end; width: 160%; align-items: flex-end; text-align: right; padding-right: 0; }
+    .t1-lb.dn { padding-top: 16px; }
+    .t1-lb.up { padding-bottom: 16px; justify-content: flex-end; }
+    .t1-lb::before { content: ""; position: absolute; width: 2px; height: 14px; background: color-mix(in srgb, var(--sc) 60%, transparent); left: 50%; margin-left: -1px; }
+    .t1-lb.dn::before { top: 0; } .t1-lb.up::before { bottom: 0; }
+    .t1-lb.first::before { left: calc(100% / 3.2); } .t1-lb.last::before { left: auto; right: calc(100% / 3.2); margin-right: -1px; }
+    .t1-dt { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; justify-content: inherit; margin-bottom: 6px; }
+    .t1-dt b { font-family: var(--mono); font-size: 1rem; font-weight: 800; color: var(--text); }
+    .t1-dt em { font-style: normal; font-family: var(--mono); font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--sc); }
+    .t1-lb .ev-role { margin-bottom: 8px; align-self: inherit; }
+    .t1-lb h4 { font-family: var(--serif); font-size: 1.02rem; line-height: 1.3; margin: 0 0 5px; }
+    .t1-sub { font-size: .8rem; line-height: 1.5; color: var(--muted); }
+    .t1-lb .tk-photo { width: 56px; height: 56px; margin: 0 0 10px; position: relative; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 4px var(--bg), 0 8px 18px rgba(30,22,90,.25); background: linear-gradient(135deg, #7c5cff, #3b2a9c); }
+    .tk-ph { position: absolute; inset: 0; display: grid; place-items: center; }
+    .tk-ph svg { width: 24px; height: 24px; fill: none; stroke: rgba(255,255,255,.88); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+    .tk-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .tk-photo.has-img .tk-ph { display: none; }
+
+
     .about-edu { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: start; margin-top: 28px; }
     .about-edu .callout { margin-top: 0 !important; }
     .two-col { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; }
@@ -518,6 +548,7 @@
       .portrait-wrap { order: -1; justify-self: start; }
       .two-col, .contact-card, .about-edu, .about-top, .pb-grid { grid-template-columns: 1fr; }
       .ev-grid { grid-template-columns: 1fr; }
+      .t1 { min-width: 1020px; }
       .ws-list { grid-template-columns: 1fr; }
       .ws-item + .ws-item { border-left: 0; border-top: 1px solid var(--border); }
       .ws-item { padding: 22px 20px; }
@@ -1070,46 +1101,13 @@
           <figure class="cl"><div class="cl-ph" aria-hidden="true"></div><img src="workshop-2.jpg" alt="Workshop photo 2" loading="lazy" data-base="workshop-2"></figure>
           <figure class="cl"><div class="cl-ph" aria-hidden="true"></div><img src="workshop-3.jpg" alt="Workshop photo 3" loading="lazy" data-base="workshop-3"></figure>
         </div>
-        <div class="ev-grid one">
-          <article class="ev ws-box">
-            <div class="ws-list">
-            <div class="ws-item" style="--sc:#0f8aa0">
-              <div class="ws-top"><span class="ws-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l9-4 9 4-9 4zM7 10.5V15c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-4.5M21 8v5"/></svg></span><span class="ws-when">NOV 2025 &amp; MAR 2026</span></div>
-              <span class="ev-role">Organiser and Instructor</span>
-              <h4>Bioinformatics for One Health and Pathogen-Specific Research</h4>
-              <span class="ev-sub">Five-day hands-on workshop &middot; CSIR-IGIB with ICMR, New Delhi</span>
-              <p>Training in One Health, genomics, AMR and bioinformatics.</p>
-              <ul class="ev-dates"><li>1st edition &middot; 3&ndash;7 Nov 2025</li><li>2nd edition &middot; 16&ndash;20 Mar 2026</li></ul>
-            
-            </div>
-            <div class="ws-item" style="--sc:#d9822b">
-              <div class="ws-top"><span class="ws-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3M8 15h8"/></svg></span><span class="ws-when">SEP 2025 &ndash; MAR 2026</span></div>
-              <span class="ev-role">Instructor</span>
-              <h4>Genomics and Molecular Technologies for Industrial Applications</h4>
-              <span class="ev-sub">Skill India training &middot; CSIR-IGIB, New Delhi</span>
-              <p>Hands-on training in genomics and molecular technologies.</p>
-              <ul class="ev-dates"><li>1&ndash;30 Sep 2025</li><li>1&ndash;7 Feb 2026 (online)</li><li>16&ndash;27 Mar 2026</li></ul>
-            
-            </div>
-            </div>
-          </article>
-        </div>
-        <div class="ev-group"><span class="ev-gl">Conferences</span></div>
-        <div class="ev-grid one">
-          <article class="ev wide" style="--sc:#6a4fd0">
-            <figure class="ev-media">
-              <div class="ev-fallback" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 4h18v11H3zM12 15v5M8 20h8M7 11l3-3 2.5 2.5L17 7"/></svg></div>
-              <img src="conference.jpg" alt="getENRICH: A Comprehensive Tool for Gene and Pathway Enrichment Analysis in Non-Model Organisms" loading="lazy" data-base="conference">
-              <span class="ev-date">25&ndash;27 FEB 2026</span>
-            </figure>
-            <div class="ev-body">
-              <span class="ev-role">Poster presentation</span>
-              <h4>getENRICH: A Comprehensive Tool for Gene and Pathway Enrichment Analysis in Non-Model Organisms</h4>
-              <span class="ev-sub">ETBCB 2026 &middot; National Conference on Emerging Trends in Bioinformatics and Computational Biology</span>
-              <p>Bioinformatics Centre, Savitribai Phule Pune University, Pune.</p>
-              <ul class="ev-dates"><li>25&ndash;27 Feb 2026</li></ul>
-            </div>
-          </article>
+        <div class="ev-group"><span class="ev-gl">Timeline &middot; Sep 2025 &ndash; Mar 2026</span></div>
+        <ul class="t1-legend" aria-hidden="true"><li style="--sc:#0f8aa0">One Health workshop</li><li style="--sc:#d9822b">Skill India training</li><li style="--sc:#7c5cff">Conference</li></ul>
+        <div class="t1-scroll">
+          <div class="t1" role="list" aria-label="Workshops and conference timeline">
+            <span class="t1-line" aria-hidden="true"></span>
+            <span class="t1-node" style="--sc:#d9822b;grid-column:1;grid-row:2"></span><div class="t1-lb dn first" style="--sc:#d9822b;grid-column:1;grid-row:3"><span class="t1-dt"><b>1&ndash;30 Sep 2025</b><em>Batch 1</em></span><span class="ev-role">Instructor</span><h4>Genomics and Molecular Technologies for Industrial Applications</h4><span class="t1-sub">Skill India training &middot; CSIR-IGIB, New Delhi</span></div><span class="t1-node" style="--sc:#0f8aa0;grid-column:2;grid-row:2"></span><div class="t1-lb up" style="--sc:#0f8aa0;grid-column:2;grid-row:1"><span class="t1-dt"><b>3&ndash;7 Nov 2025</b><em>1st edition</em></span><span class="ev-role">Organiser and Instructor</span><h4>Bioinformatics for One Health and Pathogen-Specific Research</h4><span class="t1-sub">Five-day hands-on workshop &middot; CSIR-IGIB with ICMR, New Delhi</span></div><span class="t1-node" style="--sc:#d9822b;grid-column:3;grid-row:2"></span><div class="t1-lb dn" style="--sc:#d9822b;grid-column:3;grid-row:3"><span class="t1-dt"><b>1&ndash;7 Feb 2026</b><em>Batch 2 &middot; online</em></span><span class="ev-role">Instructor</span><h4>Genomics and Molecular Technologies for Industrial Applications</h4><span class="t1-sub">Skill India training &middot; CSIR-IGIB, New Delhi</span></div><span class="t1-node sq" style="--sc:#7c5cff;grid-column:4;grid-row:2"></span><div class="t1-lb up" style="--sc:#7c5cff;grid-column:4;grid-row:1"><figure class="tk-photo"><div class="tk-ph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 4h18v11H3zM12 15v5M8 20h8M7 11l3-3 2.5 2.5L17 7"/></svg></div><img src="conference.jpg" alt="getENRICH poster at ETBCB 2026" loading="lazy" data-base="conference"></figure><span class="t1-dt"><b>25&ndash;27 Feb 2026</b><em>Poster</em></span><span class="ev-role">Poster presentation</span><h4>getENRICH: A Comprehensive Tool for Gene and Pathway Enrichment Analysis in Non-Model Organisms</h4><span class="t1-sub">ETBCB 2026 &middot; National Conference on Emerging Trends in Bioinformatics and Computational Biology, Savitribai Phule Pune University, Pune</span></div><span class="t1-node" style="--sc:#0f8aa0;grid-column:5;grid-row:2"></span><div class="t1-lb dn" style="--sc:#0f8aa0;grid-column:5;grid-row:3"><span class="t1-dt"><b>16&ndash;20 Mar 2026</b><em>2nd edition</em></span><span class="ev-role">Organiser and Instructor</span><h4>Bioinformatics for One Health and Pathogen-Specific Research</h4><span class="t1-sub">Five-day hands-on workshop &middot; CSIR-IGIB with ICMR, New Delhi</span></div><span class="t1-node" style="--sc:#d9822b;grid-column:6;grid-row:2"></span><div class="t1-lb up last" style="--sc:#d9822b;grid-column:6;grid-row:1"><span class="t1-dt"><b>16&ndash;27 Mar 2026</b><em>Batch 3</em></span><span class="ev-role">Instructor</span><h4>Genomics and Molecular Technologies for Industrial Applications</h4><span class="t1-sub">Skill India training &middot; CSIR-IGIB, New Delhi</span></div>
+          </div>
         </div>
       </div>
     </section>
@@ -1273,7 +1271,7 @@
   })();
   (function(){
     var exts=['jpg','jpeg','png','JPG','PNG','webp'];
-    document.querySelectorAll('.ev-media img').forEach(function(img){
+    document.querySelectorAll('.ev-media img, .tk-photo img').forEach(function(img){
       var base=img.getAttribute('data-base'),k=1,fig=img.parentNode;
       img.addEventListener('load',function(){ fig.classList.add('has-img'); });
       img.addEventListener('error',function(){
