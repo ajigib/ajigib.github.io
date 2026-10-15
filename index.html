@@ -133,7 +133,7 @@
     /* blur the FASTA column that sits behind the photo */
     .hero-code pre:nth-child(3) { filter: blur(3.5px); }
     /* ---------- INTRO CARD ---------- */
-    .intro { position: relative; display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 48px; max-width: 1080px; padding: 48px 50px 48px 58px; overflow: hidden; border-radius: 22px;
+    .intro { position: relative; display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 56px; width: 100%; max-width: none; margin: 0 auto; padding: 52px 64px 52px 70px; overflow: hidden; border-radius: 22px;
       background: color-mix(in srgb, var(--surface) 87%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
       border: 1px solid var(--border); box-shadow: var(--shadow), 0 26px 60px rgba(16,32,50,.10); }
     .intro::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: linear-gradient(180deg, var(--accent), var(--accent-2)); }
@@ -206,25 +206,26 @@
     .dot-item:last-child:hover .tip, .dot-item:last-child:focus-visible .tip, .dot-item:last-child.open .tip { transform-origin: right top; }
     .tip b { font-size: .84rem; font-weight: 700; line-height: 1.2; }
     .tip i { font-style: normal; font-family: var(--mono); font-size: .74rem; color: #7fe3ea; line-height: 1.3; }
-    .quiet { display: flex; flex-wrap: wrap; gap: 8px 26px; font-size: .84rem; color: var(--muted); }
+    .quiet { display: flex; flex-wrap: wrap; gap: 8px 26px; font-size: 1.02rem; color: var(--muted); }
     .quiet > * { display: inline-flex; align-items: center; gap: 7px; color: inherit; }
     .quiet a:hover { color: var(--accent); text-decoration: none; }
-    .quiet svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; color: var(--accent); }
+    .quiet svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; color: var(--accent); }
     .quiet b { color: var(--text); font-weight: 600; }
     @media (max-width: 560px) { .dotbox { padding: 42px 16px 16px; } .dots { left: 14px; gap: 20px; } .dot-item { width: 42px; height: 42px; } .box-label { display: none; } }
     @media (prefers-reduced-motion: reduce) { .dot-item, .tip { transition: none; } }
 
     /* ---------- SECTIONS ---------- */
     section { padding: 76px 0 8px; }
+    section#about { padding: 110px 0 80px; }
     .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 28px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
     .sec-num { font-family: var(--mono); font-size: .8rem; color: var(--accent); font-weight: 700; }
     h2 { font-family: var(--serif); font-size: 1.85rem; letter-spacing: -.01em; line-height: 1.2; }
     h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
     p.lead { color: var(--muted); max-width: 720px; margin-bottom: 14px; font-size: 1.02rem; }
-    .about-top { display: grid; grid-template-columns: minmax(0,1fr) minmax(260px,380px); gap: 40px; align-items: center; }
+    .about-top { display: grid; grid-template-columns: minmax(0,1fr) minmax(300px,560px); gap: 48px; align-items: center; }
     .about-top.no-img { grid-template-columns: 1fr; }
     .about-fig { margin: 0; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); background: var(--surface-2); }
-    .about-fig img { display: block; width: 100%; height: auto; max-height: 440px; object-fit: cover; }
+    .about-fig img { display: block; width: 100%; height: auto; max-height: 560px; object-fit: cover; }
     .about-full .lead { max-width: none; }
     .fellowship { position: relative; display: flex; align-items: center; gap: 22px; margin: 34px auto 0; max-width: 860px; padding: 22px 28px; border-radius: 20px; isolation: isolate; overflow: hidden;
       background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 11%, var(--surface)), color-mix(in srgb, var(--accent-2) 10%, var(--surface)));
@@ -404,6 +405,7 @@
     }
     @media (max-width: 560px) {
       section { padding-top: 56px; }
+      section#about { padding: 72px 0 56px; }
       .pub { grid-template-columns: 1fr; gap: 2px; }
       .contact-card { padding: 26px 20px; }
     }
@@ -665,7 +667,6 @@
               <h3>Post Graduation</h3>
               <span class="jr-sub">M.Sc. Zoology</span>
               <p>Arni University, Kathgarh, Himachal Pradesh<br><em>Arni University</em></p>
-              <span class="jr-meta">6.53 CGPA &middot; First Division</span>
             </div>
             <span class="jr-node" aria-hidden="true"></span>
             <figure class="jr-pic"><img src="edu-msc.jpg" alt="Post Graduation, M.Sc. Zoology" loading="lazy" data-base="edu-msc"></figure>
@@ -676,7 +677,6 @@
               <h3>Graduation</h3>
               <span class="jr-sub">B.Sc. Zoology</span>
               <p>Sidharth Government College, Nadaun<br><em>Himachal Pradesh University</em></p>
-              <span class="jr-meta">7.16 CGPA &middot; First Division</span>
             </div>
             <span class="jr-node" aria-hidden="true"></span>
             <figure class="jr-pic"><img src="edu-bsc.jpg" alt="Graduation, B.Sc. Zoology" loading="lazy" data-base="edu-bsc"></figure>
@@ -687,7 +687,6 @@
               <h3>Higher Secondary</h3>
               <span class="jr-sub">Class XII</span>
               <p>KMS Government Sen. Sec. School Gauna Karaur<br><em>H.P.B.O.S.E.</em></p>
-              <span class="jr-meta">61.2% &middot; First Class</span>
             </div>
             <span class="jr-node" aria-hidden="true"></span>
             <figure class="jr-pic"><img src="edu-12.jpg" alt="Higher Secondary, Class XII" loading="lazy" data-base="edu-12"></figure>
@@ -698,7 +697,6 @@
               <h3>Secondary</h3>
               <span class="jr-sub">Class X</span>
               <p>Government High School Hathol<br><em>H.P.B.O.S.E.</em></p>
-              <span class="jr-meta">70.57% &middot; First Class</span>
             </div>
             <span class="jr-node" aria-hidden="true"></span>
             <figure class="jr-pic"><img src="edu-10.jpg" alt="Secondary, Class X" loading="lazy" data-base="edu-10"></figure>
