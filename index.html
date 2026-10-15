@@ -1232,7 +1232,8 @@
           </div>
           <div class="hm-mapcol">
             <div class="hm-pins" role="tablist" aria-label="Map locations">
-              <button type="button" class="hm-pin" role="tab" aria-selected="false" data-loc="igib"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.200 7-11.500A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg>CSIR-IGIB</button>
+              <button type="button" class="hm-pin" role="tab" aria-selected="false" data-loc="north"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.200 7-11.500A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg>CSIR-IGIB North Campus</button>
+              <button type="button" class="hm-pin" role="tab" aria-selected="false" data-loc="south"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.200 7-11.500A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg>CSIR-IGIB South Campus</button>
               <button type="button" class="hm-pin on" role="tab" aria-selected="true" data-loc="state"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.200 7-11.500A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg>Himachal Pradesh</button>
               <button type="button" class="hm-pin" role="tab" aria-selected="false" data-loc="village"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.200 7-11.500A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg>Banoh (village)</button>
             </div>
@@ -1410,9 +1411,10 @@
   (function(){
     var f=document.getElementById('hmFrame'),l=document.getElementById('hmLink'); if(!f) return;
     var L={
-      igib:{src:'https://www.google.com/maps?q=CSIR-Institute+of+Genomics+and+Integrative+Biology,+Mall+Road,+Delhi&t=k&z=17&output=embed',href:'https://www.google.com/maps/search/?api=1&query=CSIR-Institute+of+Genomics+and+Integrative+Biology,+Delhi',t:'Map of CSIR-IGIB, New Delhi'},
+      north:{src:'https://www.google.com/maps?q=28.693083,77.218417&t=k&z=17&output=embed',href:'https://www.google.com/maps/search/?api=1&query=28.693083,77.218417',t:'Map of CSIR-IGIB North Campus, Delhi'},
+      south:{src:'https://www.google.com/maps?q=28.553833,77.274528&t=k&z=17&output=embed',href:'https://www.google.com/maps/search/?api=1&query=28.553833,77.274528',t:'Map of CSIR-IGIB South Campus, Delhi'},
       state:{src:'https://www.google.com/maps?q=Himachal+Pradesh,+India&t=k&z=7&output=embed',href:'https://www.google.com/maps/search/?api=1&query=Himachal+Pradesh,+India',t:'Map of Himachal Pradesh'},
-      village:{src:'https://www.google.com/maps?q=Banoh,+Himachal+Pradesh,+India&t=k&z=15&output=embed',href:'https://maps.app.goo.gl/MFaxdGqr3sCvvCBb8',t:'Map of Banoh village'}
+      village:{src:'https://www.google.com/maps?q=31.698583,76.365056&t=k&z=16&output=embed',href:'https://www.google.com/maps/search/?api=1&query=31.698583,76.365056',t:'Map of Banoh village, Himachal Pradesh'}
     };
     var pins=document.querySelectorAll('.hm-pin');
     pins.forEach(function(b){ b.addEventListener('click',function(){
