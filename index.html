@@ -226,6 +226,42 @@
     .about-fig { margin: 0; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); background: var(--surface-2); }
     .about-fig img { display: block; width: 100%; height: auto; max-height: 440px; object-fit: cover; }
     .about-full .lead { max-width: none; }
+    .fellowship { position: relative; display: flex; align-items: center; gap: 22px; margin: 34px auto 0; max-width: 860px; padding: 22px 28px; border-radius: 20px; isolation: isolate; overflow: hidden;
+      background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 11%, var(--surface)), color-mix(in srgb, var(--accent-2) 10%, var(--surface)));
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border)); box-shadow: var(--shadow); }
+    .fellowship::before { content: ""; position: absolute; z-index: -1; right: -60px; top: -80px; width: 230px; height: 230px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--accent-2) 24%, transparent), transparent 70%); }
+    .fel-medal { flex: none; width: 62px; height: 62px; border-radius: 50%; display: grid; place-items: center; color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: 0 10px 22px color-mix(in srgb, var(--accent) 35%, transparent), 0 0 0 6px color-mix(in srgb, var(--accent) 12%, transparent); }
+    .fel-medal svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .fel-body { flex: 1; min-width: 0; }
+    .fel-kicker { font-family: var(--mono); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--accent); }
+    .fel-body h3 { font-family: var(--serif); font-size: 1.3rem; margin: 3px 0 5px; }
+    .fel-body p { margin: 0; color: var(--muted); font-size: .94rem; line-height: 1.6; }
+    .fel-years { flex: none; font-family: var(--mono); font-size: .82rem; font-weight: 700; padding: 7px 14px; border-radius: 999px; color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 12%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); }
+    .metro-note { margin: -6px 0 6px; font-family: var(--mono); font-size: .78rem; color: var(--muted); letter-spacing: .04em; }
+    .jr { position: relative; margin-top: 18px; }
+    .jr::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; margin-left: -1px;
+      background: linear-gradient(180deg, transparent, #6a4fd0 8%, #3d6fd8 28%, #0f8aa0 50%, #2fb36d 72%, #e8833a 92%, transparent); opacity: .32; }
+    .jr-item { --sc: var(--accent); position: relative; display: grid; grid-template-columns: 1fr 56px 1fr; align-items: center; padding: 30px 0; }
+    .jr-node { grid-column: 2; grid-row: 1; justify-self: center; width: 16px; height: 16px; border-radius: 50%; background: var(--sc); box-shadow: 0 0 0 6px color-mix(in srgb, var(--sc) 18%, transparent); position: relative; z-index: 1; }
+    .jr-item.now .jr-node { animation: jrPulse 2.4s ease-out infinite; }
+    @keyframes jrPulse { 0% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--sc) 40%, transparent); } 100% { box-shadow: 0 0 0 20px transparent; } }
+    .jr-text { grid-row: 1; padding: 0 8px; }
+    .jr-pic { grid-row: 1; margin: 0; padding: 0 8px; display: flex; }
+    .jr-pic img { display: block; width: 100%; max-width: 360px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 18px; box-shadow: 0 18px 40px color-mix(in srgb, var(--sc) 22%, transparent); }
+    .jr-item.l .jr-text { grid-column: 1; text-align: right; }
+    .jr-item.l .jr-pic { grid-column: 3; justify-content: flex-start; }
+    .jr-item.r .jr-text { grid-column: 3; text-align: left; }
+    .jr-item.r .jr-pic { grid-column: 1; justify-content: flex-end; }
+    .jr-year { display: block; font-family: var(--mono); font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--sc); margin-bottom: 6px; }
+    .jr-text h3 { font-family: var(--serif); font-size: 1.6rem; line-height: 1.15; margin: 0; }
+    .jr-sub { display: block; font-size: .92rem; font-weight: 600; color: var(--sc); margin: 3px 0 10px; }
+    .jr-text p { margin: 0 0 10px; font-size: .94rem; line-height: 1.6; color: var(--muted); }
+    .jr-text p em { font-style: normal; opacity: .85; }
+    .jr-meta { font-family: var(--mono); font-size: .8rem; font-weight: 600; color: var(--text); }
+    .jr-pic.empty { display: none; }
+    @media (prefers-reduced-motion: reduce) { .jr-item.now .jr-node { animation: none; } }
     .about-edu { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: start; margin-top: 28px; }
     .about-edu .callout { margin-top: 0 !important; }
     .two-col { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; }
@@ -353,6 +389,16 @@
       .hero-code { opacity: .2; -webkit-mask-image: none; mask-image: none; }
       .portrait-wrap { order: -1; justify-self: start; }
       .two-col, .contact-card, .about-edu, .about-top { grid-template-columns: 1fr; }
+      .jr::before { left: 7px; margin-left: 0; }
+      .jr-item, .jr-item.l, .jr-item.r { grid-template-columns: 16px 1fr; gap: 0 18px; align-items: start; padding: 22px 0; }
+      .jr-node { grid-column: 1; grid-row: 1; margin-top: 4px; }
+      .jr-item .jr-text, .jr-item.l .jr-text, .jr-item.r .jr-text { grid-column: 2; grid-row: 1; text-align: left; padding: 0; }
+      .jr-item .jr-pic, .jr-item.l .jr-pic, .jr-item.r .jr-pic { grid-column: 2; grid-row: 2; justify-content: flex-start; padding: 14px 0 0; }
+      .jr-pic img { max-width: 100%; }
+      .fellowship { flex-wrap: wrap; padding: 20px; gap: 14px 16px; }
+      .fel-medal { width: 52px; height: 52px; }
+      .fel-body { flex: 1 1 calc(100% - 80px); }
+      .fel-years { margin-left: 68px; }
       .workflow { grid-template-columns: repeat(2, 1fr); }
       .step:not(:last-child)::after { display: none; }
     }
@@ -397,6 +443,7 @@
         <li class="li-top"><a class="to-top" href="#top" title="ajay.top()" aria-label="Back to top"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V7M6.5 12.5 12 7l5.5 5.5M5 3.5h14"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">top</span><span class="py-par">()</span></span></a></li>
         <li><a href="#tools" title="ajay.tools()" aria-label="tools"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">tools</span><span class="py-par">()</span></span></a></li>
         <li><a href="#about" title="ajay.about()" aria-label="about"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">about</span><span class="py-par">()</span></span></a></li>
+        <li><a href="#education" title="ajay.education()" aria-label="education"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H20v15H5.5A1.5 1.5 0 0 0 4 20.5zM4 20.5A1.5 1.5 0 0 0 5.5 22H20M9 8h7M9 11.5h5"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">education</span><span class="py-par">()</span></span></a></li>
         <li><a href="#research" title="ajay.research()" aria-label="research"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6l-5.2 9.2A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-2.8L14 9V3"/><path d="M7.5 15h9"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">research</span><span class="py-par">()</span></span></a></li>
         <li><a href="#publications" title="ajay.publications()" aria-label="publications"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">publications</span><span class="py-par">()</span></span></a></li>
         <li><a href="#teaching" title="ajay.teaching()" aria-label="teaching"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.6 2.7 3 6 3s6-1.4 6-3v-5"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">teaching</span><span class="py-par">()</span></span></a></li>
@@ -583,25 +630,79 @@
             <img id="aboutImg" src="about.jpg" alt="Ajay Bhatia at work" loading="lazy">
           </figure>
         </div>
-        <div class="about-edu">
-            <div class="card">
-              <h3 style="margin-bottom:14px;">Education</h3>
-              <div class="timeline">
-                <div class="t-item">
-                  <div class="t-when">2021 &ndash; PRESENT</div>
-                  <p><b>Ph.D. in Bioinformatics</b><br>AcSIR / CSIR-IGIB, New Delhi<br>Supervisor: Dr. Jitendra Narayan</p>
-                </div>
-                <div class="t-item">
-                  <div class="t-when">2019</div>
-                  <p><b>M.Sc. Zoology</b><br>Arni University, Himachal Pradesh<br>First Division</p>
-                </div>
-                <div class="t-item" style="margin-bottom:0;">
-                  <div class="t-when">2017</div>
-                  <p><b>B.Sc. Zoology</b><br>Sidharth Government College, Nadaun (Himachal Pradesh University)<br>First Division</p>
-                </div>
-              </div>
+        <aside class="fellowship" aria-label="Fellowship">
+          <div class="fel-medal" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="M8.7 13.6 7 21l5-2.8 5 2.8-1.7-7.4M12 6.6l.9 1.8 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2-1.5-1.4 2-.3z"/></svg></div>
+          <div class="fel-body">
+            <span class="fel-kicker">Fellowship</span>
+            <h3>CSIR-UGC NET JRF (Life Sciences)</h3>
+            <p>National fellowship funding five years of doctoral research. Also qualified for Assistant Professor eligibility.</p>
+          </div>
+          <span class="fel-years">2021&ndash;2026</span>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ================= EDUCATION ================= -->
+    <section id="education">
+      <div class="wrap">
+        <div class="sec-head"><h2>Education</h2></div>
+        <p class="metro-note">Academic journey &middot; 2012 &rarr; present</p>
+        <div class="jr" role="list" aria-label="Academic timeline">
+          <div class="jr-item l now" role="listitem" style="--sc:#6a4fd0">
+            <div class="jr-text">
+              <span class="jr-year">2021 &ndash; Present</span>
+              <h3>Ph.D.</h3>
+              <span class="jr-sub">Bioinformatics</span>
+              <p>CSIR-Institute of Genomics and Integrative Biology<br><em>AcSIR</em></p>
+              <span class="jr-meta">In progress</span>
             </div>
-            <div class="callout" style="margin-top:14px;"><b>CSIR-UGC NET JRF (Life Sciences), 2021&ndash;2026</b><span>National fellowship funding five years of doctoral research. Also qualified for Assistant Professor eligibility.</span></div>
+            <span class="jr-node" aria-hidden="true"></span>
+            <figure class="jr-pic"><img src="edu-phd.jpg" alt="Ph.D., Bioinformatics" loading="lazy" data-base="edu-phd"></figure>
+          </div>
+          <div class="jr-item r" role="listitem" style="--sc:#3d6fd8">
+            <div class="jr-text">
+              <span class="jr-year">2019</span>
+              <h3>Post Graduation</h3>
+              <span class="jr-sub">M.Sc. Zoology</span>
+              <p>Arni University, Kathgarh, Himachal Pradesh<br><em>Arni University</em></p>
+              <span class="jr-meta">6.53 CGPA &middot; First Division</span>
+            </div>
+            <span class="jr-node" aria-hidden="true"></span>
+            <figure class="jr-pic"><img src="edu-msc.jpg" alt="Post Graduation, M.Sc. Zoology" loading="lazy" data-base="edu-msc"></figure>
+          </div>
+          <div class="jr-item l" role="listitem" style="--sc:#0f8aa0">
+            <div class="jr-text">
+              <span class="jr-year">2017</span>
+              <h3>Graduation</h3>
+              <span class="jr-sub">B.Sc. Zoology</span>
+              <p>Sidharth Government College, Nadaun<br><em>Himachal Pradesh University</em></p>
+              <span class="jr-meta">7.16 CGPA &middot; First Division</span>
+            </div>
+            <span class="jr-node" aria-hidden="true"></span>
+            <figure class="jr-pic"><img src="edu-bsc.jpg" alt="Graduation, B.Sc. Zoology" loading="lazy" data-base="edu-bsc"></figure>
+          </div>
+          <div class="jr-item r" role="listitem" style="--sc:#2fb36d">
+            <div class="jr-text">
+              <span class="jr-year">2014</span>
+              <h3>Higher Secondary</h3>
+              <span class="jr-sub">Class XII</span>
+              <p>KMS Government Sen. Sec. School Gauna Karaur<br><em>H.P.B.O.S.E.</em></p>
+              <span class="jr-meta">61.2% &middot; First Class</span>
+            </div>
+            <span class="jr-node" aria-hidden="true"></span>
+            <figure class="jr-pic"><img src="edu-12.jpg" alt="Higher Secondary, Class XII" loading="lazy" data-base="edu-12"></figure>
+          </div>
+          <div class="jr-item l" role="listitem" style="--sc:#e8833a">
+            <div class="jr-text">
+              <span class="jr-year">2012</span>
+              <h3>Secondary</h3>
+              <span class="jr-sub">Class X</span>
+              <p>Government High School Hathol<br><em>H.P.B.O.S.E.</em></p>
+              <span class="jr-meta">70.57% &middot; First Class</span>
+            </div>
+            <span class="jr-node" aria-hidden="true"></span>
+            <figure class="jr-pic"><img src="edu-10.jpg" alt="Secondary, Class X" loading="lazy" data-base="edu-10"></figure>
+          </div>
         </div>
       </div>
     </section>
@@ -962,6 +1063,16 @@
     img.addEventListener('error',function(){
       if(k<alts.length){ img.src=alts[k++]; }
       else { var f=document.getElementById('aboutFig'); if(f) f.remove(); var t=document.querySelector('.about-top'); if(t) t.classList.add('no-img'); }
+    });
+  })();
+  (function(){
+    var exts=['jpg','jpeg','png','JPG','PNG','webp'];
+    document.querySelectorAll('.jr-pic img').forEach(function(img){
+      var base=img.getAttribute('data-base'),k=1;
+      img.addEventListener('error',function(){
+        if(k<exts.length){ img.src=base+'.'+exts[k++]; }
+        else { img.parentNode.classList.add('empty'); }
+      });
     });
   })();
 </script>
