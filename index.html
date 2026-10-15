@@ -77,6 +77,8 @@
     header.top nav ul { list-style: none; display: flex; flex-direction: column; gap: 3px; }
     header.top nav a { display: flex; align-items: center; gap: 12px; padding: 11px; border-radius: 9px; font-size: .84rem; white-space: nowrap; color: #d4d4d4; }
     header.top nav a:hover { background: rgba(255,255,255,.06); text-decoration: none; }
+    header.top nav li.li-top { margin-bottom: 6px; padding-bottom: 7px; border-bottom: 1px solid rgba(74,255,122,.16); }
+    header.top nav a.to-top .ico { stroke: #5dff9a; }
     header.top nav a.active { background: rgba(74,255,122,.1); box-shadow: inset 2px 0 0 #5dff9a; }
     .ico { flex: none; width: 22px; height: 22px; fill: none; stroke: #8fb7a0; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: stroke .15s; }
     header.top nav a:hover .ico, header.top nav a.active .ico { stroke: #5dff9a; }
@@ -105,7 +107,7 @@
     }
     .hero-code {
       position: absolute; inset: 0 0 158px 0; padding: 28px 28px 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 38px;
-      font-family: var(--mono); font-size: 13.5px; line-height: 1.8; color: var(--muted); opacity: .95; overflow: hidden;
+      font-family: var(--mono); font-size: 13.5px; line-height: 1.8; color: var(--muted); opacity: .34; overflow: hidden;
       -webkit-user-select: none; user-select: none;
       -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,.7) 50%, #000 76%);
       mask-image: linear-gradient(90deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,.7) 50%, #000 76%);
@@ -124,15 +126,15 @@
     :root { --c-kw: #5b4fc7; --c-str: #0b7f8f; --c-num: #b45309; --c-cm: #7a8797; }
     @media (prefers-color-scheme: dark) {
       :root { --c-kw: #a395ff; --c-str: #4fd1d9; --c-num: #fbbf24; --c-cm: #6f8093; }
-      .hero-code { opacity: .95; }
+      .hero-code { opacity: .4; }
     }
     .hero .wrap { position: relative; z-index: 1; }
     .hero-copy { position: relative; }
     /* blur the FASTA column that sits behind the photo */
     .hero-code pre:nth-child(3) { filter: blur(3.5px); }
     /* ---------- INTRO CARD ---------- */
-    .intro { position: relative; max-width: 700px; padding: 40px 44px 38px 50px; overflow: hidden; border-radius: 22px;
-      background: color-mix(in srgb, var(--surface) 90%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    .intro { position: relative; display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 48px; max-width: 1080px; padding: 48px 50px 48px 58px; overflow: hidden; border-radius: 22px;
+      background: color-mix(in srgb, var(--surface) 87%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
       border: 1px solid var(--border); box-shadow: var(--shadow), 0 26px 60px rgba(16,32,50,.10); }
     .intro::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: linear-gradient(180deg, var(--accent), var(--accent-2)); }
     .hero .intro h1 { font-family: var(--serif); font-size: clamp(2.4rem, 4.6vw, 3.7rem); line-height: 1.04; letter-spacing: -.015em; font-weight: 700; margin: 0 0 12px; color: var(--text); }
@@ -148,7 +150,7 @@
     .term-title { margin-left: 10px; font-size: .74rem; color: #6f9a80; }
     /* ---------- FASTA FILE PANEL ---------- */
     .fa-band { position: absolute; left: 28px; right: 28px; bottom: 14px; z-index: -1; pointer-events: none; overflow: hidden;
-      font-family: var(--mono); font-size: 12px; line-height: 1.65; color: var(--muted); opacity: .9;
+      font-family: var(--mono); font-size: 12px; line-height: 1.65; color: var(--muted); opacity: .42;
       -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%); }
     .fa-title { display: flex; align-items: center; gap: 8px; margin: 0 0 6px 14px; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
     .fa-title::before { content: ""; width: 9px; height: 12px; border: 1.5px solid var(--accent); border-radius: 2px; }
@@ -157,7 +159,7 @@
     .fa-band .cn { color: var(--c-num); font-weight: 600; }
     .fa-band .na { color: var(--nuc-a); } .fa-band .nt { color: var(--nuc-t); }
     .fa-band .ng { color: var(--nuc-g); } .fa-band .nc { color: var(--nuc-c); }
-    .hero-inner { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; padding: 72px 0 150px; }
+    .hero-inner { display: block; padding: 64px 0 56px; }
     .eyebrow { font-family: var(--mono); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; font-weight: 600; }
     .hero h1 { font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 4.1rem); line-height: 1.05; font-weight: 700; letter-spacing: -.01em; margin-bottom: 14px; color: var(--text); }
     .hero .role { font-size: 1.15rem; color: var(--muted); max-width: 560px; margin-bottom: 10px; }
@@ -170,11 +172,10 @@
     @media (prefers-color-scheme: dark) { .btn:not(.ghost) { color: #06222a; } }
     .portrait-wrap { justify-self: center; position: relative; }
     .portrait-frame {
-      position: relative; width: clamp(230px, 31vw, 350px); aspect-ratio: 1 / 1; border-radius: 50%; overflow: hidden; border: 0;
-      box-shadow: 0 24px 55px rgba(16,32,50,.26);
+      position: relative; width: clamp(230px, 25vw, 330px); aspect-ratio: 1 / 1; border-radius: 16px; overflow: hidden; border: 0;
+      box-shadow: none;
       background: linear-gradient(145deg, #12385a, #0a1f35); display: grid; place-items: center;
     }
-    @media (prefers-color-scheme: dark) { .portrait-frame { box-shadow: 0 24px 55px rgba(0,0,0,.6); } }
     .portrait-fallback { font-family: var(--serif); font-size: clamp(3rem, 8vw, 5rem); font-weight: 700; color: rgba(255,255,255,.85); }
     .portrait { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -315,11 +316,13 @@
 
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 880px) {
-      .hero-inner { grid-template-columns: 1fr; padding: 40px 0 150px; text-align: left; }
+      .hero-inner { padding: 36px 0 56px; text-align: left; }
+      .intro { grid-template-columns: 1fr; gap: 26px; }
+      .portrait-frame { width: min(240px, 100%); }
       .hero-code { grid-template-columns: repeat(2, 1fr); }
       .hero-dna { right: -26%; opacity: .26; }
       .hero-dna.left { display: none; }
-      .hero-code { opacity: .28; -webkit-mask-image: none; mask-image: none; }
+      .hero-code { opacity: .2; -webkit-mask-image: none; mask-image: none; }
       .portrait-wrap { order: -1; justify-self: start; }
       .two-col, .contact-card { grid-template-columns: 1fr; }
       .workflow { grid-template-columns: repeat(2, 1fr); }
@@ -342,6 +345,7 @@
       .side-body { flex: 1; min-width: 0; padding: 0; overflow-x: auto; scrollbar-width: none; }
       .side-body::-webkit-scrollbar { display: none; }
       header.top nav ul { flex-direction: row; gap: 2px; }
+      header.top nav li.li-top { margin: 0 4px 0 0; padding: 0 6px 0 0; border-bottom: 0; border-right: 1px solid rgba(74,255,122,.2); }
       header.top nav a { padding: 8px 10px; gap: 8px; font-size: .8rem; }
       .ico { width: 18px; height: 18px; }
       .lbl { opacity: 1; }
@@ -362,6 +366,7 @@
     <div class="side-body">
       <nav aria-label="Main">
       <ul>
+        <li class="li-top"><a class="to-top" href="#top" title="ajay.top()" aria-label="Back to top"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V7M6.5 12.5 12 7l5.5 5.5M5 3.5h14"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">top</span><span class="py-par">()</span></span></a></li>
         <li><a href="#about" title="ajay.about()" aria-label="about"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">about</span><span class="py-par">()</span></span></a></li>
         <li><a href="#research" title="ajay.research()" aria-label="research"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6l-5.2 9.2A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-2.8L14 9V3"/><path d="M7.5 15h9"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">research</span><span class="py-par">()</span></span></a></li>
         <li><a href="#tools" title="ajay.tools()" aria-label="tools"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg><span class="lbl"><span class="py-obj">ajay</span><span class="py-dot">.</span><span class="py-fn">tools</span><span class="py-par">()</span></span></a></li>
@@ -450,17 +455,19 @@
       <div class="hero-inner">
         <div class="hero-copy">
           <div class="intro" role="group" aria-label="Introduction">
-            <h1>Ajay Bhatia</h1>
-            <p class="intro-title">Ph.D. Scholar</p>
-            <p class="intro-affil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5.5L12 3l8 2.5V21"/><path d="M9 21v-5h6v5M8.5 9h2M13.5 9h2M8.5 12.5h2M13.5 12.5h2"/></svg><span>CSIR&ndash;Institute of Genomics and Integrative Biology (CSIR-IGIB) &middot; <span class="nb">AcSIR, New Delhi</span></span></p>
-            <hr class="intro-rule">
-            <p class="intro-summary">Computational biologist studying horizontal gene transfer and genome evolution, and building tools that make genomic analysis accessible.</p>
-          </div>
-        </div>
-        <div class="portrait-wrap">
-          <div class="portrait-frame">
-            <span class="portrait-fallback" aria-hidden="true">AB</span>
-            <img class="portrait" id="dp" src="profile.jpg" alt="Portrait of Ajay Bhatia" width="600" height="600">
+            <div class="intro-text">
+              <h1>Ajay Bhatia</h1>
+              <p class="intro-title">Ph.D. Scholar</p>
+              <p class="intro-affil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5.5L12 3l8 2.5V21"/><path d="M9 21v-5h6v5M8.5 9h2M13.5 9h2M8.5 12.5h2M13.5 12.5h2"/></svg><span>CSIR&ndash;Institute of Genomics and Integrative Biology (CSIR-IGIB) &middot; <span class="nb">AcSIR, New Delhi</span></span></p>
+              <hr class="intro-rule">
+              <p class="intro-summary">Computational biologist studying horizontal gene transfer and genome evolution, and building tools that make genomic analysis accessible.</p>
+            </div>
+            <div class="portrait-wrap">
+              <div class="portrait-frame">
+                <span class="portrait-fallback" aria-hidden="true">AB</span>
+                <img class="portrait" id="dp" src="profile.jpg" alt="Portrait of Ajay Bhatia" width="600" height="600">
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -873,7 +880,7 @@
       dp.addEventListener('error', tryNext);
       if (dp.complete && dp.naturalWidth === 0) tryNext();
     }
-    var links = document.querySelectorAll('header.top nav a');
+    var links = document.querySelectorAll('header.top nav a:not(.to-top)');
     var map = {};
     links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
     if ('IntersectionObserver' in window) {
